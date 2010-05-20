@@ -3,6 +3,10 @@
 \usetheme{Berlin}
 %\usepackage{tipa}
 \usepackage{color}
+\usepackage{listings}
+\usepackage[utf8,latin9]{inputenc}
+\usepackage[T1]{fontenc}
+%\usepackage{babel}
 \beamertemplatenavigationsymbolsempty
 
 \begin{document}
@@ -33,10 +37,9 @@
 \frame{\titlepage}
 %\frame{\tableofcontents}
 
-
+%\section{The setting}
 \begin{frame}
     Sometimes error messages are inadequate
-
     \begin{figure}[b]
     \begin{centering}
     \scalebox{.75}{\includegraphics{arguments.png}}
@@ -54,31 +57,106 @@
 \end{frame}
 
 \begin{frame}
-    Possible solutions
+    Often there exists a tool to get the information you're after, but...
     \begin{itemize}
-        \item Add debug code
-            \begin{itemize}
-                \item You don't always have the code
-                \item You can't always rebuild the code you have
-            \end{itemize}
-        \item Fiddle semi-randomly with any available knobs
-            \begin{itemize}
-                \item Occasionally catastrophic
-                \item Often fruitless
-            \end{itemize}
+        \item<2->You've never heard of it
+        \item<3->No one else has ever heard of it
+        \item<4->Even when people *have* heard of it, its options, usage, and output differ completely from the other tools you've used to get to this point, so integration is painful
+        \item<5->The more specific the tool, the more output you need to sort through
     \end{itemize}
 \end{frame}
 
+%\section{Our hero appears...}
 \begin{frame}
     Enter Dynamic Tracing...
 \end{frame}
 
 \begin{frame}
+    Dynamic tracing allows users to instrument production systems in (ideally) whatever ways they want, without (ideally) breaking things in the process
+\end{frame}
+
+%\section{Major players}
+\begin{frame}
+    Important packages
     \begin{itemize}
-    Dynamic tracing means creating
+        \item<2-> DTrace
+        \begin{itemize}
+            \item Available on [Open]Solaris, FreeBSD, and OSX
+            \item FreeBSD's version is less mature than Solaris, and thus has significant limitations
+            \item Who runs OSX servers, anyway?
+            \item Any guesses how much life OpenSolaris has left?
+        \end{itemize}
+        \item<3->SystemTap
+        \begin{itemize}
+            \item Linux only
+            \item Less mature than DTrace
+            \item Requires kernel tracing patches and/or debug information to be really useful
+        \end{itemize}
+        \item<4-> There are others (ProbeVue on AIX, other Linux packages with the same goal)
+        \begin{itemize}
+            \item ...but I won't be talking about them (or I would have put them in the talk's title, now, wouldn't I?)
+        \end{itemize}
     \end{itemize}
 \end{frame}
 
+\begin{frame}
+    The basic idea:
+    \begin{itemize}
+        \item Software (kernel, libraries, PostgreSQL, etc.) is equipped with various probe points
+        \item Simple, C-like scripting language describes which probes are used and what to do with them
+        \item Script allows variables, screen output, control structures, etc.
+        \item Compiled and run at the kernel level
+        \item Runtime environment includes security and fault tolerance protections
+        \item Ideally monitoring overhead is minimal for things that are probed, and nothing for unused probes
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    An example...
+\end{frame}
+
+\begin{frame}[fragile]
+    "Hello, World!", DTrace style
+    \begin{example}
+    \begin{lstlisting}
+BEGIN 
+{ 
+ trace("Hello, World!"); 
+ exit(0); 
+}
+    \end{lstlisting}
+    \end{example}
+    \begin{example}
+    \begin{verbatim}
+dtrace -s Hello.d 
+dtrace: script 'Hello.d' matched 1 probe
+CPU   ID   FUNCTION:NAME
+  0    1      :BEGIN   Hello, World!
+    \end{verbatim}
+    \end{example}
+\end{frame}
+
+\begin{frame}
+    A more complex example
+    \begin{example}
+    \begin{lstlisting}
+    test
+    \end{lstlisting}
+    \end{example}
+\end{frame}
+
+%syscall::write:entry
+%/pid == $1/
+%{
+%    self->buf = arg1;
+%}
+%
+%syscall::write:return
+%/pid == $1/
+%{
+%    self->text = copyin(self->buf, arg0);
+%    printf("%s", stringof(self->text));
+%}
 %\section{How does it work?}
 %
 %\begin{frame}
