@@ -1,6 +1,6 @@
 % Probing PostgreSQL with SystemTap and DTrace
 \documentclass{beamer}
-\usetheme{Berlin}
+\usetheme{Ilmenau}
 %\usepackage{tipa}
 \usepackage{color}
 \usepackage{listings}
@@ -71,6 +71,7 @@
 
 %\section{Our hero appears...}
 \begin{frame}
+    \frametitle{~}
     Enter Dynamic Tracing...
 \end{frame}
 
@@ -117,7 +118,7 @@
 \begin{frame}
      \frametitle{Some differences}
      \begin{itemize}
-         \item DTrace compiles to machine code, SystemTap to native code
+         \item DTrace compiles to bytecode run in a kernel-level interpreter, SystemTap to native code run as a kernel module
          \item DTrace is far more mature
          \item SystemTap requires utrace kernel patch (available by default in Fedora, RHEL, CentOS)
          \item SystemTap can put probes anywhere you want, provided you have debug info. DTrace is limited to defined probes and a limited set of other places (function entry/exit, for instance)
@@ -126,6 +127,7 @@
 \end{frame}
 
 \begin{frame}
+    \frametitle{~}
     An example...
 \end{frame}
 
@@ -189,6 +191,7 @@ postgresql1234:::transaction-start
 \end{frame}
 
 \begin{frame}
+    \frametitle{~}
      These scripts can get extremely complex.
      \begin{itemize}
          \item Thousands or millions of possible probes
@@ -231,6 +234,7 @@ probe vfs.read.return {
 \end{frame}
 
 \begin{frame}
+    \frametitle{~}
      That example was part of a much longer script which:
      \begin{itemize}
          \item Captures each filesystem read and write, from each process
@@ -271,9 +275,85 @@ probe vfs.read.return {
      \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
      \frametitle{What can happen inside a probe function?}
-     Probes carry with them a set of data. 
+     Probes can carry with them a set of parameters to describe the current
+     system status.
+     \begin{exampleblock}{SystemTap code}
+         \begin{lstlisting}
+probe process(123).mark("query__parse__start")
+{
+    printf("query: %s\n",
+        user_string($arg1));
+}
+         \end{lstlisting}
+     \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]
+     \begin{exampleblock}{Output}
+     \begin{verbatim}
+query: drop table if exists pgbench_branches
+query: create table pgbench_branches(bid int ...
+query: drop table if exists pgbench_tellers
+query: create table pgbench_tellers(tid int ...
+query: drop table if exists pgbench_accounts
+query: create table pgbench_accounts(aid int ...
+query: drop table if exists pgbench_history
+query: create table pgbench_history(tid int...
+query: begin
+query: insert into pgbench_branches(bid,...
+query: insert into pgbench_tellers(tid,bid,...
+     \end{verbatim}
+     \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]
+     In SystemTap, thanks to debug info (DWARF), it's possible to examine any variable.
+     \begin{example}
+         \begin{lstlisting}
+probe process("/usr/bin/postgres").
+    function("_bt_first")
+{
+    printf("scanning %d keys on index OID %d\n",
+        $scan->numberOfKeys,
+        $scan->indexRelation->rd_id); 
+}
+         \end{lstlisting}
+     \end{example}
+\end{frame}
+
+\begin{frame}[fragile]
+     \begin{exampleblock}{Output}
+     \begin{verbatim}
+scanning 1 keys on index OID 2679
+scanning 3 keys on index OID 2696
+scanning 3 keys on index OID 2696
+scanning 3 keys on index OID 2696
+scanning 3 keys on index OID 2696
+scanning 2 keys on index OID 2663
+     \end{verbatim}
+     \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+     \frametitle{PostgreSQL probe points}
+     PostgreSQL defines several markers for probing:
+     \begin{itemize}
+         \item transaction begin, commit, and rollback
+         \item query start/end, parsing start/end, rewriting start/end, planning start/end, executing start/end
+         \item checkpoints start/end, and each phase of checkpointing (clog, subtransaction, multiXact, buffer, twophase)
+         \item buffers: read, flush, write-dirty
+         \item wal buffer start/end, xlog insert, xlog switch
+         \item storage manager read/write
+         \item sort start/end
+         \item locking: lock and lwlock acquire, release, wait start/end, acquire failures, deadlock
+     \end{itemize}
+\end{frame}
+
+\begin{frame}
+     \frametitle{PostgreSQL probe points}
+     Since SystemTap can gather data from anywhere, provided debug information, there are still more interesting places to look for data
 \end{frame}
 
 \end{document}
