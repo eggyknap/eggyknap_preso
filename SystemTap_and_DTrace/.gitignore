@@ -6,3 +6,5 @@ systemtap_dtrace.pdf
 systemtap_dtrace.snm
 systemtap_dtrace.toc
 systemtap_dtrace.vrb
+*.log
+*.stp
