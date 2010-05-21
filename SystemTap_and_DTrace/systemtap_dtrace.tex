@@ -72,7 +72,9 @@
 %\section{Our hero appears...}
 \begin{frame}
     \frametitle{~}
+    \begin{center}
     Enter Dynamic Tracing...
+    \end{center}
 \end{frame}
 
 \begin{frame}
@@ -128,7 +130,9 @@
 
 \begin{frame}
     \frametitle{~}
+    \begin{center}
     An example...
+    \end{center}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -309,7 +313,8 @@ query: insert into pgbench_tellers(tid,bid,...
 \end{frame}
 
 \begin{frame}[fragile]
-     In SystemTap, thanks to debug info (DWARF), it's possible to examine any variable.
+    \frametitle{Debug info}
+     In SystemTap, thanks to debug info (DWARF), it's possible to examine any \emph{local} variable. Thus far I've been unable to read variables not local to the function I'm probing.
      \begin{example}
          \begin{lstlisting}
 probe process("/usr/bin/postgres").
@@ -324,6 +329,7 @@ probe process("/usr/bin/postgres").
 \end{frame}
 
 \begin{frame}[fragile]
+    \frametitle{Debug info}
      \begin{exampleblock}{Output}
      \begin{verbatim}
 scanning 1 keys on index OID 2679
@@ -353,7 +359,34 @@ scanning 2 keys on index OID 2663
 
 \begin{frame}
      \frametitle{PostgreSQL probe points}
-     Since SystemTap can gather data from anywhere, provided debug information, there are still more interesting places to look for data
+     More possibilities arise when PostgreSQL probes are combined with kernel-level probes. Since SystemTap can gather data from any function, provided debug information, there are still more interesting places to look for data
+     \pause
+     \begin{itemize}
+         \item Kernel-level locking mechanisms
+         \item Per-device fsync() timing
+         \item Per-file, per-device, per-process IO statistics
+         \begin{itemize}
+             \item Compare traffic levels across WAL, tablespaces, clog, stats file
+         \end{itemize}
+         \item Buffer cache hit rates
+         \begin{itemize}
+             \item Buffer read rates might conceivably give a good idea of system file cache hit rates
+         \end{itemize}
+     \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{~}
+    \begin{center}
+    In short, this stuff is pretty neat
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{~}
+    \begin{center}
+    questions?
+    \end{center}
 \end{frame}
 
 \end{document}
