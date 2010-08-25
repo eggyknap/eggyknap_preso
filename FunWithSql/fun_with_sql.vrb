@@ -1,0 +1,32 @@
+\tiny 
+    \begin{verbatim}
+SELECT
+    id, idname,
+    COALESCE(ROUND(AVG(synctime)::NUMERIC, 1), 0) AS avgtime,
+    COALESCE(SUM(total), 0) AS count
+FROM (
+    SELECT slavecommit,
+    EXTRACT(EPOCH FROM slavecommit - mastercommit) AS synctime,
+    total
+    FROM bucardo.bucardo_rate
+    WHERE sync = 'RO_everything' AND
+    mastercommit > (NOW() - (15 + 1) * INTERVAL '1 HOUR')
+) i
+RIGHT JOIN (
+    SELECT id, idname,
+        TO_TIMESTAMP(start - start::INTEGER % 3600) AS start,
+        TO_TIMESTAMP(stop - stop::INTEGER % 3600) AS stop
+    FROM (
+        SELECT id,
+            TO_CHAR(NOW() - id * INTERVAL '1 HOUR',
+                'Dy Mon DD HH:MI AM') AS idname,
+            EXTRACT(EPOCH FROM NOW() - id * INTERVAL '1 HOUR') AS start,
+            EXTRACT(EPOCH FROM NOW() - (id - 1) * INTERVAL '1 HOUR') AS stop
+        FROM (
+            SELECT GENERATE_SERIES(1, 15) AS id
+        ) f
+    ) g
+) h ON (slavecommit BETWEEN start AND stop)
+GROUP BY id, idname
+ORDER BY id DESC;
+    \end{verbatim}

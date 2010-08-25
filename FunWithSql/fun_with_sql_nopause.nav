@@ -1,0 +1,152 @@
+\beamer@endinputifotherversion {3.07pt}
+\headcommand {\slideentry {0}{0}{1}{1/1}{}{0}}
+\headcommand {\beamer@framepages {1}{1}}
+\headcommand {\slideentry {0}{0}{2}{2/2}{}{0}}
+\headcommand {\beamer@framepages {2}{2}}
+\headcommand {\sectionentry {1}{Why and Why Not}{3}{Why and Why Not}{0}}
+\headcommand {\beamer@sectionpages {1}{2}}
+\headcommand {\beamer@subsectionpages {1}{2}}
+\headcommand {\slideentry {1}{0}{3}{3/3}{}{0}}
+\headcommand {\beamer@framepages {3}{3}}
+\headcommand {\slideentry {1}{0}{4}{4/4}{}{0}}
+\headcommand {\beamer@framepages {4}{4}}
+\headcommand {\slideentry {1}{0}{5}{5/5}{}{0}}
+\headcommand {\beamer@framepages {5}{5}}
+\headcommand {\slideentry {1}{0}{6}{6/6}{}{0}}
+\headcommand {\beamer@framepages {6}{6}}
+\headcommand {\slideentry {1}{0}{7}{7/7}{}{0}}
+\headcommand {\beamer@framepages {7}{7}}
+\headcommand {\sectionentry {2}{Joins}{8}{Joins}{0}}
+\headcommand {\beamer@sectionpages {3}{7}}
+\headcommand {\beamer@subsectionpages {3}{7}}
+\headcommand {\slideentry {2}{0}{8}{8/8}{}{0}}
+\headcommand {\beamer@framepages {8}{8}}
+\headcommand {\slideentry {2}{0}{9}{9/9}{}{0}}
+\headcommand {\beamer@framepages {9}{9}}
+\headcommand {\beamer@subsectionentry {0}{2}{1}{10}{CROSS JOIN}}\headcommand {\beamer@subsectionpages {8}{9}}
+\headcommand {\slideentry {2}{1}{1}{10/10}{CROSS JOIN}{0}}
+\headcommand {\beamer@framepages {10}{10}}
+\headcommand {\slideentry {2}{1}{2}{11/11}{CROSS JOIN}{0}}
+\headcommand {\beamer@framepages {11}{11}}
+\headcommand {\beamer@subsectionentry {0}{2}{2}{12}{INNER JOIN}}\headcommand {\beamer@subsectionpages {10}{11}}
+\headcommand {\slideentry {2}{2}{1}{12/12}{INNER JOIN}{0}}
+\headcommand {\beamer@framepages {12}{12}}
+\headcommand {\slideentry {2}{2}{2}{13/13}{INNER JOIN}{0}}
+\headcommand {\beamer@framepages {13}{13}}
+\headcommand {\beamer@subsectionentry {0}{2}{3}{14}{OUTER JOIN}}\headcommand {\beamer@subsectionpages {12}{13}}
+\headcommand {\slideentry {2}{3}{1}{14/14}{OUTER JOIN}{0}}
+\headcommand {\beamer@framepages {14}{14}}
+\headcommand {\slideentry {2}{3}{2}{15/15}{OUTER JOIN}{0}}
+\headcommand {\beamer@framepages {15}{15}}
+\headcommand {\slideentry {2}{3}{3}{16/16}{OUTER JOIN}{0}}
+\headcommand {\beamer@framepages {16}{16}}
+\headcommand {\slideentry {2}{3}{4}{17/17}{OUTER JOIN}{0}}
+\headcommand {\beamer@framepages {17}{17}}
+\headcommand {\slideentry {2}{3}{5}{18/18}{OUTER JOIN}{0}}
+\headcommand {\beamer@framepages {18}{18}}
+\headcommand {\beamer@subsectionentry {0}{2}{4}{19}{NATURAL JOIN}}\headcommand {\beamer@subsectionpages {14}{18}}
+\headcommand {\slideentry {2}{4}{1}{19/19}{NATURAL JOIN}{0}}
+\headcommand {\beamer@framepages {19}{19}}
+\headcommand {\slideentry {2}{4}{2}{20/20}{NATURAL JOIN}{0}}
+\headcommand {\beamer@framepages {20}{20}}
+\headcommand {\beamer@subsectionentry {0}{2}{5}{21}{Self Joins}}\headcommand {\beamer@subsectionpages {19}{20}}
+\headcommand {\slideentry {2}{5}{1}{21/21}{Self Joins}{0}}
+\headcommand {\beamer@framepages {21}{21}}
+\headcommand {\slideentry {2}{5}{2}{22/22}{Self Joins}{0}}
+\headcommand {\beamer@framepages {22}{22}}
+\headcommand {\sectionentry {3}{Other Useful Operations}{23}{Other Useful Operations}{0}}
+\headcommand {\beamer@sectionpages {8}{22}}
+\headcommand {\beamer@subsectionpages {21}{22}}
+\headcommand {\slideentry {3}{0}{3}{23/23}{}{0}}
+\headcommand {\beamer@framepages {23}{23}}
+\headcommand {\beamer@subsectionentry {0}{3}{1}{24}{Subqueries}}\headcommand {\beamer@subsectionpages {23}{23}}
+\headcommand {\slideentry {3}{1}{1}{24/24}{Subqueries}{0}}
+\headcommand {\beamer@framepages {24}{24}}
+\headcommand {\beamer@subsectionentry {0}{3}{2}{25}{Set Operations}}\headcommand {\beamer@subsectionpages {24}{24}}
+\headcommand {\slideentry {3}{2}{1}{25/25}{Set Operations}{0}}
+\headcommand {\beamer@framepages {25}{25}}
+\headcommand {\beamer@subsectionentry {0}{3}{3}{26}{Common Operations}}\headcommand {\beamer@subsectionpages {25}{25}}
+\headcommand {\slideentry {3}{3}{1}{26/26}{Common Operations}{0}}
+\headcommand {\beamer@framepages {26}{26}}
+\headcommand {\slideentry {3}{3}{2}{27/27}{Common Operations}{0}}
+\headcommand {\beamer@framepages {27}{27}}
+\headcommand {\sectionentry {4}{Advanced Operations}{28}{Advanced Operations}{0}}
+\headcommand {\beamer@sectionpages {23}{27}}
+\headcommand {\beamer@subsectionpages {26}{27}}
+\headcommand {\beamer@subsectionentry {0}{4}{1}{28}{Common Table Expressions}}\headcommand {\beamer@subsectionpages {28}{27}}
+\headcommand {\slideentry {4}{1}{1}{28/28}{Common Table Expressions}{0}}
+\headcommand {\beamer@framepages {28}{28}}
+\headcommand {\slideentry {4}{1}{2}{29/29}{Common Table Expressions}{0}}
+\headcommand {\beamer@framepages {29}{29}}
+\headcommand {\slideentry {4}{1}{3}{30/30}{Common Table Expressions}{0}}
+\headcommand {\beamer@framepages {30}{30}}
+\headcommand {\slideentry {4}{1}{4}{31/31}{Common Table Expressions}{0}}
+\headcommand {\beamer@framepages {31}{31}}
+\headcommand {\slideentry {4}{1}{5}{32/32}{Common Table Expressions}{0}}
+\headcommand {\beamer@framepages {32}{32}}
+\headcommand {\slideentry {4}{1}{6}{33/33}{Common Table Expressions}{0}}
+\headcommand {\beamer@framepages {33}{33}}
+\headcommand {\slideentry {4}{1}{7}{34/34}{Common Table Expressions}{0}}
+\headcommand {\beamer@framepages {34}{34}}
+\headcommand {\slideentry {4}{1}{8}{35/35}{Common Table Expressions}{0}}
+\headcommand {\beamer@framepages {35}{35}}
+\headcommand {\slideentry {4}{1}{9}{36/36}{Common Table Expressions}{0}}
+\headcommand {\beamer@framepages {36}{36}}
+\headcommand {\beamer@subsectionentry {0}{4}{2}{37}{Window Functions}}\headcommand {\beamer@subsectionpages {28}{36}}
+\headcommand {\slideentry {4}{2}{1}{37/37}{Window Functions}{0}}
+\headcommand {\beamer@framepages {37}{37}}
+\headcommand {\slideentry {4}{2}{2}{38/38}{Window Functions}{0}}
+\headcommand {\beamer@framepages {38}{38}}
+\headcommand {\slideentry {4}{2}{3}{39/39}{Window Functions}{0}}
+\headcommand {\beamer@framepages {39}{39}}
+\headcommand {\slideentry {4}{2}{4}{40/40}{Window Functions}{0}}
+\headcommand {\beamer@framepages {40}{40}}
+\headcommand {\sectionentry {5}{Real, Live Queries}{41}{Real, Live Queries}{0}}
+\headcommand {\beamer@sectionpages {28}{40}}
+\headcommand {\beamer@subsectionpages {37}{40}}
+\headcommand {\beamer@subsectionentry {0}{5}{1}{41}{Something Simple}}\headcommand {\beamer@subsectionpages {41}{40}}
+\headcommand {\slideentry {5}{1}{1}{41/41}{Something Simple}{0}}
+\headcommand {\beamer@framepages {41}{41}}
+\headcommand {\slideentry {5}{1}{2}{42/42}{Something Simple}{0}}
+\headcommand {\beamer@framepages {42}{42}}
+\headcommand {\slideentry {5}{1}{3}{43/43}{Something Simple}{0}}
+\headcommand {\beamer@framepages {43}{43}}
+\headcommand {\beamer@subsectionentry {0}{5}{2}{44}{Something Fun}}\headcommand {\beamer@subsectionpages {41}{43}}
+\headcommand {\slideentry {5}{2}{1}{44/44}{Something Fun}{0}}
+\headcommand {\beamer@framepages {44}{44}}
+\headcommand {\slideentry {5}{2}{2}{45/45}{Something Fun}{0}}
+\headcommand {\beamer@framepages {45}{45}}
+\headcommand {\slideentry {5}{2}{3}{46/46}{Something Fun}{0}}
+\headcommand {\beamer@framepages {46}{46}}
+\headcommand {\slideentry {5}{2}{4}{47/47}{Something Fun}{0}}
+\headcommand {\beamer@framepages {47}{47}}
+\headcommand {\slideentry {5}{2}{5}{48/48}{Something Fun}{0}}
+\headcommand {\beamer@framepages {48}{48}}
+\headcommand {\slideentry {5}{2}{6}{49/49}{Something Fun}{0}}
+\headcommand {\beamer@framepages {49}{49}}
+\headcommand {\slideentry {5}{2}{7}{50/50}{Something Fun}{0}}
+\headcommand {\beamer@framepages {50}{50}}
+\headcommand {\slideentry {5}{2}{8}{51/51}{Something Fun}{0}}
+\headcommand {\beamer@framepages {51}{51}}
+\headcommand {\slideentry {5}{2}{9}{52/52}{Something Fun}{0}}
+\headcommand {\beamer@framepages {52}{52}}
+\headcommand {\slideentry {5}{2}{10}{53/53}{Something Fun}{0}}
+\headcommand {\beamer@framepages {53}{53}}
+\headcommand {\slideentry {5}{2}{11}{54/54}{Something Fun}{0}}
+\headcommand {\beamer@framepages {54}{54}}
+\headcommand {\slideentry {5}{2}{12}{55/55}{Something Fun}{0}}
+\headcommand {\beamer@framepages {55}{55}}
+\headcommand {\slideentry {5}{2}{13}{56/56}{Something Fun}{0}}
+\headcommand {\beamer@framepages {56}{56}}
+\headcommand {\sectionentry {6}{Key Points}{57}{Key Points}{0}}
+\headcommand {\beamer@sectionpages {41}{56}}
+\headcommand {\beamer@subsectionpages {44}{56}}
+\headcommand {\slideentry {6}{0}{14}{57/57}{}{0}}
+\headcommand {\beamer@framepages {57}{57}}
+\headcommand {\slideentry {6}{0}{15}{58/58}{}{0}}
+\headcommand {\beamer@framepages {58}{58}}
+\headcommand {\beamer@partpages {1}{58}}
+\headcommand {\beamer@subsectionpages {57}{58}}
+\headcommand {\beamer@sectionpages {57}{58}}
+\headcommand {\beamer@documentpages {58}}
+\headcommand {\def \inserttotalframenumber {58}}

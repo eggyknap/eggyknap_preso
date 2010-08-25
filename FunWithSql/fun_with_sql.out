@@ -1,0 +1,18 @@
+\BOOKMARK [2][]{Outline0.1}{Why and Why Not}{}
+\BOOKMARK [2][]{Outline0.2}{Joins}{}
+\BOOKMARK [3][]{Outline0.2.1.28}{CROSS JOIN}{Outline0.2}
+\BOOKMARK [3][]{Outline0.2.2.36}{INNER JOIN}{Outline0.2}
+\BOOKMARK [3][]{Outline0.2.3.40}{OUTER JOIN}{Outline0.2}
+\BOOKMARK [3][]{Outline0.2.4.51}{NATURAL JOIN}{Outline0.2}
+\BOOKMARK [3][]{Outline0.2.5.53}{Self Joins}{Outline0.2}
+\BOOKMARK [2][]{Outline0.3}{Other Useful Operations}{}
+\BOOKMARK [3][]{Outline0.3.1.58}{Subqueries}{Outline0.3}
+\BOOKMARK [3][]{Outline0.3.2.64}{Set Operations}{Outline0.3}
+\BOOKMARK [3][]{Outline0.3.3.74}{Common Operations}{Outline0.3}
+\BOOKMARK [2][]{Outline0.4}{Advanced Operations}{}
+\BOOKMARK [3][]{Outline0.4.1.84}{Common Table Expressions}{Outline0.4}
+\BOOKMARK [3][]{Outline0.4.2.97}{Window Functions}{Outline0.4}
+\BOOKMARK [2][]{Outline0.5}{Real, Live Queries}{}
+\BOOKMARK [3][]{Outline0.5.1.104}{Something Simple}{Outline0.5}
+\BOOKMARK [3][]{Outline0.5.2.110}{Something Fun}{Outline0.5}
+\BOOKMARK [2][]{Outline0.6}{Key Points}{}

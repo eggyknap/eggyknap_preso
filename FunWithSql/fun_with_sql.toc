@@ -1,0 +1,19 @@
+\beamer@endinputifotherversion {3.07pt}
+\beamer@sectionintoc {1}{Why and Why Not}{3}{0}{1}
+\beamer@sectionintoc {2}{Joins}{24}{0}{2}
+\beamer@subsectionintoc {2}{1}{CROSS JOIN}{28}{0}{2}
+\beamer@subsectionintoc {2}{2}{INNER JOIN}{36}{0}{2}
+\beamer@subsectionintoc {2}{3}{OUTER JOIN}{40}{0}{2}
+\beamer@subsectionintoc {2}{4}{NATURAL JOIN}{51}{0}{2}
+\beamer@subsectionintoc {2}{5}{Self Joins}{53}{0}{2}
+\beamer@sectionintoc {3}{Other Useful Operations}{57}{0}{3}
+\beamer@subsectionintoc {3}{1}{Subqueries}{58}{0}{3}
+\beamer@subsectionintoc {3}{2}{Set Operations}{64}{0}{3}
+\beamer@subsectionintoc {3}{3}{Common Operations}{74}{0}{3}
+\beamer@sectionintoc {4}{Advanced Operations}{84}{0}{4}
+\beamer@subsectionintoc {4}{1}{Common Table Expressions}{84}{0}{4}
+\beamer@subsectionintoc {4}{2}{Window Functions}{97}{0}{4}
+\beamer@sectionintoc {5}{Real, Live Queries}{104}{0}{5}
+\beamer@subsectionintoc {5}{1}{Something Simple}{104}{0}{5}
+\beamer@subsectionintoc {5}{2}{Something Fun}{110}{0}{5}
+\beamer@sectionintoc {6}{Key Points}{127}{0}{6}
