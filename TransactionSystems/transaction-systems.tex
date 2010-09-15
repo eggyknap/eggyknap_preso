@@ -1,0 +1,44 @@
+% Fun with Transactions
+\documentclass{beamer}
+\usetheme{Ilmenau}
+%\usepackage{tipa}
+\usepackage{color}
+\usepackage{listings}
+\usepackage[utf8,latin9]{inputenc}
+\usepackage[T1]{fontenc}
+%\usepackage{babel}
+\beamertemplatenavigationsymbolsempty
+
+\begin{document}
+\title{Fun with Transactions}
+% subtitle: what robust transactions can do for you, and how they can do it for free
+\author{Joshua Tolley -- eggyknap -- End Point Corporation}
+
+% outline:
+% introductory blabber
+% What's a transaction?
+% - Classic banking example
+% - More commonplace example (i.e. everyone knows financials need to be robust; what about other stuff)
+% How do you implement such things
+% - WAL log
+% - Locking & MVCC (explain vacuum)
+% - Explain clog, xmin, xmax? Too much detail?
+% Visibility
+% - dirty, phantom, and non-repeatable reads. Isolation levels
+% Go back to examples for a while to emphasize why it's important to have transactions
+% - You need transactions whether you're ready to admit it or not
+% - The application has units of work it needs to keep atomic. What's more, only the application knows the boundaries of those units
+% - Unfortunately often your ORM disagrees with these last two
+% - Lots of programmers are too lazy to catch and handle transaction errors (e.g. locking failures, serialization failures)
+% - Some people understand transactions' importance enough to transaction-enable other stuff. Message queues, data transformation services
+% Multiple transactional systems can coordinate via 2PC
+% - Java has the XA spec, and transaction managers. Federation software is also a possibility
+% - There aren't many non-Java transaction managers
+% - You can have one (but not more) non-2PC capable devices in a commit group, if it's done right
+% Problems with pathological behavior
+% - Locking tons of stuff
+% - Long transactions are bad, and not just because of PostgreSQL and vacuum
+% - Serialization failures
+% What to do about it all?... 
+
+\end{document}

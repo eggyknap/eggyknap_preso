@@ -1,0 +1,47 @@
+% An overview of PostgreSQL
+\documentclass{beamer}
+\usetheme{Ilmenau}
+%\usepackage{tipa}
+\usepackage{color}
+\usepackage{listings}
+\usepackage[utf8,latin9]{inputenc}
+\usepackage[T1]{fontenc}
+%\usepackage{babel}
+\beamertemplatenavigationsymbolsempty
+
+\begin{document}
+\title{A PostgreSQL Overview}
+\author{Joshua Tolley -- eggyknap -- End Point Corporation}
+
+% outline:
+% introductory blabber
+% start with initdb
+% - introduce "cluster"
+% - Everything lives in this directory (unless you make it more complicated)
+% - pg_ctl controls this
+% psql
+% - Each connection starts a new process. Use a connection pooler
+% - pg_get_backend_pid()
+% - There's also pgadmin (screenshot?)
+% Create schemas and views, do some permissions magic
+% - Perhaps just show off bits of TriSano
+% Show a complex query (bucardo_rate, perhaps?)
+% Describe MVCC, and how a transaction actually works
+% - locking, at least. Perhaps kill a session mid-transaction
+% - Might as well talk about vacuum and what it is, since folks have heard of it
+% --=< More complex stuff >=--
+% Replication
+% - Talk about async vs. sync, various available options
+% - PITR, hot standby, streaming replication, synchronous replication
+% Query planning
+% - Mention different join algorithms. Query planner is really complex
+% Functions
+% - All kinds of PLs, including C
+% - Contrib
+% - PostGIS (mention some of the bits it's built from)
+% Text search
+% Window functions
+% CTEs
+% - Incl. recursion. Mandelbrot example
+
+\end{document}
