@@ -175,13 +175,14 @@ For those who prefer a GUI, other options exist, notably PgAdminIII.
 \includegraphics[width=\textwidth]{pgadmin3_win32.png}
 \end{frame}
 
-\section{Integrity constraints}
+\section{Features}
+\subsection{Integrity constraints}
 \begin{frame}[fragile]
 PostgreSQL correctly handles input validation, triggers, data integrity constraints
 \begin{itemize}
     \item NOT NULL
     \item DEFAULT values
-    \item Foreign keys
+    \item Foreign and unique keys
     \item Full, mature trigger support
     \item Correct three-valued logic (i.e. True != False != NULL)
 \end{itemize}
@@ -200,7 +201,7 @@ WHERE user_id = 1710001;
 \normalsize
 \end{frame}
 
-\section{Complex queries}
+\subsection{Complex queries}
 \begin{frame}
 PostgreSQL's query parser supports very complex queries without irritating workarounds.
 \begin{itemize}
@@ -209,8 +210,78 @@ PostgreSQL's query parser supports very complex queries without irritating worka
     \item Standard SQL operators (COALESCE, CASE, NULLIF)
     \item Arrays
     \item Window functions
-    \item Recursive functions
+    \item Recursive queries
 \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    Rank employees in each department by salary
+    \begin{verbatim}
+SELECT first, last, salary, department,
+    RANK() OVER (
+        PARTITION BY department
+        ORDER BY salary DESC
+    )
+FROM employee
+    \end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+    ... and get this:
+    \footnotesize
+    \begin{verbatim}
+ first  |   last   | salary |   department   | rank
+--------+----------+--------+----------------+------
+ john   | doe      |  99000 | administration |    1
+ speedy | gonzales |  96000 | development    |    1
+ hans   | reiser   |  93000 | development    |    2
+ martha | stewart  |  90000 | development    |    3
+ fred   | rogers   |  97000 | sales          |    1
+ carly  | fiorina  |  95000 | sales          |    2
+ johnny | carson   |  89000 | sales          |    3
+(7 rows)
+    \end{verbatim}
+    \normalsize
+\end{frame}
+
+\begin{frame}[fragile]
+    Recursive query to retrieve management hierarchy:
+    \begin{verbatim}
+# WITH RECURSIVE t (id, managernames) AS (
+    SELECT e.id, first || ' ' || last
+        AS managernames
+    FROM employee e WHERE manager IS NULL
+        UNION ALL
+    SELECT e.id,
+    first || ' ' || last || ', ' || managernames
+        AS managernames
+    FROM employee e
+    JOIN t ON (e.manager = t.id)
+    WHERE manager IS NOT NULL
+)
+SELECT e.id, first || ' ' || last AS name,
+    managernames
+FROM employee e JOIN t ON (e.id = t.id);
+    \end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+    ...and get this...
+    \begin{verbatim}
+ id |     name        |  managernames                   
+----+-----------------+-----------------------------
+  1 | john doe        | john doe
+  2 | fred rogers     | fred rogers, john doe
+  3 | speedy gonzales | speedy gonzales, john doe
+  4 | carly fiorina   | carly fiorina, john doe
+  5 | hans reiser     | hans reiser, fred rogers,
+    |                 |  john doe
+  6 | johnny carson   | johnny carson, hans reiser,
+    |                 |  fred rogers, john doe
+  7 | martha stewart  | martha stewart, speedy
+    |                 |  gonzales, john doe
+(7 rows)
+    \end{verbatim}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -248,7 +319,8 @@ FROM Zt GROUP BY Iy ORDER BY Iy;
 \end{frame}
 
 \begin{frame}
-    \scalebox{.3}{\includegraphics{mandelbrot.png}}
+    \scalebox{.54}{\includegraphics{mandelbrot2.png}}
+    %\scalebox{.3}{\includegraphics{mandelbrot.png}}
 \end{frame}
 
 % outline:
@@ -267,7 +339,7 @@ FROM Zt GROUP BY Iy ORDER BY Iy;
 % - locking, at least. Perhaps kill a session mid-transaction
 % - Might as well talk about vacuum and what it is, since folks have heard of it
 
-\section{Extensibility}
+\subsection{Extensibility}
 \begin{frame}
 PostgreSQL allows users to customize the database in many different ways:
 \begin{itemize}
@@ -281,7 +353,6 @@ PostgreSQL allows users to customize the database in many different ways:
 \end{itemize}
 \end{frame}
 
-\subsection{Functions}
 \begin{frame}
 PostgreSQL offers many "procedural languages" for writing database functions. Four ship with the software by default.
 \begin{itemize}
@@ -302,6 +373,54 @@ Additionally, many others are available from other sources
 \end{itemize}
 \end{frame}
 
+\begin{frame}[fragile]
+\tiny
+\begin{verbatim}
+5433 josh@postgres# DO $$
+HAI
+    BTW Calculate pi using Gregory-Leibniz series
+    BTW This method does not converge particularly quickly...
+    I HAS A PIADD ITZ 0.0
+    I HAS A PISUB ITZ 0.0
+    I HAS A ITR ITZ 0
+    I HAS A T1
+    I HAS A T2
+    I HAS A PI ITZ 0.0
+    I HAS A ITERASHUNZ ITZ 1000
+
+    IM IN YR LOOP
+        T1 R QUOSHUNT OF 4.0 AN SUM OF 3.0 AN ITR
+        T2 R QUOSHUNT OF 4.0 AN SUM OF 5.0 AN ITR
+        PISUB R SUM OF PISUB AN T1
+        PIADD R SUM OF PIADD AN T2
+        ITR R SUM OF ITR AN 4.0
+        BOTH SAEM ITR AN BIGGR OF ITR AN ITERASHUNZ, O RLY?
+            YA RLY, GTFO
+        OIC
+    IM OUTTA YR LOOP
+    PI R SUM OF 4.0 AN DIFF OF PIADD AN PISUB
+    VISIBLE "PI R: "
+    VISIBLE PI
+    FOUND YR PI
+KTHXBYE
+$$ LANGUAGE PLLOLCODE;
+NOTICE:  3.143589
+DO
+\end{verbatim}
+\end{frame}
+
+\begin{frame}
+Several useful data types ship with PostgreSQL, or are available from the community.
+\begin{itemize}
+    \item Geometry and geography data (PostGIS outclasses all open source and most commercial GIS databases)
+    \item Network data types (cidr, inet, macaddr)
+    \item Array types
+    \item User-definable composite types
+    \item Intervals
+\end{itemize}
+Various projects have built very specialized data types using PostgreSQL, for storing such things as probability distributions, mammography images, and gene sequences
+\end{frame}
+
 % Show a complex query (bucardo_rate, perhaps?)
 % --=< More complex stuff >=--
 % Replication
@@ -317,7 +436,34 @@ Additionally, many others are available from other sources
 % Window functions
 % CTEs
 % - Incl. recursion. Mandelbrot example
+
+\subsection{Mission-critical}
 \begin{frame}
+PostgreSQL functions very well within mission-critical environments, and is widely used by large enterprises:
+\begin{itemize}
+    \item Afilias, the world's second largest internet registrar, uses PostgreSQL to run their domain name database
+    \item Skype uses PostgreSQL as their main database platform
+    \item MyYearbook.com, rated in the top 10 social networking sites worldwide in terms of unique visitors, uses PostgreSQL for most everything
+    \item Nippon Telegraph and Telepone uses PostgreSQL heavily
+    \item Etsy runs their e-commerce site on PostgreSQL
+    \item NASA is working on using PostgreSQL in the space station
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+Replication comes in many forms:
+\begin{itemize}
+    \item Hot standby: built into PostgreSQL, allows read-only slave databases asynchronously updated from a single master
+    \item Bucardo: trigger-based replication system allows asynchronous multi-master replication
+    \item Slony, Londiste: trigger-based master-slave replication
+\end{itemize}
+Work is underway to introduce synchronous replication in PostgreSQL 9.1
+\end{frame}
+
+\section{Questions?}
+\begin{frame}
+    \includegraphics[scale=.25]{logo.png}
+\\ Questions?
 \end{frame}
 
 \end{document}
