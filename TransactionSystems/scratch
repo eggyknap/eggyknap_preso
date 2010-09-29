@@ -1,0 +1,17 @@
+I'd like to start by illustrating a transaction in a way that will make it
+easier for us to be sure we're talking about the same thing. It's a classic
+example, and you have all heard it before, so I'll cover it only quickly, but
+I think it will provide useful background for further discussion.
+
+Alice and Bob are both customers at Podunk Bank and Trust. Alice owes Bob $25
+for a basket she bought from Bob's underwater basketweaving business, so she
+gives Bob a check issued by Podunk Bank and Trust. Bob endorses the check and
+hands it to the teller, and now it's up to the bank to process it. They need
+to debit Alice $25, and credit Bob the same amount, and in the simplest
+implementation, they simply do just that, and all is well. But what happens if
+the server crashes after they've debited Alice but before they've credited
+Bob? You might say this is unlikely, but when Podunk Bank and Trust grows to
+60K customers it suddenly becomes much more likely that a server crash will
+interrupt at least one such operation. And unless the application has very
+good logging, there will be no way to tell that Alice was debited but Bob
+wasn't credited.

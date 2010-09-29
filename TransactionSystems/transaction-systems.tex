@@ -41,4 +41,36 @@
 % - Serialization failures
 % What to do about it all?... 
 
+% A story:
+
+% Alice is building a web application to sell widgets, and needs a database. Part
+% of the database needs to store customer names. Her database has data types for
+% "text", and length-constrained "varchar". She prefers a length constraint,
+% because she's heard TEXT can be slow, and she doesn't want people to enter a 2
+% GB name anyway. She doesn't know how big to make it, but she figures it has to
+% be a power of two, because that seems like what everyone does. So how about 64
+% characters? Or should it be a power of two minus one? 63? Ok, so customer_name
+% VARCHAR(63). This is all fine and good, but how did we choose that limit? Oh,
+% right, it was fairly random. Do the developers know about it? Erm... So if
+% something fails because a user actually entered a 2 GB name, will the code
+% notice?
+%
+%Note:
+%PostgreSQL's tendency to yell when you freak out a transaction, and keep
+%yelling, is a good thing. That makes it harder for bad programmers to fail to
+%note they've had an error. It means once something has gone wrong, and part of
+%the transaction has failed, it means the rest of the transaction will always
+%fail It means once something has gone wrong, and part of teh transaction has
+%failed, it means the rest of the transaction will always fail. Whcih is the
+%point of transactions
+%
+%Ok, now I have some database constraints, which means I'm Doing It Right. 
+%But if you don't have all this in a strict transaction, you'll have some of the
+%data commit, and some of it not commit. 
+%
+%Users can sometimes figure out when stuff like this happens, and deal with the
+%results, but this gets particularly irritating when the new Management
+%Consultant comes in with a report that the automated web app testing service
+%isn't getting repeatable results.
+
 \end{document}
