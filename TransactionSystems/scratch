@@ -1,3 +1,5 @@
+vim:tw=78:nosi
+
 I'd like to start by illustrating a transaction in a way that will make it
 easier for us to be sure we're talking about the same thing. It's a classic
 example, and you have all heard it before, so I'll cover it only quickly, but
@@ -14,4 +16,225 @@ Bob? You might say this is unlikely, but when Podunk Bank and Trust grows to
 60K customers it suddenly becomes much more likely that a server crash will
 interrupt at least one such operation. And unless the application has very
 good logging, there will be no way to tell that Alice was debited but Bob
-wasn't credited.
+wasn't credited. Even then, it will be difficult.
+
+To solve this problem, database people decided they needed something called
+"atomicity": the idea that operations could be declared in sets, and that
+those sets would either entirely complete, or entirely fail, but never have
+some operations succeed and some fail. So we introduce an API with three
+commands:
+
+BEGIN    -- Here's where a set of operations begins, duh
+COMMIT   -- Ok, I'm done now. Make it happen.
+ROLLBACK -- Undo all these operations
+
+After some further pondering, these database people came up with more than
+just atomicity they were interested in, and developed "ACID", which stands for
+Atomicity, Consistency, Isolation, and Durability. Other researchers felt this
+was an awfully boring meaning for an acronym with so much potential, and
+applied it to lysergic acid diethylamide
+(http://en.wikipedia.org/wiki/File:LSD_2D,_3D.png). These researchers were
+never heard from again.
+
+This boring acronym refers to the following:
+
+Atomicity -- all the operations succeed, or all of them fail
+
+Consistency -- the database also allows users to define constraints on the
+data, for instance "this field must always contain some value", i.e. NOT NULL,
+or this field's value must be present in some other table as well, i.e.
+a foreign key. Other constraints include "every value for this field in this
+table must be unique", or more complex constraints, described generally as
+"check constraints", and meaning "this expression must always return true".
+Consistency means that at the end of a transaction, all the defined
+constraints must still be true.
+
+Isolation -- Any given transaction can see only the data from other committed
+transcations, or the results of operations it has issued in this transaction.
+All other in-flight transactions are "isolated" until they commit.
+
+Durability -- transactions that have already committed remain committed, even
+if the server crashes or something else bad happens.
+
+In recent years arguments have re-emerged casting doubt on the sometimes
+common belief that everything always needs to obey these four principles.
+There are clearly many data sets where ACID need not apply, which have given
+rise to such things as "eventually consistent" databases. Although they
+certainly have valid application in some places, I suspect many people abandon
+a traditional ACID database without realizing quite what they're giving up.
+Many such people haven't correctly used ACID databases in the first place,
+leaving themselves unwittingly open to a number of serious problems which
+their newly adopted NoSQL solution hasn't solved. Hopefully this talk will
+shed some light on those problems and how proper transaction handling solves
+them.
+
+EXAMPLES
+
+The classic example of transactions I shared earlier is often the only example
+people can think of when considering whether they need transactions.
+Unfortunately this has led many people to believe they don't need
+transactions, because they're not a bank. This is a fairly common
+misconception, and entirely untrue. The analogy extends easily to any
+set of related operations. For instance, one of End Point's clients is a call
+center handling incoming support calls. Conceivably such an organization might
+want to do several things when an call is processed:
+
+* Update notes for a client's support case
+* Modify employee performance statistics for the technician who took the call
+* Potentially also update a training database if the call was one of those
+  "randomly recorded for training purposes"
+* Possibly bill the customer for support costs
+
+...and any number of other things. The business may decide they don't need
+strict transactionality, but they need to know what they're giving up if they
+forgo it. Depending on the order of operations, client calls could be recorded
+but clients never billed, or technicians' stats could be updated without any
+record of what call updated them. In short, things can get really messy.
+
+As another example, another client I work with is building an application
+used by the Utah Dept. of Public Health, among other places. When you go to
+the doctor and get diagnosed with tuberculosis, or swine flu, or gonorrhea, or
+any one of several other illnesses, the law requires the doctor to report your
+case to the state. The public health department then tries to determine
+whether they need to take some kind of action. For instance, back in 2007 lots
+of kids started getting sick from cryptosporidium in public pools. It's a
+parasitic illness that spreads through fecal contact and causes diarrhea. The
+health department noticed the outbreak and mounted a publicity campaign to
+control its spread. The application I'm involved in lets state and local
+epidemiologists view reported cases and do all kinds of analysis on them.
+
+When a user enters a new case, there's lots of data the application wants to
+track, spread through many different tables in the database. There's a table
+for the main case information, another for each of various entities that might
+be involved in the case, such as doctors and labs, and still others to handle
+things people an infected person came in contact with, or places they visited,
+and the status of any investigation that might be necessary on the case.
+Saving a case is a complex series of operations, and it's important they
+happen atomically or the application will have all kinds of messy data to have
+to deal with.
+
+Most applications these days use some sort of object-relational mapper to sit
+between the application code and the database itself, and most of the time
+those ORMs will default to something stupid with transactions unless they're
+told to do otherwise. For instance, they might treat every statement as a
+transaction all its own, which is pretty much the same as having no
+transactions at all.
+
+So given an application that has no explicit transaction control, where should
+the control go? Lots of us deal regularly with web applications. In that case,
+one might decide to wrap all the work behind generating a page into one
+transaction.  That might not make perfect sense for every sitation, but it's a
+good place to start. That way, if something goes wrong, everything will roll
+back to the state it was in when the application generated the last page for
+that user.
+
+More complicated scenarios might have several operations in flight at once,
+but the overriding principle is that a transaction is designed to tell the
+database how to group the various operations it's asked to do. Only the
+application knows how best to do that, so the application needs to be the one
+making that information known.
+
+
+MORE COMPLEX STUFF
+
+"So," you're asking yourself, "is that all? Just BEGIN, COMMIT, and ROLLBACK?"
+Actually, no, the API can get more complex. For instance, what if there are
+smaller groups within a transaction that also should be easy to commit or roll
+back on their own? Subtransactions, we might call them. This is a common
+requirement, and so people invented SAVEPOINTS. They work like this, in
+PostgreSQL:
+
+BEGIN;
+-- Do something here.
+SELECT do_something_useful();
+INSERT INTO actions VALUES (NOW(), 'Ok, I\'ve done something useful');
+
+-- Maybe I want to do a few things here, but if it fails somehow, it doesn't
+-- matter much, I just want to be able to undo this little group if it fails
+SAVEPOINT try_something;
+UPDATE foo SET bar = baz;
+INSERT INTO alpha VALUES ('beta', 'gamma', 'delta');
+-- The INSERT fails because of a UNIQUE constraint violation, so the
+-- application decides to abandon the stuff in this savepoint:
+ROLLBACK TO SAVEPOINT try_something;
+
+-- The normal transaction continues here
+SELECT do_some_more_stuff();
+COMMIT;
+
+From #mysql on freenode (not that they're authoritative)
+15:41     gtowey  : eggyknap: errors in tx in mysql should cause a rollback
+15:41   eggyknap  : It only makes sense that they're require a roll back, but that's not what the client seems to be doing to me.
+15:41   threnody  : dogmatic69: I don't see how you can improve that query, or the update, by any index changes
+15:42 dogmatic69  : eggyknap: i think if you used one insert for all the values it would act like you say
+15:42     gtowey  : oh, guess not =)
+
+Note that mysql might behave differently here (though I'd love to see proof
+that they weren't that stupid). It seems a failed statement doesn't invalidate
+a transaction entirely, so if you're stupid enough not to notice the error
+message returned by a statement, you can still successfully commit a
+transaction that has erroneous statements in it, though those erroneous
+statements won't get committed.
+
+Anyway, without the savepoint, if the INSERT INTO alpha operation failed in
+the same way, there'd be no recourse except to redo the whole transaction.
+
+MORE COMPLEX STUFF
+
+isolation comes in several different forms:
+
+dirty read
+A transaction reads data written by a concurrent uncommitted transaction.
+
+nonrepeatable read
+A transaction re-reads data it has previously read and finds that data have
+been modified by another transaction (that committed since the initial read).
+
+phantom read
+A transaction re-executes a query returning a set of rows that satisfy a
+search condition and finds that the set of rows satisfying the condition has
+changed due to another recently-committed transaction.
+
+There are four isolation levels defined in the SQL standard:
+
+Isolation Level      Dirty Read      Nonrepeatable Read  Phantom Read
+--------------       ----------      ------------------  ------------
+Read uncommitted     Possible        Possible            Possible
+Read committed       Not possible    Possible            Possible
+Repeatable read      Not possible    Not possible        Possible
+Serializable         Not possible    Not possible        Not possible
+
+The SQL standard defines the four isolation levels in terms of which of the
+three transaction isolation phenomena must be prevented at that level, but not
+which must be allowed. So it's permitted for one isolation level to behave
+more strictly than the SQL standard requires.
+
+Given these four levels, it's possible to tell your transaction system which
+level you want to operate at. 
+
+< Show example of transaction isolation in postgresql >
+
+STILL MORE COMPLEX STUFF
+
+The idea of a transaction, remember, is that some operations must be organized
+into atomic groups to be useful. This idea extends to more than just
+databases. For instance, there's a class of software called "integration
+software" responsible for taking input documents from one source, transforming
+them in given ways, and publishing them to other consumers. These packages are
+often allow the transformation operations to behave in transactional ways.
+Similarly, message queuing software often supports transactions.
+
+<describe how message queuing, and its transactions, work>
+
+< go into 2pc>
+
+
+
+Story -- web app, manager wants consistency  <-- perhaps don't do this
+How to find out where to put transactions in your app
+subtransactions
+Implementation   <-- perhaps this isn't necessary
+transaction isolation
+Complex stuff (2pc)
+    - Other transactional systems
+
