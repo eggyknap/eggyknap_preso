@@ -1,11 +1,16 @@
 % Fun with Transactions
+% vim:si
 \documentclass{beamer}
-\usetheme{Ilmenau}
+\usetheme{Singapore}
+%\usetheme{Szeged}
 %\usepackage{tipa}
 \usepackage{color}
 \usepackage{listings}
 \usepackage[utf8,latin9]{inputenc}
 \usepackage[T1]{fontenc}
+\usefonttheme{serif}
+\usepackage{bookman}
+
 %\usepackage{babel}
 \beamertemplatenavigationsymbolsempty
 
@@ -14,21 +19,282 @@
 % subtitle: what robust transactions can do for you, and how they can do it for free
 \author{Joshua Tolley -- eggyknap -- End Point Corporation}
 
-% outline:
-% introductory blabber
-% What's a transaction?
-% - Classic banking example
-% - More commonplace example (i.e. everyone knows financials need to be robust; what about other stuff)
-% How do you implement such things
-% - WAL log
-% - Locking & MVCC (explain vacuum)
-% - Explain clog, xmin, xmax? Too much detail?
-% Visibility
-% - dirty, phantom, and non-repeatable reads. Isolation levels
-% Go back to examples for a while to emphasize why it's important to have transactions
+\frame{\titlepage}
+
+\begin{frame}
+    \begin{centering}
+    First, an illustration...
+    \par
+    \end{centering}
+\end{frame}
+\begin{frame}{An illustration}
+    \begin{columns}[t]
+        \begin{column}{0.45\textwidth}
+            \includegraphics[height=4cm]{alice-9.jpg}
+            \\ Alice
+            %\scalebox{.2}{\includegraphics{alice-9.jpg}}
+        \end{column}
+        \begin{column}<2->{0.45\textwidth}
+            \includegraphics[height=4cm]{bobdole_org.jpg}
+            \\ Bob
+            %\scalebox{.575}{\includegraphics{bobdole_org.jpg}}
+        \end{column}
+    \end{columns}
+    \vspace{10pt}
+    \visible<3->{Alice wants to donate \$25 to Bob's campaign}
+\end{frame}
+\begin{frame}{An illustration}
+%    \begin{centering}
+    Alice gives Bob a check for \$25 dollars from East Podunk Savings and
+    Loan
+    \begin{figure}
+        \includegraphics[height=5cm]{bank}
+        \\ East Podunk Savings and Loan
+    \end{figure}
+%    \end{centering}
+\end{frame}
+
+\begin{frame}{An illustration}
+    \begin{enumerate}
+        \item Take Alice's check from the pile of checks
+        \item Debit Alice \$25
+        \item Credit Bob \$25
+        \item Mark check as processed
+        \item Return check to Alice
+    \end{enumerate}
+    \visible<2->{\color[rgb]{1,0,0} \textit{What happens when the server crashes?}}
+\end{frame}
+
+\begin{frame}{Atomicity}
+    Database designers wanted to specify groups of operations, and have them
+    succeed or fail as a group. This is called \textbf{atomicity}.
+
+    This gave rise to an API:
+    \begin{itemize}
+        \item \textbf{BEGIN} -- Indicate the beginning of a group of
+        operations. These groups are called "transactions"
+        \item \textbf{COMMIT} -- Perform the operations as an atomic group. It
+        is possible at this point for the commands to fail, and for COMMIT to
+        return an error
+        \item \textbf{ROLLBACK} -- End this group, and undo the operations of
+        this group
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{ACID}
+    Further research developed a list of four characteristics users wanted
+    their transactions to have, which were given the acronym \textbf{ACID}:
+    \begin{itemize}
+        \item \textbf{Atomicity} -- Groups of operations all either succeed or
+        fail, as a group
+        \item \textbf{Consistency} -- Users can define constraints on the
+        data. After a transaction finishes, the data set meets each of those
+        constraints.
+        \item \textbf{Isolation} -- Users can see data only from committed
+        transactions. No one sees my data until I commit it. More on this
+        later
+        \item \textbf{Durability} -- Once committed, data remain committed,
+        even if the server crashes.
+    \end{itemize}
+\end{frame}
+
+%\begin{frame}{Constraints}
+%    Several types are possible:
+%    \begin{itemize}
+%        \item NOT NULL
+%        \item Foreign key
+%        \item Check constraints
+%        \item Exclusion constraints (PostgreSQL only)
+%    \end{itemize}
+%\end{frame}
+
+\begin{frame}{NoSQL?}
+    In recent years, database users have begun to question the universal
+    application of ACID, such as with the NoSQL movement.
+    \begin{itemize}
+        \item This is not a bad thing
+        \item Many applications don't need traditional transactions
+        \item Many more applications \textit{do} require traditional
+        transactions, but are using them incorrectly
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{More examples}
+    You're not a bank. That doesn't mean you don't need transactions.
+\end{frame}
+
+\begin{frame}{More examples}
+    One End Point client manages call center data. Their application includes
+    tasks like these:
+    \begin{itemize}
+        \item Update notes for a support case
+        \item Modify employee performance statistics as technicians take calls
+        \item Update training databases for calls "randomly recorded for
+        training purposes"
+        \item Bill customers for support costs
+    \end{itemize}
+    Failures within any of these operations without transactional guarantees
+    will lead to orphaned records, missing information, and irritated
+    customers.
+\end{frame}
+\begin{frame}{More examples}
+    TriSano\texttrademark  (http://www.trisano.org) is a public health
+    reporting application. For each new case, the application can record some
+    or all of the following:
+    \begin{itemize}
+        \item Patient demographics
+        \item Participating physicians
+        \item Laboratory tests
+        \item Reports to various agencies
+        \item Contacts of different types
+        \item Custom data collection forms
+    \end{itemize}
+    These data live in many different tables. Changes need to be atomic to
+    prevent orphaned data and ensure consistency.
+\end{frame}
+
+\begin{frame}{ORMs}
+    Object-Relational Mappers (ORMs) often provide APIs for transaction
+    control. Users generally ignore those APIs, and let the ORM follow its
+    default behavior. This behavior is generally wrong.
+\end{frame}
+
+\begin{frame}
+    Transactions are designed to group operations. Only the programmer knows
+    what groups make the most sense. Therefore, the programmer (not the ORM,
+    the database system, the database driver, or anything else) shold define
+    operation groupings.
+    \begin{itemize}
+        \item You probably need transactions whether you're ready to admit it
+        or not
+        \item You probably need transactions whether you're ready to write
+        your software to handle it or not
+        \item The application has units of work it needs to keep atomic
+        \item Only the application knows the boundaries of those units
+        \item Unfortunately often your ORM disagrees with these last two
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \begin{centering}
+        \textbf{Neat Transaction Tricks}
+        \par
+    \end{centering}
+\end{frame}
+
+\begin{frame}{Savepoints}
+    Transactions group operations. Within those groups, there may be nested
+    subgroups, called subtransactions, implemented with \textbf{savepoints}.
+\end{frame}
+
+\begin{frame}{Savepoint Example}
+\ttfamily {
+BEGIN; \\
+\textit{\textendash\textendash\hspace{2pt} Do something useful} \\
+INSERT INTO actions VALUES \\
+\hspace{10pt} ('IM IN YR AKSHUNZ DOIN YOOSFL STUFS'); \\
+SAVEPOINT try\_something; \\
+SELECT COUNT(*) FROM some\_other\_table; \\
+UPDATE foo SET bar = baz WHERE qux = 42; \\
+\textit{\textendash\textendash\hspace{2pt} Perhaps a constraint causes a
+failure here} \\
+ROLLBACK TO SAVEPOINT try\_something; \\
+\textit{\textendash\textendash\hspace{2pt} My outer transaction is still
+in-flight}
+    }
+\end{frame}
+
+\begin{frame}{Implementation note}
+    In PostgreSQL, a statement that generates an error will cause continued
+    errors until a rollback, either to a savepoint or of the transaction
+    entirely. This makes savepoints quite common: \\
+    \vspace{10pt}
+    \small{
+    \ttfamily {
+josh=\# BEGIN; \\
+BEGIN \\
+josh=\# SELECT syntax error; \\
+ERROR:  syntax error at or near "error" \\
+LINE 1: SELECT syntax error; \\
+josh=\# SELECT 1; \\
+\textit{ERROR:  current transaction is aborted, commands ignored until end of
+transaction block} \\
+josh=\# ROLLBACK; \\
+    }
+    }
+\end{frame}
+
+\begin{frame}{Implementation note}
+    MySQL, on the other hand, returns an error message for the syntax error,
+    but still allows the transaction to commit: \\
+    \vspace{10pt}
+    \small {
+        \ttfamily {
+mysql> start transaction; \\
+mysql> insert into i values (1); \\
+mysql> insert into i values (2); \\
+mysql> insert into i values (1); \\
+ERROR 1062 (23000): Duplicate entry '1' for key 1 \\
+mysql> insert into i values (3); \\
+mysql> commit; \\
+Query OK, 0 rows affected (0.00 sec) \\
+        }
+    }
+\end{frame}
+
+\begin{frame}{Implementation note}
+    Your mileage may vary. Test, and pay attention to return results and error
+    messages
+\end{frame}
+
+\begin{frame}{Isolation levels}
+    \textit{Isolation} means I can't see values from transaction that's not
+    committed unless it's my own. There are three phenomena it relates to:
+    \begin{itemize}
+        \item \textbf{Dirty read}: A transaction reads data from a
+        concurrent uncommitted transaction
+        \item \textbf{Nonrepeatable read}: A transaction re-reads data and
+        finds another transaction has changed them
+        \item \textbf{Phantom read}: A transaction re-executes a query, and
+        the set of rows satisfying that query has changed due to some other
+        transaction.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Isolation levels}
+    The SQL standard defines four isolation levels in terms of these
+    phenomena: \\
+    \vspace{.5cm}
+    \begin{tabular}{llll}
+        \textbf{Isolation Level} & \textbf{Dirty} &
+        \textbf{Non-repeat} & \textbf{Phantom} \\
+        Read uncommitted & Yes & Yes & Yes \\
+        Read committed & No & Yes & Yes \\
+        Repeatable read & No & No & Yes \\
+        Serializable & No & No & No
+    \end{tabular}
+    Applications can choose an isolation level appropriate for their needs.
+    Stricter levels will possible entail poorer performance.
+\end{frame}
+
+\begin{frame}{Beyond the database}
+    A transaction is an atomically committed group of operations. This idea is
+    not limited to databases. Some other examples: \\
+
+    \begin{itemize}
+        \item Message queues
+        \item Integration software
+        \item Transactional memory systems
+    \end{itemize}
+\end{frame}
+
+\begin{itemize}{Message queues}
+\end{itemize}
+
 % - You need transactions whether you're ready to admit it or not
 % - The application has units of work it needs to keep atomic. What's more, only the application knows the boundaries of those units
 % - Unfortunately often your ORM disagrees with these last two
+
 % - Lots of programmers are too lazy to catch and handle transaction errors (e.g. locking failures, serialization failures)
 % - Some people understand transactions' importance enough to transaction-enable other stuff. Message queues, data transformation services
 % Multiple transactional systems can coordinate via 2PC
