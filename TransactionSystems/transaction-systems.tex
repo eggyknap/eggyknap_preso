@@ -1,6 +1,7 @@
 % Fun with Transactions
 % vim:si
-\documentclass{beamer}
+\documentclass[svgnames]{beamer}
+\usecolortheme[named=ForestGreen]{structure}
 \usetheme{Singapore}
 %\usetheme{Szeged}
 %\usepackage{tipa}
@@ -115,12 +116,13 @@
         \item This is not a bad thing
         \item Many applications don't need traditional transactions
         \item Many more applications \textit{do} require traditional
-        transactions, but are using them incorrectly
+        transactions, but don't realize it, or are using them incorrectly
     \end{itemize}
 \end{frame}
 
-\begin{frame}{More examples}
-    You're not a bank. That doesn't mean you don't need transactions.
+\begin{frame}
+    True or False: I'm not a bank. Therefore, I don't need tranasctions.
+    \visible<2->{\color[rgb]{1,0,0} \par \vspace{1cm} \textit{False}}
 \end{frame}
 
 \begin{frame}{More examples}
@@ -139,8 +141,8 @@
 \end{frame}
 \begin{frame}{More examples}
     TriSano\texttrademark  (http://www.trisano.org) is a public health
-    reporting application. For each new case, the application can record some
-    or all of the following:
+    reporting application built by an End Point client. For each new case, the
+    application can record some or all of the following:
     \begin{itemize}
         \item Patient demographics
         \item Participating physicians
@@ -273,8 +275,9 @@ Query OK, 0 rows affected (0.00 sec) \\
         Repeatable read & No & No & Yes \\
         Serializable & No & No & No
     \end{tabular}
+    \vspace{10pt} \par
     Applications can choose an isolation level appropriate for their needs.
-    Stricter levels will possible entail poorer performance.
+    Stricter levels may entail poorer performance.
 \end{frame}
 
 \begin{frame}{Beyond the database}
@@ -288,8 +291,8 @@ Query OK, 0 rows affected (0.00 sec) \\
     \end{itemize}
 \end{frame}
 
-\begin{itemize}{Message queues}
-\end{itemize}
+\begin{frame}{Message queues}
+\end{frame}
 
 % - You need transactions whether you're ready to admit it or not
 % - The application has units of work it needs to keep atomic. What's more, only the application knows the boundaries of those units
