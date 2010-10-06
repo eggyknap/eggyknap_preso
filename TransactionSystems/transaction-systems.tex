@@ -19,6 +19,7 @@
 \title{Fun with Transactions}
 % subtitle: what robust transactions can do for you, and how they can do it for free
 \author{Joshua Tolley -- eggyknap -- End Point Corporation}
+\date[UTOSC 2010]{Utah Open Source Conference, 2010}
 
 \frame{\titlepage}
 
@@ -47,7 +48,7 @@
 \begin{frame}{An illustration}
 %    \begin{centering}
     Alice gives Bob a check for \$25 dollars from East Podunk Savings and
-    Loan
+    Loan. Bob deposits the check.
     \begin{figure}
         \includegraphics[height=5cm]{bank}
         \\ East Podunk Savings and Loan
@@ -56,6 +57,7 @@
 \end{frame}
 
 \begin{frame}{An illustration}
+    East Podunk S \& L now has a process they need to follow:
     \begin{enumerate}
         \item Take Alice's check from the pile of checks
         \item Debit Alice \$25
@@ -121,8 +123,8 @@
 \end{frame}
 
 \begin{frame}
-    True or False: I'm not a bank. Therefore, I don't need tranasctions.
-    \visible<2->{\color[rgb]{1,0,0} \par \vspace{1cm} \textit{False}}
+    True or False: I'm not a bank. Therefore, I don't need transactions.
+    \visible<2->{\color[rgb]{1,0,0} \par \textit{False}}
 \end{frame}
 
 \begin{frame}{More examples}
@@ -162,10 +164,10 @@
 \end{frame}
 
 \begin{frame}
-    Transactions are designed to group operations. Only the programmer knows
-    what groups make the most sense. Therefore, the programmer (not the ORM,
-    the database system, the database driver, or anything else) shold define
-    operation groupings.
+    Transactions group operations logically. Only the programmer knows
+    what groupings are logical. \textit{Ergo}, the programmer (not the ORM,
+    the database system, the database driver, or anything else) should define
+    transactions
     \begin{itemize}
         \item You probably need transactions whether you're ready to admit it
         or not
@@ -291,7 +293,155 @@ Query OK, 0 rows affected (0.00 sec) \\
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Message queues}
+\begin{frame}[Distributed transactions]
+    An operation could, conceivably, want to include multiple transaction-aware services in one transaction:
+    \begin{itemize}
+        \item Read messages from a queue, and do work in a database in response to those messages
+        \item Use data from multiple separate databases
+        \item Move messages from one messaging service to another
+        \item Build documents using data in a database in a multi-step integration process
+    \end{itemize}
+    This is possible with \textbf{distributed transactions}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Two\textendash phase commit}
+    A \textit{distributed transaction} is a transaction involving multiple services. It works as follows:
+    \begin{enumerate}
+        \item BEGIN the transaction in each service
+        \item Perform whatever operations are necessary
+        \item PREPARE each transaction for commit
+        \begin{itemize}
+            \item Each service guarantees at this point that it can commit the
+            transaction, even if something crashes, before returning
+        \end{itemize}
+        \item If any service reports it can't commit, ROLLBACK each transaction
+        \item If we haven't rolled back, COMMIT each transaction on each service
+    \end{enumerate}
+    This is called \textbf{two-phase commit} (2PC) because commit happens in two steps
+\end{frame}
+
+\begin{frame}
+    \frametitle{Two\textendash phase commit}
+    2PC is slower than single-phase commit
+    \begin{itemize}
+        \item Communicating with \textit{N} services is slower than
+        communicating with 1 service, where \textit{N} > 1.
+        \item On PREPARE, each transaction must store transaction state on disk, to ensure durability
+        \item The application must also store its own state on disk, in case it crashes between PREPARE and COMMIT
+        \begin{itemize}
+            \item Applications generally use \textit{transaction managers} rather than handle these details on their own
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Bitronix transaction manager example}
+\footnotesize {
+\ttfamily {
+\#!/bin/jruby \\
+require 'java' \\
+\vspace{10pt}
+BTM = Java::BitronixTm::bitronixTransactionManager \\
+TxnSvc = Java::BitronixTm::TransactionManagerServices \\
+PDS = Java::BitronixTmResourceJdbc::PoolingDataSource \\
+\vspace{10pt}
+\# Do the stuff below for each data source \\
+ds1 = PDS.new \\
+ds1.set\_class\_name 'org.postgresql.xa.PGXADataSource' \\
+\textellipsis \\
+ds1.init \\
+\# Get datasource connections, and start a transaction \\
+c1 = ds1.get\_connection \\
+c2 = ds2.get\_connection \\
+btm = TxnSvc.get\_transaction\_manager \\
+btm.begin \\
+}
+}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Bitronix transaction manager example}
+\footnotesize {
+\ttfamily {
+begin \\
+\hspace{40pt} \# Do something on each connection \\
+\hspace{40pt} s2 = c2.prepare\_statement \\
+\hspace{80pt} "INSERT INTO ledger VALUES ('Bob', 100)" \\
+\hspace{40pt} s2.execute\_update \\
+\hspace{40pt} s2.close \\
+\hspace{40pt}  \textellipsis \\
+\hspace{40pt}  btm.commit \\
+\hspace{40pt}  puts "Successfully committed" \\
+rescue \\
+\hspace{40pt}  puts "Something bad happened: " + \$! \\
+\hspace{40pt}  btm.rollback \\
+end
+}}
+\end{frame}
+
+\begin{frame}
+    \begin{centering}
+\textbf{Transaction pitfalls}
+    \par
+    \end{centering}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Stuff to watch out for}
+    \begin{itemize}
+        \item Long transactions are typically bad
+        \begin{itemize}
+            \item Locks remain held until transactions commit
+            \item Rollback space can't be released until commit
+            \item This may be particularly bad with 2PC
+        \end{itemize}
+        \item More complex transactions are probably more likely to roll back
+        \item Handle exceptions properly (you're doing this already, right?)
+        \begin{itemize}
+            \item If you roll back and try again, you have to redo the entire operation
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \begin{centering}
+\textbf{Transaction benefits}
+    \par
+    \end{centering}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Miscellaneous. transaction benefits}
+    \begin{itemize}
+        \item Performance
+        \begin{itemize}
+            \item Several INSERTs with Auto\textendash commit will generally be
+            much slower than the same inserts in a single transaction
+        \end{itemize}
+        \item Simpler code
+        \begin{itemize}
+            \item Wrap one transaction in one exception handling block
+        \end{itemize}
+        \item Data integrity
+        \begin{itemize}
+            \item Orphaned records and other data anomalies are much less likely
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \begin{centering}
+        \textbf{Questions?} \par
+    \end{centering}
+\end{frame}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\titlepage
 \end{frame}
 
 % - You need transactions whether you're ready to admit it or not
