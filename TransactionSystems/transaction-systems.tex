@@ -19,7 +19,8 @@
 \title{Fun with Transactions}
 % subtitle: what robust transactions can do for you, and how they can do it for free
 \author{Joshua Tolley -- eggyknap -- End Point Corporation}
-\date[UTOSC 2010]{Utah Open Source Conference, 2010}
+%\date[UTOSC 2010]{Utah Open Source Conference, 2010}
+\date{Utah Code Camp, March 2012}
 
 \frame{\titlepage}
 
@@ -124,9 +125,19 @@
     \visible<2->{\color[rgb]{1,0,0} \par \vspace{15pt} \textit{False}}
 \end{frame}
 
-\begin{frame}{Examples from End Point's clients}
-    Call center application workflow:
-    \vspace{10pt}
+\begin{frame}{When...}
+    Transactions are important...
+    \begin{itemize}
+        \item When one logical operation requires multiple actual operations
+        \item To ensure failures leave you in a known state
+        \item If your server might possibly crash
+        \item When you have special feelings toward this copy of your data
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{More examples}
+    One End Point client manages call center data. Their application includes
+    tasks like these:
     \begin{itemize}
         \item Update notes for a support case
         \item Modify employee performance statistics
@@ -248,6 +259,8 @@ mysql> commit; \\
 Query OK, 0 rows affected (0.00 sec) \\
         }
     }
+    \vspace{10pt}
+    Perhaps this behavior irritates you as much as it does me.
 \end{frame}
 
 \begin{frame}{Implementation note}
