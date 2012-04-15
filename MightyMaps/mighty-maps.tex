@@ -1,0 +1,59 @@
+% Mighty Maps -- Geospatial Visualization with Google Earth and KML
+\documentclass{beamer}
+\usetheme{Goettingen}
+
+It seems like everyone these days has a pile of data, and the sexy thing to do
+with that data is always to draw pictures of it.  <show examples of neat
+graphs, and not so neat graphs> Visualization is a science, or at least an
+official field of study for many people (which may or may not mean the same
+thing).  People write books on how to make a good visualization, and blogs on
+why everyone else's visualizations suck.
+
+Of particular interest, since the introduction of various mapping APIs like
+mapquest, and later from every search engine on the planet (Google, Bing,
+Yahoo, etc.), has been geospatial visualization, for a few reasons:
+
+* It's easy to understand. It takes a while to figure out what seemingly random
+  lines and spots on a graph mean, but everyone knows what a map means
+* It's easy to do, thanks to tihngs like Google Maps
+* Everyone has geographic data.
+    * Who browsed my web site, from where
+    * Where do I ship most of my orders
+    * What in fact are the migration patterns of African and European swallows?
+    * These data aren't necessarily meaningful or important, but irrelevance
+      rarely stops anyone from drawing graphs of their data
+
+Having said all that, geospatial visualization continues to improve, and here
+we're going to talk about one way it has done so, namely with Google Earth.
+Google Earth takes Google Maps and makes it three dimensional. Users can
+manipulate a 3D model of the globe, zooming in and out and examining bits of
+the earth to their heart's content.  More importantly, Google Earth also lets
+users add various objects to the globe using an XML-based language called
+Keyhole Markup Language, or KML, after the Keyhole Corporation that developed
+the technology and got bought by Google in 2004.
+
+Here are some examples:
+
+<blah />
+
+So in order to give you some idea of what you can do with this stuff, let's
+cover some of the elements of KML. I'll avoid showing you lots of KML syntax,
+but rather just give you examples of KML objects as Google Earth displays them.
+Interested parties can review the reference documentation.
+
+Point
+
+The basic element in most everything is a point. Points have a latitude, a longitude, an altitude, and an altitude mode
+% XXX stopped at the line above
+Placemark
+Polygons (in limited detail)
+AbstractViews
+TimePrimitives
+Tours -- Flyto, AnimatedUpdate
+Regions
+
+One of Earth's neater features is its ability to synchronize itself with other
+instances of Earth. Linux media geeks may already be familiar with mplayer's
+similar functionality, which allows you to have one mplayer instance acting as
+master, and broadcasting timing information to one or more slave instances,
+which is useful for things like monitor walls.
