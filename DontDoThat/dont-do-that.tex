@@ -14,7 +14,7 @@
 \title{Don't Do That}
 \subtitle{Ensuring data sanity with database constraints}
 \author{Joshua Tolley}
-\institute{End Point Corporation}
+\institute{End Point Corp.}
 
 \frame{\titlepage}
 %\frame{\tableofcontents}
@@ -51,7 +51,7 @@
 
 \begin{frame}
     \begin{block}{Why?}
-        If you've ever dealt with "bad" data in the database, you'll understand why constraints are important
+        If you've ever dealt with ``bad'' data in the database, you'll understand why constraints are important
     \end{block}
 \end{frame}
 
@@ -141,7 +141,7 @@
         \item Integers are limited to a specific range, and have no fractional part
         \item VARCHAR() fields are often limited in length
         \item ENUM types can contain only values from a defined set
-        \item Date and time types can contain only \bf{\color{red}VALID*} dates
+        \item Date and time types can contain only {\bf{\color{red}VALID*}} dates
         \item Geometric, network, and other more complex types are also constrained
     \end{itemize}
     \vspace{10mm}
@@ -205,8 +205,8 @@
 \begin{frame}{UNIQUE, [NOT] NULL}
     \begin{itemize}
         \item Unique columns must contain unqiue values
-        \item "Unique" depends on the data type's definition of equality
-        \item NULL means "unknown", so NULL != NULL, so UNIQUE columns can contain multiple NULLs
+        \item ``Unique'' depends on the data type's definition of equality
+        \item NULL means ``unknown'', so NULL != NULL, so UNIQUE columns can contain multiple NULLs
         \begin{itemize}
             \item ...so you might consider including a NOT NULL
             \item ...and perhaps a DEFAULT
@@ -214,7 +214,7 @@
     \end{itemize}
     \begin{block}{Note}
         In PostgreSQL, UNIQUE is implemented with an index. Often, these are
-        fields you'd likely want to index anyway. Users can declare the field "UNIQUE";
+        fields you'd likely want to index anyway. Users can declare the field ``UNIQUE'';
         the index will be created and named automatically.
     \end{block}
 \end{frame}
@@ -256,7 +256,7 @@ CREATE TABLE employee (
     \texttt{ON UPDATE \emph{action}} and \texttt{ON DELETE \emph{action}}
     \begin{itemize}
         \item {\bf NO ACTION}: Throw an error saying that the action would break consistency
-        \item {\bf RESTRICT}: Same as "NO ACTION", but not deferrable
+        \item {\bf RESTRICT}: Same as ``NO ACTION'', but not deferrable
         \item {\bf CASCADE}: Delete or update all rows referencing this row
         \item {\bf SET NULL}: Set referencing columns to NULL
         \item {\bf SET DEFAULT}: Set the referencing columns to their default values.
@@ -311,7 +311,7 @@ CREATE TABLE employee (
     \end{itemize}
     \vspace{0.1\textheight}
     \begin{block}{Note}
-        You can even set multi-column foreign keys so some of the columns can be NULL, but it's rarely used. Google "foreign key match clause" for more.
+        You can even set multi-column foreign keys so some of the columns can be NULL, but it's rarely used. Google ``foreign key match clause'' for more.
     \end{block}
 \end{frame}
 
@@ -377,9 +377,9 @@ CREATE TRIGGER sample_trigger BEFORE INSERT OR UPDATE
 \end{frame}
 
 \begin{frame}{Why PostgreSQL Rocks: Exclusion Constraints}
-    A UNIQUE constraint can be generalized. Unique constraints say "don't allow
+    A UNIQUE constraint can be generalized. Unique constraints say ``don't allow
     data where the equality operator for this data type returns true for a new
-    row and some existing row". What if we weren't limited to the equality
+    row and some existing row''. What if we weren't limited to the equality
     operator?
 \end{frame}
 
@@ -393,7 +393,7 @@ CREATE TRIGGER sample_trigger BEFORE INSERT OR UPDATE
   );
     \end{Verbatim}
     \vspace{2px}
-    \&\& is the "overlaps" operator for PostgreSQL's native circle type. So this says "don't allow circles to overlap."
+    \&\& is the ``overlaps'' operator for PostgreSQL's native circle type. So this says ``don't allow circles to overlap.''
 
     \begin{block}{Note}
         Only PostgreSQL allows you to do this.
