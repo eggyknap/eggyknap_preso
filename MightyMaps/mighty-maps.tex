@@ -85,13 +85,13 @@
 \end{frame}
 
 \begin{frame}{Everyone has Geographic Data}
-    \begin{varblock}[0.8\textwidth]{Note}
+    \begin{varblock}[0.9\textwidth]{Note}
         Although everyone has geographic data, it's not necessarily important data.
     \end{varblock}
 \end{frame}
 
 \begin{frame}{Everyone has Geographic Data}
-    \begin{varblock}[0.8\textwidth]{Note}
+    \begin{varblock}[0.9\textwidth]{Note}
         The fact that particular data are unimportant or even meaningless rarely prevents people from trying to make a picture out of them.
     \end{varblock}
 \end{frame}
@@ -183,7 +183,80 @@
 \end{frame}
 
 \begin{frame}{Liquid Galaxy}
-    % XXX Describe LG here, also mplayer's sync
+    Google Earth can talk to itself, to broadcast its view of the world. It can
+    also receive these packets, and show related views. So if you put multiple
+    instances together, you get a panoramic view. This is called a Liquid
+    Galaxy.
+    \begin{center}
+        % XXX insert image of liquid galaxy here
+        \includegraphics[width=0.8\textwidth]{spiral.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Liquid Galaxy}
+    End Point has done lots of work with Liquid Galaxies:
+    \begin{itemize}
+        \item They boot custom ISOs from a network
+        \item Tours and content can be controlled via touch screen
+        \item Techs can monitor and repair galaxies remotely, easily
+        \item Tour content seamlessly integrates Google Earth with other applications, such as mplayer
+        \item It's all open source
+    \end{itemize}
+    Come see our booth :)
+\end{frame}
+
+\begin{frame}{Making tours}
+    \begin{varblock}[0.9\textwidth]{Universal Truth}
+        Writing XML in significant quantities by hand sucks. Debugging and modifying it later sucks worse.
+    \end{varblock}
+\end{frame}
+
+\begin{frame}{Making tours}
+    \begin{columns}[c]
+        \column{0.3\textwidth}
+        % XXX include giraffe image here
+        \includegraphics[width=\textwidth]{spiral.png}
+
+        \column{0.6\textwidth}
+        Enter ``Kamelopard'':
+        \begin{itemize}
+            \item Writes KML for you
+            \item Ruby-based, for buzzword appeal
+            \item Open source, so you can fix what's broken
+            \item Awkward name. It worked for PostgreSQL...
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Making tours}
+    \begin{Verbatim}[fontfamily=courier]
+  require 'rubygems'
+  require 'kamelopard'
+  require 'yaml'
+
+  f = Kamelopard::Folder.new 'Tour Resources'
+  data = YAML::load_file 'some_data.yml'
+  data.each do |d|
+    p = point d[:longitude], d[:latitude]
+    pl = Kamelopard::Placemark p, :desc => d[:desc]
+    f << pl
+  end
+
+  write_kml_to 'doc.kml'
+    \end{Verbatim}
+\end{frame}
+
+% XXX Insert sample of more interesting Kamelopard code
+
+\begin{frame}{Kamelopard}
+    Kamelopard makes it easy (and succinct!) to generate KML for large data sets, using complicated algorithms.
+    \begin{itemize}
+        \item Tour of End Point employees, taken straight from employee database
+        \item FamilySearch mashup; show ancestral migrations
+        \item ``Smart'' power meters' trouble messages vs. lightning strikes
+        \item Fisheries' catch records plotted historically, also straight from the database
+    \end{itemize}
 \end{frame}
 
 \end{document}
