@@ -403,7 +403,7 @@ CREATE TRIGGER sample_trigger BEFORE INSERT OR UPDATE
 \begin{frame}[fragile]
     \frametitle{Exclusion Constraints}
     \begin{Verbatim}[fontfamily=courier]
-  josh=# insert into circles values
+  hal=# insert into circles values
     ('0, 0, 10', 'first);
   INSERT 0 1
   hal=# select * from circles ;
@@ -419,6 +419,15 @@ CREATE TRIGGER sample_trigger BEFORE INSERT OR UPDATE
   DETAIL:  Key (my_circle)=(<(5,0),10>) conflicts
     with existing key (my_circle)=(<(0,0),10>).
     \end{Verbatim}
+\end{frame}
+
+\begin{frame}{Exclusion Constraints}
+    Other possible uses:
+    \begin{itemize}
+        \item Don't put the lions and the zebras in the same zoo enclosure
+        \item Prevent overlapping time ranges in a scheduling application
+        \item Weird data types offer all kinds of possibilities
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{Refutation and Rebuttal}
