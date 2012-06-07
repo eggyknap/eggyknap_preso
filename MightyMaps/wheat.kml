@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+  <Document id="Document_5">
+    <Placemark>
+        <name>Wheat Field</name>
+        <Style>
+            <LineStyle>
+                <width>100</width>
+                <color>ffff0000</color>
+            </LineStyle>
+            <PolyStyle>
+                <color>66aa0000</color>
+            </PolyStyle>
+        </Style>
+        <Polygon>
+        <outerBoundaryIs>
+        <LinearRing>
+            <coordinates>
+-112.46328,38.84193,0
+-112.46330,38.84060,0
+-112.46237,38.84059,0
+-112.46227,38.83995,0
+-112.46092,38.83999,0
+-112.46103,38.84176,0
+-112.46328,38.84193,0
+            </coordinates>
+        </LinearRing>
+        </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+  </Document>
+</kml>
