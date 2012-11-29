@@ -8,6 +8,7 @@
 \usefonttheme{serif}
 \usefonttheme{structuresmallcapsserif}
 % \usepackage[font=small,labelfont=bf]{caption}
+\usepackage{rotating}
 
 \setbeamerfont{section title}{parent=title}
 \setbeamercolor{section title}{parent=titlelike}
@@ -41,6 +42,21 @@
 %    \vskip0pt%
 }
 \makeatother
+
+\newenvironment<>{varblock}[2][\textwidth]{
+    \begin{center}
+        \begin{minipage}{#1}
+            \setlength{\textwidth}{#1}
+            \begin{actionenv}#3
+                \def\insertblocktitle{#2}
+                \par
+                \usebeamertemplate{block begin}}
+            {\par
+                \usebeamertemplate{block end}
+            \end{actionenv}
+        \end{minipage}
+    \end{center}
+}
 
 \begin{document}
 \title[Untangling Federal Jurisdiction]{Untangling Federal Jurisdiction Within a State}
@@ -780,23 +796,169 @@
 %    \includegraphics[width=.9\textwidth]{img/shire-reef.png} \\
 %\end{frame}
 %
-    \unitlength=1in
+%    \unitlength=1in
+%\begin{frame}
+%    \centering
+%    \includegraphics[width=.9\textwidth]{img/sheriffs.png} \\
+%    \pause
+%    \Put(0.3,6){\textbf{\color{blue}{\Large{Maryland, 1634}}}}
+%    \pause
+%    \Put(3,0.8){\textbf{\color{blue}{\Large{Virginia, 1651}}}}
+%\end{frame}
+%
+%\begin{frame}{Utah Territorial Act, September 9, 1850}
+%    \centering
+%    \begin{block}{}
+%        ``\ldots and the same is hereby, created into a temporary government, by the name of the Territory of Utah\ldots''
+%    \end{block}
+%    \vspace{10pt}
+%    \includegraphics[width=0.75\textwidth]{img/utah-terr.png} \\
+%\end{frame}
+%
+%\begin{frame}{Utah Territorial Act, September 9, 1850}
+%    \centering
+%    \begin{block}{}
+%        ``\ldots and the same is hereby, created into a \emph{temporary government}, by the name of the Territory of Utah\ldots''
+%    \end{block}
+%    \vspace{10pt}
+%    \includegraphics[width=0.75\textwidth]{img/utah-terr.png} \\
+%\end{frame}
+%
+%\begin{frame}{Utah Territory, 1894}
+%    \begin{columns}[onlytextwidth]
+%        \column{0.5\textwidth}
+%            \centering
+%            \includegraphics[height=0.75\textheight]{img/utah-state.png} \\
+%
+%        \column{0.5\textwidth}
+%            \Huge{People \\ + Territory \\ + Governance \\ = State}
+%    \end{columns}
+%\end{frame}
+%
+%\begin{frame}{Utah Territory, 1894}
+%    \begin{columns}[onlytextwidth]
+%        \column{0.5\textwidth}
+%            \centering
+%            \includegraphics[height=0.75\textheight]{img/utah-state.png} \\
+%
+%        \column{0.5\textwidth}
+%            \begin{block}{Utah Enabling Act \textbf{Compact}, July 16, 1894}
+%                As of May 3, 2012, it appears there are still \textbf{\emph{{\color{red}seven violations}}} of the Compact on the part of the Federal Government.
+%            \end{block}
+%    \end{columns}
+%\end{frame}
+%
+%\begin{frame}{Utah Territory}
+%    \begin{columns}[onlytextwidth]
+%        \column{0.5\textwidth}
+%            \centering
+%            \includegraphics[height=0.75\textheight]{img/constitution.png} \\
+%
+%        \column{0.5\textwidth}
+%            \begin{block}{Admissions Clause}
+%                ``New States may be admitted by Congress into this Union\ldots''
+%            \end{block}
+%    \end{columns}
+%\end{frame}
+%
+%\begin{frame}{Utah, January 4, 1896}
+%    \centering
+%    \includegraphics[height=0.75\textheight]{img/utah-constitution.png} \\
+%\end{frame}
+%
+%\begin{frame}{Jurisdiction Clause Family}
+%    \centering
+%    \includegraphics[height=0.85\textheight]{img/family.png} \\
+%    \huge{\textbf{ \color{white}
+%        \pause
+%        \Put(25, 300){\begin{sideways}\colorbox{blue}{Admissions}\end{sideways}}
+%        \pause
+%        \Put(60, 300){\begin{sideways}\colorbox{blue}{Claims}\end{sideways}}
+%        \pause
+%        \Put(90, 300){\begin{sideways}\colorbox{blue}{Property}\end{sideways}}
+%        \pause
+%        \Put(134, 300){\begin{sideways}\colorbox{blue}{Guarantee}\end{sideways}}
+%        \pause
+%        \Put(168, 300){\begin{sideways}\colorbox{blue}{Enclave}\end{sideways}}
+%        \pause
+%        \Put(200, 300){\begin{sideways}\colorbox{blue}{Engagements}\end{sideways}}
+%        \pause
+%        \Put(235, 300){\begin{sideways}\colorbox{blue}{Supremacy}\end{sideways}}
+%    }}
+%\end{frame}
+%
+%\begin{frame}
+%    \begin{varblock}[0.8\textwidth]{Truism}
+%        \Large{We may only delegate to government that which we have the right to do ourselves.}
+%    \end{varblock}
+%\end{frame}
+%
+%\begin{frame}{State of Utah}
+%    \begin{columns}[onlytextwidth]
+%        \column{0.5\textwidth}
+%            \centering
+%            \includegraphics[height=0.75\textheight]{img/utah-constitution.png} \\
+%
+%        \column{0.5\textwidth}
+%            The new state legislature began passing laws to protect life, liberty, and property. \\
+%            \vspace{20pt}
+%            County Sheriff established by:
+%            \begin{itemize}
+%                \item 17-16-1
+%                \item 17-22-1.5
+%                \item 20A-9-201
+%                \item 53-6-202(4)
+%                \item 53-6-205
+%            \end{itemize}
+%    \end{columns}
+%\end{frame}
+
 \begin{frame}
-    \centering
-    \includegraphics[width=.9\textwidth]{img/sheriffs.png} \\
-    \pause
-    \Put(0.3,6){\textbf{\color{blue}{\Large{Maryland, 1634}}}}
-    \pause
-    \Put(3,0.8){\textbf{\color{blue}{\Large{Virginia, 1651}}}}
+    \begin{varblock}[0.8\textwidth]{Definition}
+        A legal dictionary defines the Sheriff as ``\ldots a creature of law created by the \textbf{sovereign power in the state}\ldots'' 
+    \end{varblock}
 \end{frame}
 
-\begin{frame}{Utah Territorial Act, September 9, 1850}
+\begin{frame}{Mack / Printz v. The United States of America, 1997}
     \centering
-    \begin{block}{}
-        ``\ldots and the same is hereby, created into a temporary government, by the name of the Territory of Utah\ldots''
-    \end{block}
-    \vspace{10pt}
-    \includegraphics[width=0.75\textwidth]{img/utah-terr.png} \\
+    \includegraphics[width=0.65\textwidth]{img/printz-mack.jpg} \\
+\end{frame}
+
+\begin{frame}{Mack / Printz v. The United States of America, 1997}
+    \begin{columns}[onlytextwidth]
+        \column{0.5\textwidth}
+            \centering
+            \includegraphics[height=0.75\textheight]{img/scalia.jpg} \\
+
+        \column{0.5\textwidth}
+            \begin{block}{Mack/Printz v. USA}
+                ``\ldots it is incontestible that the Constitution established a system of `dual sovereignty'.''
+            \end{block}
+            \pause
+            {
+                \color{red}
+                \emph{Did the United States Constitution establish a system of ``dual sovereignty''?}
+            }
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Mack / Printz v. The United States of America, 1997}
+    \begin{columns}[onlytextwidth]
+        \column{0.5\textwidth}
+            \centering
+            \includegraphics[height=0.75\textheight]{img/scalia.jpg} \\
+            Justice Antonin Scalia \\
+
+        \column{0.5\textwidth}
+            \begin{block}{Mack/Printz v. USA}
+                ``Although the States surrendered many of their powers to the new Federal Government\ldots''
+            \end{block}
+            \pause
+            {
+                \color{red}
+                \emph{Did the States ``[surrender] many of their powers to the new Federal Government''?}
+            }
+    \end{columns}
 \end{frame}
 
 \end{document}
