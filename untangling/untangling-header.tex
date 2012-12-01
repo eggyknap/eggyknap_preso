@@ -7,6 +7,7 @@
 \usepackage{xcolor}
 \usepackage{rotating}
 \usepackage{multirow}
+\usepackage{soul}
 
 \setbeamerfont{section title}{parent=title}
 \setbeamercolor{section title}{parent=titlelike}
@@ -17,6 +18,8 @@
         \usebeamerfont{section title}\insertsection\par
     \end{beamercolorbox}
 }
+
+\setbeamertemplate{navigation symbols}{}
 \newcommand*{\sectionpage}{\usebeamertemplate*{section page}}
 
 \def\Put(#1,#2)#3{\leavevmode\makebox(0,0){\put(#1,#2){#3}}}
