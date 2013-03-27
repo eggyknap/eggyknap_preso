@@ -29,16 +29,49 @@
             \end{itemize}
         \column{0.5\textwidth}
             \centering
-            \only<1>{\includegraphics[width=0.9\textwidth]{img/family-friends.jpg}}
-            \only<2>{\includegraphics[width=0.9\textwidth]{img/emergency.png}}
-            \only<3>{\includegraphics[width=0.9\textwidth]{img/news-info.png}}
-            \only<4>{\includegraphics[width=0.9\textwidth]{img/radio-control.jpg}}
-            \only<5>{\includegraphics[width=0.9\textwidth]{img/radar.jpg}}
-            \only<6>{\includegraphics[width=0.9\textwidth]{img/networking.jpg}}
-            \only<7>{\includegraphics[width=0.9\textwidth]{img/telemetry.jpg}}
-            \only<8>{\includegraphics[width=0.9\textwidth]{img/eme.jpg}}
-
+            \only<1>{\includegraphics[width=0.9\textwidth]{img/family-friends.jpg} \\ }
+            \only<2>{\includegraphics[width=0.9\textwidth]{img/emergency.png} \\ }
+            \only<3>{\includegraphics[width=0.9\textwidth]{img/news-info.png} \\ }
+            \only<4>{\includegraphics[width=0.9\textwidth]{img/radio-control.jpg} \\ }
+            \only<5>{\includegraphics[width=0.9\textwidth]{img/radar.jpg} \\ }
+            \only<6>{\includegraphics[width=0.9\textwidth]{img/networking.jpg} \\ }
+            \only<7>{\includegraphics[width=0.9\textwidth]{img/telemetry.jpg} \\ }
+            \only<8>{\includegraphics[width=0.9\textwidth]{img/eme.jpg} \\ }
     \end{columns}
+\end{frame}
+
+\newenvironment{proenv}{\only{\setbeamercolor{local structure}{fg=green}}}{}
+\newenvironment{conenv}{\only{\setbeamercolor{local structure}{fg=red}}}{}
+\newenvironment{hidenv}{\only{\setbeamercolor{local structure}{fg=white}}}{}
+%\begin{frame}{test}
+%    \begin{itemize}
+%        \item<pro@1-> Pro
+%        \pause
+%        \item<con@1-> Con
+%        \pause
+%        \item Normal
+%    \end{itemize}
+%\end{frame}
+
+\begin{frame}[t]{How radio works}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item \only<1>{Electric field} \only<2->{\textcolor{lightgray}{Electric field}}
+            \item \only<2>{Induction} \only<1,3->{\textcolor{lightgray}{Induction}}
+            \item \only<3>{Carrier wave} \only<1-2,4->{\textcolor{lightgray}{Carrier wave}}
+            \item \only<4>{Modulation} \only<1-3,5->{\textcolor{lightgray}{Modulation}}
+            \item \only<5>{Amplification} \only<1-4,6>{\textcolor{lightgray}{Amplification}}
+            \only<-5>{ \item[] }
+            \only<6>{ \item Vector calculus }
+        \end{itemize}
+    \end{multicols}
+    \centering
+    \only<1>{ \includegraphics[height=0.6\textheight]{img/electric-field.png} \\}
+    \only<2>{ \includegraphics[height=0.6\textheight]{img/induction.png} \\}
+    \only<3>{ \includegraphics[height=0.6\textheight]{img/Wave.png} \\}
+    \only<4>{ \includegraphics[height=0.6\textheight]{img/modulation.png} \\}
+    \only<5>{ \includegraphics[height=0.6\textheight]{img/amplification.png} \\}
+    \only<6>{ \includegraphics[height=0.6\textheight]{img/vec_cal.png} \\}
 \end{frame}
 
 \end{document}
