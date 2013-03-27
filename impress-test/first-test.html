@@ -1,0 +1,46 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <title>First test of impress.js</title>
+    <meta name="author" content="Joshua Tolley" />
+
+    <!-- Eventually, we should probably change this, since impress.js claims
+         it's not required
+    <link href="css/impress-demo.css" rel="stylesheet" />
+    -->
+    <link href="css/first-test.css" rel="stylesheet" />
+</head>
+
+<body class="impress-not-supported">
+
+<div class="fallback-message">
+    <p>Your browser doesn't support the features we need for this to work. Sorry.</p>
+</div>
+
+<div id="impress">
+    <div id="intro" class="step slide" data-x="-1000" data-y="-1500">
+        <p>This is my first slide.</p>
+    </div>
+    <div class="step slide" data-x="0" data-y="-1500">
+        <p>...and my second</p>
+    </div>
+    <div class="step slide" data-x="1000" data-y="-1500">
+        <p>...and my third.</p>
+    </div>
+    <div class="step slide" data-x="4000" data-y="-1500" data-scale="3">
+        <p>This one is bigger</p>
+    </div>
+    <div class="step slide" data-x="4000" data-y="-3500" data-rotate="180" data-scale="3">
+        <p>This is still bigger, but also rotated</p>
+    </div>
+</div>
+
+<script src="js/impress.js"></script>
+<script>impress().init();</script>
+
+</body>
+
+</html>
