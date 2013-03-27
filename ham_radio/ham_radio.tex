@@ -1,0 +1,44 @@
+\input{ham_radio_header.tex}
+
+\begin{document}
+\title{Ham Radio is for Nerds}
+\subtitle{\ldots like me}
+\author{Josh Tolley, KG7AKX}
+\frame{\titlepage}
+
+% Ham radio used to be where aspiring hackers got started. Amateur radio is still
+% a vibrant world with much to teach the interested geek. We'll talk about where
+% ham radio fits in the hacker arsenal today, and cover everything you need to
+% pass the FCC's licensing test and get on the air.
+
+\section{Neat stuff radio can do}
+\frame{\sectionpage}
+
+\begin{frame}{Neat stuff radio can do}
+    \begin{columns}[onlytextwidth]
+        \column{0.5\textwidth}
+            \begin{itemize}
+                \item \only<1>{Communication between family and friends}\only<2->{\textcolor{lightgray}{Communication between family and friends}}
+                \item \only<2>{Emergency preparedness}\only<1,3->{\textcolor{lightgray}{Emergency preparedness}}
+                \item \only<3>{Alternative news and information sources}\only<1,2,4->{\textcolor{lightgray}{Alternative news and information sources}}
+                \item \only<4>{Radio control devices}\only<1-3,5->{\textcolor{lightgray}{Radio control devices}}
+                \item \only<5>{Homebrew radar}\only<1-4,6->{\textcolor{lightgray}{Homebrew radar}}
+                \item \only<6>{Wireless networking}\only<1-5,7->{\textcolor{lightgray}{Wireless networking}}
+                \item \only<7>{Aircraft and rocket telemetry}\only<1-6,8->{\textcolor{lightgray}{Aircraft and rocket telemetry}}
+                \item \only<8>{EME / Moonbounce, satellite, space station}\only<1-7>{\textcolor{lightgray}{EME / Moonbounce, satellite, space station}}
+            \end{itemize}
+        \column{0.5\textwidth}
+            \centering
+            \only<1>{\includegraphics[width=0.9\textwidth]{img/family-friends.jpg}}
+            \only<2>{\includegraphics[width=0.9\textwidth]{img/emergency.png}}
+            \only<3>{\includegraphics[width=0.9\textwidth]{img/news-info.png}}
+            \only<4>{\includegraphics[width=0.9\textwidth]{img/radio-control.jpg}}
+            \only<5>{\includegraphics[width=0.9\textwidth]{img/radar.jpg}}
+            \only<6>{\includegraphics[width=0.9\textwidth]{img/networking.jpg}}
+            \only<7>{\includegraphics[width=0.9\textwidth]{img/telemetry.jpg}}
+            \only<8>{\includegraphics[width=0.9\textwidth]{img/eme.jpg}}
+
+    \end{columns}
+\end{frame}
+
+\end{document}
