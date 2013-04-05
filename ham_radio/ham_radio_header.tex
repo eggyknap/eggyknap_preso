@@ -1,4 +1,6 @@
+
 \documentclass{beamer}
+
 \usetheme{Madrid}
 %\usetheme{Goettingen}
 \usefonttheme{serif}
@@ -64,11 +66,22 @@
 
 \setbeamerfont{section title}{parent=title}
 \setbeamercolor{section title}{parent=titlelike}
-\defbeamertemplate*{section page}{default}[1][]
+
+\defbeamertemplate*{my section page}{default}[1][]
 {
       \centering
       \begin{beamercolorbox}[sep=8pt,center,#1]{section title}
           \usebeamerfont{section title}\insertsection\par
       \end{beamercolorbox}
 }
-\newcommand*{\sectionpage}{\usebeamertemplate*{section page}}
+\newcommand*{\mysectionpage}{\usebeamertemplate*{my section page}}
+
+  \newenvironment{hilitemenv}{\begin{altenv}%
+          {}{}
+          {\color{lightgray}}{}}{\end{altenv}}
+
+%  \newenvironment{structureenv}{\begin{altenv}%
+%      {\usebeamertemplate{structure text begin}\usebeamercolor[fg]{structure}\usebeamerfont{structure}}
+%      {\usebeamertemplate{structure text end}}{\color{.}}{}}{\end{altenv}}
+
+  \newcommand<>{\hilitem}[1]{\begin{hilitemenv}#2#1\end{hilitemenv}}
