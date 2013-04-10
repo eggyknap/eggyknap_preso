@@ -5,7 +5,16 @@
 \title{Ham Radio is for Nerds}
 \subtitle{\ldots like me}
 \author{Josh Tolley, KG7AKX}
-\frame{\titlepage}
+
+{
+    \usebackgroundtemplate{%
+      \vbox to \paperheight{\vfil\hbox to \paperwidth{\hfil\includegraphics[height=\paperheight]{img/symbol-bkgrnd.png}\hfil}\vfil}
+    }
+    \begin{frame} 
+        \titlepage 
+    \end{frame} 
+} 
+
 
 % Ham radio used to be where aspiring hackers got started. Amateur radio is still
 % a vibrant world with much to teach the interested geek. We'll talk about where
@@ -13,7 +22,12 @@
 % pass the FCC's licensing test and get on the air.
 
 \section{Neat stuff radio can do}
-\frame{\mysectionpage}
+{
+    \usebackgroundtemplate{%
+      \vbox to \paperheight{\vfil\hbox to \paperwidth{\hfil\includegraphics[height=\paperheight]{img/omni-antenna.png}\hfil}\vfil}
+    }
+    \frame{\mysectionpage}
+}
 
 \begin{frame}{Neat stuff radio can do}
     \begin{columns}[onlytextwidth]
@@ -42,14 +56,19 @@
 \end{frame}
 
 \section{How radio works}
-\frame{\mysectionpage}
+{
+    \usebackgroundtemplate{%
+      \vbox to \paperwidth{\vfil\hbox to \paperwidth{\hfil\includegraphics[width=\paperwidth]{img/vec_cal.png}\hfil}\vfil}
+    }
+    \frame{\mysectionpage}
+}
 
 \begin{frame}[t]{How radio works}
     \begin{multicols}{2}
         \begin{itemize}
             \item \hilitem<1>{Electric field}
             \item \hilitem<2>{Induction}
-            \item \hilitem<3>{Carrier wave}
+            \item \hilitem<3>{Carrier wave, frequency}
             \item \hilitem<4>{Modulation}
             \item \hilitem<5>{Amplification}
             \alt<6>{ \item Vector calculus }{ \item[] }
@@ -64,22 +83,40 @@
     \only<6>{ \includegraphics[height=0.6\textheight]{img/vec_cal.png} \\}
 \end{frame}
 
-\section{Ham radio}
-\frame{\mysectionpage}
+\section{Ham radio specifics}
+{
+    %\usebackgroundtemplate{%
+    %  \vbox to \paperwidth{\hbox to \paperwidth{\hfil\includegraphics[width=\paperwidth]{img/utah-ham-plate-trans.png}\hfil}}
+    %}
+    \usebackgroundtemplate{\includegraphics[width=\paperwidth]{img/utah-ham-plate-trans.png}}
+    \frame{\mysectionpage}
+}
+
+\begin{frame}[t]{Ham radio}
+    In the United States, the Federal Communications Commission regulates amateur radio by the following characteristics:
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item \hilitem<1>{Frequency}
+            \item \hilitem<2>{Transmission power}
+            \item \hilitem<3>{Mode}
+            \item \hilitem<4>{``Communications decency''}
+        \end{itemize}
+    \end{multicols}
+    \centering
+    \only<1>{ \includegraphics[height=0.5\textheight]{img/band-plan.png} \\ }
+    \only<2>{ \includegraphics[height=0.5\textheight]{img/transmission-power.jpg} \\ }
+    \only<3>{ \includegraphics[height=0.5\textheight]{img/language.png} \\ }
+    \only<4>{ \includegraphics[height=0.5\textheight]{img/decency.jpg} \\ }
+\end{frame}
 
 \begin{frame}{Ham radio}
-    \begin{columns}
-        \column{0.5\textwidth}
-            \begin{itemize}
-                \item \hilitem<1>{Radio spectrum}
-                \item \hilitem<2>{Federal Communications Commission}
-                \item \hilitem<3>{Bands}
-            \end{itemize}
-        \column{0.5\textwidth}
-            \only<1>{ The full range of possible electromagnetic wavelengths is called the ``spectrum''. }
-            \only<2>{ Many governments regulate usage of the radio spectrum. In the United States, the Federal Communications Commission (FCC) sets the rules.}
-            \only<3>{ The FCC has divided the spectrum into segments, called ``bands''. Different bands have different uses, and users. }
-    \end{columns}
+    \begin{varblock}[0.9\textwidth]{}
+        \centering
+        \huge{You need to %
+        \only<1>{know }\only<2->{\st{know} have known }about all that stuff to transmit legally\only<3->{, or have gotten lucky on the test\only<4>{\textsuperscript{*}}}}\\
+    \end{varblock}
+    \vspace{3cm}
+    \only<4>{\small{\textsuperscript{*} You can legally receive whatever you want. There's really no way they could stop you.}}
 \end{frame}
 
 \end{document}
