@@ -5,6 +5,10 @@
 %\usetheme{Goettingen}
 \usefonttheme{serif}
 \usefonttheme{structuresmallcapsserif}
+%\usecolortheme{default}
+%\usecolortheme{seagull} % gray, ok
+\usecolortheme{seahorse} % light-blue, +1
+
 % \usepackage[font=small,labelfont=bf]{caption}
 \usepackage{xcolor}
 \usepackage{rotating}
@@ -76,12 +80,8 @@
 }
 \newcommand*{\mysectionpage}{\usebeamertemplate*{my section page}}
 
-  \newenvironment{hilitemenv}{\begin{altenv}%
+\newenvironment{hilitemenv}{\begin{altenv}%
           {}{}
           {\color{lightgray}}{}}{\end{altenv}}
 
-%  \newenvironment{structureenv}{\begin{altenv}%
-%      {\usebeamertemplate{structure text begin}\usebeamercolor[fg]{structure}\usebeamerfont{structure}}
-%      {\usebeamertemplate{structure text end}}{\color{.}}{}}{\end{altenv}}
-
-  \newcommand<>{\hilitem}[1]{\begin{hilitemenv}#2#1\end{hilitemenv}}
+\newcommand<>{\hilitem}[1]{\begin{hilitemenv}#2#1\end{hilitemenv}}
