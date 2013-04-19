@@ -15,11 +15,23 @@
     \end{frame} 
 } 
 
-
+% Abstract from OpenWest submission:
 % Ham radio used to be where aspiring hackers got started. Amateur radio is still
 % a vibrant world with much to teach the interested geek. We'll talk about where
 % ham radio fits in the hacker arsenal today, and cover everything you need to
 % pass the FCC's licensing test and get on the air.
+
+% WHAT THE TALK NEEDS
+% Description of test sections, number of questions, testing procedure
+% - Computerized, 27 of 35 questions right (?), $14, can take the general at the same time
+% Where to find study materials
+% How to find a test
+% "Ok, I have a call sign. Now what?"
+% OBTW, Open Source...
+% - SDR
+% - hardware building
+% - antenna modeling
+% - radio-related applications
 
 \section{Neat stuff radio can do}
 {
@@ -41,6 +53,8 @@
                 \item \hilitem<6>{Wireless networking}
                 \item \hilitem<7>{Aircraft and rocket avionics}
                 \item \hilitem<8>{EME / Moonbounce, satellite, space station}
+                \item \hilitem<9>{QRP (Low-power communications)}
+                \item \hilitem<10>{Software-defined radio}
             \end{itemize}
         \column{0.5\textwidth}
             \centering
@@ -52,6 +66,8 @@
             \only<6>{\includegraphics[width=0.9\textwidth]{img/networking.jpg} \\ }
             \only<7>{\includegraphics[width=0.9\textwidth]{img/avionics.jpg} \\  \tiny{Flickr user jurvetson} }
             \only<8>{\includegraphics[width=0.9\textwidth]{img/eme.jpg} \\ }
+            \only<9>{\includegraphics[width=0.9\textwidth]{img/rockmite.png} \\ This 0.5 watt radio fits in an Altoids tin, and has been used to send signals from Tennessee to New Zealand \\ }
+            \only<10>{\includegraphics[width=0.9\textwidth]{img/sdr-radio.png} \\ }
     \end{columns}
 \end{frame}
 
@@ -118,5 +134,43 @@
     \vspace{3cm}
     \only<4>{\small{\textsuperscript{*} You can legally receive whatever you want. There's really no way they could stop you.}}
 \end{frame}
+
+\section{The Technician Test}
+{
+    \usebackgroundtemplate{\includegraphics[width=\paperwidth]{img/test.jpg}}
+    \frame{\mysectionpage}
+}
+
+\begin{frame}{Test sections}
+    Tests for the various license levels are organized in sections. The technician test covers the following:
+    \begin{columns}[onlytextwidth]
+        \column{0.5\textwidth}
+            \begin{itemize}
+                \item[T1] \hilitem<1>{FCC Rules}
+                \item[T2] \hilitem<2>{Operating Procedures}
+                \item[T3] \hilitem<3>{Radio wave characteristics}
+                \item[T4] \hilitem<4>{Amateur radio practices and station set up}
+                \item[T5] \hilitem<5>{Electrical principles}
+                \item[T6] \hilitem<6>{Electrical components}
+                \item[T7] \hilitem<7>{Station equipment}
+                \item[T8] \hilitem<8>{Modulation modes}
+                \item[T9] \hilitem<9>{Antennas, feedlines}
+                \item[T0] \hilitem<10>{AC power circuits, antenna installation, RF hazards}
+            \end{itemize}
+        \column{0.5\textwidth}
+            \centering
+            \only<1>{ \includegraphics[height=0.5\textheight]{img/judge-judy.jpeg} \\ Band usage, call signs, control operators, prohibited transmissions, station identification \\ }
+            \only<2>{ \includegraphics[height=0.5\textheight]{img/operation.png} \\ Frequency choice, test transmissions, operating mode, handling emergencies \\ }
+            \only<3>{ \includegraphics[height=0.5\textheight]{img/simpson-blubber.png} \\ Propagation, polarization, behavior of the atmosphere and various frequencies \\ }
+            \only<4>{ \includegraphics[height=0.5\textheight]{img/homer-radio.jpg} \\ Station setup and equipment, proper electrical construction, operation of radio features \\ }
+            \only<5>{ \includegraphics[height=0.5\textheight]{img/simpsons-shock.jpg} \\ Voltage, wattage, amperage, resistance, capacitance, power \\ }
+            \only<6>{ \includegraphics[height=0.5\textheight]{img/station.jpg} \\ Resistors, capacitors, semi-conductors, schematics \\ }
+            \only<7>{ \includegraphics[height=0.5\textheight]{img/homertripod.jpg} \\ Radio components, equipment troubleshooting and repair, use of various tools \\ }
+            \only<8>{ {\tiny \emph{Not the Simpsons}} \\ \includegraphics[height=0.5\textheight]{img/not-the-droids.jpg} \\ Bandwidth of signals, use of satellites, non-voice communication \\ }
+            \only<9>{ \includegraphics[width=0.9\textwidth]{img/spotlight-homer.jpg} \\ Antenna types and design, SWR, feedline construction, impedance matching \\ }
+            \only<10>{ \includegraphics[height=0.5\textheight]{img/simpsons-power-hazards.png} \\ Electrical safety equipment, safe antenna installation, RF hazards \\ }
+    \end{columns}
+\end{frame}
+
 
 \end{document}
