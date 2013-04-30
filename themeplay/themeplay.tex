@@ -1,0 +1,25 @@
+\documentclass{beamer}
+
+\usetheme{Madrid}
+%\usetheme{Goettingen}
+\usefonttheme{serif}
+\usefonttheme{structuresmallcapsserif}
+%\usecolortheme{default}
+%\usecolortheme{seagull} % gray, ok
+\usecolortheme{seahorse} % light-blue, +1
+\title{fred}
+
+\defbeamertemplate*{quote page}{default}[1][]
+{
+    \begin{frame}
+        \centering
+        \textbf{ This is a test } \\
+        \inserttitle \\
+    \end{frame}
+}
+
+\begin{document}
+
+\usebeamertemplate*{quote page}
+
+\end{document}
