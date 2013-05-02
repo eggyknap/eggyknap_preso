@@ -1,4 +1,4 @@
-\documentclass{beamer}
+\documentclass[xcolor=usenames,dvipsnames]{beamer}
 \usetheme{Madrid}
 %\usetheme{Goettingen}
 \usefonttheme{serif}
@@ -8,6 +8,7 @@
 \usepackage{rotating}
 \usepackage{multirow}
 \usepackage{soul}
+\usepackage[overlay,absolute]{textpos}
 
 \setbeamerfont{section title}{parent=title}
 \setbeamercolor{section title}{parent=titlelike}
@@ -24,25 +25,7 @@
 
 \def\Put(#1,#2)#3{\leavevmode\makebox(0,0){\put(#1,#2){#3}}}
 
-\makeatletter
-\setbeamertemplate{footline}
-{
-    % Commented out to remove footer line entirely
-%    \leavevmode%
-%    \hbox{%
-%    \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
-%        \usebeamerfont{author in head/foot}\insertshortauthor%~~\beamer@ifempty{\insertshortinstitute}{}{(\insertshortinstitute)}
-%    \end{beamercolorbox}%
-%    \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
-%        \usebeamerfont{title in head/foot}\insertshorttitle
-%    \end{beamercolorbox}%
-%    \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
-%        \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
-%        \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
-%    \end{beamercolorbox}}%
-%    \vskip0pt%
-}
-\makeatother
+\setbeamertemplate{footline}{}
 
 \newenvironment<>{varblock}[2][\textwidth]{
     \begin{center}
@@ -61,3 +44,29 @@
 
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
 
+\setlength{\TPHorizModule}{0.01\paperwidth}
+\setlength{\TPVertModule}{0.01\paperheight}
+\textblockorigin{0mm}{0mm} % start everything near the top-left corner
+
+\newenvironment<>{quotepage}[3]{%
+    \begin{frame}[t]{#1}
+        \centering
+        \includegraphics[height=\textheight,width=\textwidth,keepaspectratio]{#2} \\
+        \begin{textblock}{70}[0,1](1,96)
+            %\begin{beamercolorbox}[shadow=false,rounded=true]{box2}
+            \colorbox{SeaGreen}{%
+                \begin{minipage}[b]{0.95\paperwidth}
+                    \centering
+                    #3 \\
+                \end{minipage}
+            }
+            %\end{beamercolorbox}
+        \end{textblock}
+}{%
+    \end{frame}
+}
+
+\newcommand{\myquote}[3]{%
+    \begin{quotepage}{#1}{#2}{#3}
+    \end{quotepage}
+}
