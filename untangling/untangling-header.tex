@@ -45,20 +45,30 @@
 \setbeamertemplate{blocks}[default]
 \addtobeamertemplate{block begin}{\pgfsetfillopacity{0.65}}{\pgfsetfillopacity{1}}
 \newenvironment<>{quotepage}[3]{%
-    \begin{frame}[t]{#1}
+    \begin{frame}[t]%{#1}
         \centering
-        \includegraphics[height=\textheight,width=\textwidth,keepaspectratio]{#2} \\
+        %\begin{textblock}{100}[0.2,0](50,11)
+            \includegraphics[height=\textheight,width=\textwidth,keepaspectratio]{#2} \\
+        %\end{textblock}
         \begin{textblock}{70}[0,1](5,96)
             \begin{varblock}[0.9\paperwidth]{}%[shadow=false,rounded=true]{box2}
             %\colorbox{SeaGreen}{%
             %    \begin{minipage}[b]{0.95\paperwidth}
                     %\pgfsetfillopacity{0.35}
-                    \centering
-                    #3 \\
+                    \begin{centering}
+                    #3
+                    \if{#3} \\ \fi
+                    \vspace{3pt}
+                    \hfill \small{#1}
+                    \if{#1} \\ \fi
+                    \end{centering}
             %    \end{minipage}
             %}
             \end{varblock}
         \end{textblock}
+        %\begin{textblock}
+        % XXX Include credits (arg #1) here
+        %\end{textblock}
 }{%
     \end{frame}
 }
