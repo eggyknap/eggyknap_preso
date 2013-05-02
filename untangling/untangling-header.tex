@@ -42,29 +42,32 @@
     \end{center}
 }
 
+\setbeamertemplate{blocks}[default]
+\addtobeamertemplate{block begin}{\pgfsetfillopacity{0.65}}{\pgfsetfillopacity{1}}
+\newenvironment<>{quotepage}[3]{%
+    \begin{frame}[t]{#1}
+        \centering
+        \includegraphics[height=\textheight,width=\textwidth,keepaspectratio]{#2} \\
+        \begin{textblock}{70}[0,1](5,96)
+            \begin{varblock}[0.9\paperwidth]{}%[shadow=false,rounded=true]{box2}
+            %\colorbox{SeaGreen}{%
+            %    \begin{minipage}[b]{0.95\paperwidth}
+                    %\pgfsetfillopacity{0.35}
+                    \centering
+                    #3 \\
+            %    \end{minipage}
+            %}
+            \end{varblock}
+        \end{textblock}
+}{%
+    \end{frame}
+}
+
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
 
 \setlength{\TPHorizModule}{0.01\paperwidth}
 \setlength{\TPVertModule}{0.01\paperheight}
 \textblockorigin{0mm}{0mm} % start everything near the top-left corner
-
-\newenvironment<>{quotepage}[3]{%
-    \begin{frame}[t]{#1}
-        \centering
-        \includegraphics[height=\textheight,width=\textwidth,keepaspectratio]{#2} \\
-        \begin{textblock}{70}[0,1](1,96)
-            %\begin{beamercolorbox}[shadow=false,rounded=true]{box2}
-            \colorbox{SeaGreen}{%
-                \begin{minipage}[b]{0.95\paperwidth}
-                    \centering
-                    #3 \\
-                \end{minipage}
-            }
-            %\end{beamercolorbox}
-        \end{textblock}
-}{%
-    \end{frame}
-}
 
 \newcommand{\myquote}[3]{%
     \begin{quotepage}{#1}{#2}{#3}

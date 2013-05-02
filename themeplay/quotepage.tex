@@ -2,6 +2,7 @@
 \usetheme{Madrid}
 \usefonttheme{professionalfonts}
 \setbeamerfont{frametitle}{series=\bfseries}
+\usecolortheme{rose}
 
 \usepackage[overlay,absolute]{textpos}
 \setbeamertemplate{navigation symbols}{}
@@ -131,24 +132,40 @@
 %  }
 %
 %\makeatother
+\setbeamertemplate{blocks}[default]
  
 \setlength{\TPHorizModule}{0.01\paperwidth}
 \setlength{\TPVertModule}{0.01\paperheight}
 \textblockorigin{0mm}{0mm} % start everything near the top-left corner
 
+\addtobeamertemplate{block begin}{\pgfsetfillopacity{0.65}}{\pgfsetfillopacity{1}}
+
+\newenvironment<>{varblock}[2][\textwidth]{%
+  \setlength{\textwidth}{#1}%
+  \begin{actionenv}#3%
+    \def\insertblocktitle{#2}%
+    \par%
+    \usebeamertemplate{block begin}%
+}%
+{\par%
+  \usebeamertemplate{block end}%
+  \end{actionenv}%
+}
+
 \newenvironment<>{quotepage}[3]{%
     \begin{frame}[t]{#1}
         \centering
         \includegraphics[height=\textheight,width=\textwidth,keepaspectratio]{#2} \\
-        \begin{textblock}{70}[0,1](1,96)
-            %\begin{beamercolorbox}[shadow=false,rounded=true]{box2}
-            \colorbox{SeaGreen}{%
-                \begin{minipage}[b]{0.95\paperwidth}
+        \begin{textblock}{70}[0,1](5,96)
+            \begin{varblock}[0.9\paperwidth]{}%[shadow=false,rounded=true]{box2}
+            %\colorbox{SeaGreen}{%
+            %    \begin{minipage}[b]{0.95\paperwidth}
+                    %\pgfsetfillopacity{0.35}
                     \centering
                     #3 \\
-                \end{minipage}
-            }
-            %\end{beamercolorbox}
+            %    \end{minipage}
+            %}
+            \end{varblock}
         \end{textblock}
 }{%
     \end{frame}
@@ -166,6 +183,14 @@
     \begin{beamercolorbox}[shadow=false,rounded=true]{box1}
         This is a box
     \end{beamercolorbox}
+\end{frame}
+
+\begin{frame}
+\begin{textblock}{}(0.2,1.15)%
+\begin{varblock}[5cm]{Introduction}
+Space for discussion.
+\end{varblock}
+\end{textblock}
 \end{frame}
 
 \myquote{This is a test}{gravatar.png}{%
