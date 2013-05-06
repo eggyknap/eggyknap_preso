@@ -1,9 +1,10 @@
 \documentclass[xcolor=usenames,dvipsnames]{beamer}
 \usetheme{Madrid}
 %\usetheme{Goettingen}
-\usefonttheme{serif}
-\usefonttheme{structuresmallcapsserif}
+%\usefonttheme{serif}
+%\usefonttheme{structuresmallcapsserif}
 % \usepackage[font=small,labelfont=bf]{caption}
+\usefonttheme{professionalfonts}
 \usepackage{xcolor}
 \usepackage{rotating}
 \usepackage{multirow}
@@ -43,7 +44,7 @@
 }
 
 \setbeamertemplate{blocks}[default]
-\addtobeamertemplate{block begin}{\pgfsetfillopacity{0.65}}{\pgfsetfillopacity{1}}
+\addtobeamertemplate{block begin}{\pgfsetfillopacity{0.92}}{\pgfsetfillopacity{1}}
 \newenvironment<>{quotepage}[3]{%
     \begin{frame}[t]%{#1}
         \centering
@@ -57,11 +58,14 @@
                     %\pgfsetfillopacity{0.35}
                     \begin{centering}
                     #3
-                    \if{#3} \\ \fi
+                    % XXX Make this work correctly
+                    \ifthenelse{\empty {#3} {}}{ \\ is there something here }{}
+                    \end{centering}
                     \vspace{3pt}
+                    \begin{minipage}[b]{\textwidth}
                     \hfill \small{#1}
                     \if{#1} \\ \fi
-                    \end{centering}
+                    \end{minipage}
             %    \end{minipage}
             %}
             \end{varblock}
