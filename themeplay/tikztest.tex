@@ -1,0 +1,21 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+\usepackage{tikz}
+\usepackage[english]{babel}
+\usepackage{blindtext}
+\begin{document}
+
+\setlength{\unitlength}{1cm}
+\usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight]{supcourt-facade-background.png}}
+\begin{frame}
+    \centering
+    \setlength{\unitlength}{\textwidth}
+    \begin{tikzpicture}
+        \filldraw[fill=green,opacity=.35] (-50,2) rectangle (50,-2);
+        \pgftext[left] { \blindtext  }
+    \end{tikzpicture}
+    \\
+    \blindtext \\
+\end{frame}
+
+\end{document}
