@@ -138,7 +138,10 @@
 
 \section{The Technician Test}
 {
-    \usebackgroundtemplate{\includegraphics[width=\paperwidth]{img/test.jpg}}
+    \usebackgroundtemplate{%
+        \vbox to \paperheight{\vfil\hbox to \paperwidth{\hfil\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{img/test.jpg}\hfil}\vfil}%
+    }
+    %\usebackgroundtemplate{\includegraphics[width=\paperwidth]{img/test.jpg}}
     \frame{\mysectionpage}
 }
 
@@ -189,8 +192,57 @@
         \end{itemize}
     \end{multicols}
     \centering
-    \only<1>{ \includegraphics[height=0.6\textheight]{img/study.jpg} \\ Many commercial guides available. KB6ENU's free ``No-Nonsense'' guide worked for me \\ }
-    \only<2>{ \includegraphics[height=0.6\textheight]{
+    \only<1>{ \includegraphics[height=0.5\textheight]{img/study.jpg} \\ Many commercial guides available. KB6ENU's free ``No-Nonsense'' guide worked for me \\ }
+    \only<2>{ \includegraphics[height=0.5\textheight]{img/lmgtfy.png} \\ Utah Amateur Radio Club \\ http://user.xmission.com/\texttildelow uarc/testinfo.html \\ }
+    \only<3>{ \includegraphics[height=0.5\textheight]{img/cash.png} \\ Bring \$14, and some ID \\ }
+    \only<4>{ \includegraphics[height=0.5\textheight]{img/MailboxWaiting.jpg} \\ \emph{\$ sleep 10} \\}
 \end{frame}
+
+\section{Now what?}
+{
+%    \usebackgroundtemplate{\centering{\includegraphics[width=\paperwidth,height=\paperheight]{img/hello.png}}}
+    \usebackgroundtemplate{%
+        \vbox to \paperheight{\vfil\hbox to \paperwidth{\hfil\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{img/hello.png}\hfil}\vfil}%
+    }
+    \frame{\mysectionpage}
+}
+
+\begin{frame}[t]{Now what?}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item \hilitem<1>{American Radio Relay League}
+            \item \hilitem<2>{Amateur Radio Emergency Service}
+            \item \hilitem<3>{Regular group ``nets''}
+            \item \hilitem<4,5>{Computer-assisted modes}
+            \item \hilitem<6>{Space station}
+            \item \hilitem<7>{Repeaters}
+        \end{itemize}
+    \end{multicols}
+        \centering
+        \only<1>{\includegraphics[height=0.5\textheight]{img/ARRL-logo-lg.jpg} \\}
+        \only<2>{\includegraphics[height=0.5\textheight]{img/ARES-logo.jpg} \\}
+        \only<3>{\includegraphics[height=0.5\textheight]{img/python-ladies.jpg} \\}
+        \only<4>{\includegraphics[height=0.5\textheight]{img/spectrumlab.jpg} \\}
+        \only<5>{\includegraphics[height=0.5\textheight]{img/computerstuff.png} \\}
+        \only<6>{\includegraphics[height=0.5\textheight]{img/2001SpaceOdyssey.jpg} \\}
+        \only<7>{\includegraphics[height=0.5\textheight]{img/simpsons-clone.jpg} \\}
+\end{frame}
+
+\section{Questions?}
+{
+%    \usebackgroundtemplate{\centering{\includegraphics[width=\paperwidth,height=\paperheight]{img/hello.png}}}
+    \usebackgroundtemplate{%
+        \vbox to \paperheight{\vfil\hbox to \paperwidth{\hfil\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{img/questions.png}\hfil}\vfil}%
+    }
+    \frame{\mysectionpage}
+}
+
+\section{Bored?}
+{
+    \usebackgroundtemplate{%
+        \vbox to \paperheight{\vfil\hbox to \paperwidth{\hfil\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{img/bored.png}\hfil}\vfil}%
+    }
+    \frame{\mysectionpage}
+}
 
 \end{document}
