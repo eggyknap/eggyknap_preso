@@ -20,7 +20,7 @@
 % subtitle: what robust transactions can do for you, and how they can do it for free
 \author{Joshua Tolley -- eggyknap -- End Point Corporation}
 %\date[UTOSC 2010]{Utah Open Source Conference, 2010}
-\date{Utah Code Camp, March 2012}
+%\date{Utah Code Camp, March 2012}
 
 \frame{\titlepage}
 
@@ -184,6 +184,19 @@
 
 \begin{frame}
     \frametitle{Rules of thumb}
+    To decide where to put transaction boundaries:
+    \begin{itemize}
+        \item Consider units of a business process (``make a sale'') or an application process (``render a web page'')
+        \item Consider what operations depend on other related operations in order to make sense
+        \begin{itemize}
+            \item Don't add this new address unless the associated customer also gets added
+            \item Decrease a product's inventory count only if the customer has the money to pay for it
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Rules of thumb}
     You probably need transactions:
     \begin{itemize}
         \item Whether you're ready to admit it or not
@@ -236,11 +249,14 @@ josh=\# SELECT syntax error; \\
 ERROR:  syntax error at or near "error" \\
 LINE 1: SELECT syntax error; \\
 josh=\# SELECT 1; \\
-\textit{ERROR:  current transaction is aborted, commands ignored until end of
-transaction block} \\
+{\color{red} \textbf{ERROR:  current transaction is aborted, commands ignored until end of
+transaction block}} \\
 josh=\# ROLLBACK; \\
     }
     }
+    \vspace{10pt}
+    If your app gets this error, it's a sign you're not paying attention to
+    exceptions correctly, and you therefore suck.
 \end{frame}
 
 \begin{frame}{Implementation note}
@@ -260,6 +276,7 @@ Query OK, 0 rows affected (0.00 sec) \\
         }
     }
     \vspace{10pt}
+    \pause
     Perhaps this behavior irritates you as much as it does me.
 \end{frame}
 
@@ -410,6 +427,13 @@ end
             \item Locks remain held until transactions commit
             \item Rollback space can't be released until commit
             \item This may be particularly bad with 2PC
+            \item Note that in PostgreSQL, \textbf{everything} happens within a transaction
+            \begin{itemize}
+                \item You don't have to explicitly begin the transaction, but
+                you \textbf{do} have to explicitly close them, if you turn off
+                ``AutoCommit''
+                \item If you don't, they'll become one of these evil long transactions
+            \end{itemize}
         \end{itemize}
         \item More complex transactions are probably more likely to roll back
         \item Handle exceptions properly (you're doing this already, right?)
@@ -431,8 +455,8 @@ end
     \begin{itemize}
         \item Performance
         \begin{itemize}
-            \item Several INSERTs with Auto\textendash commit will generally be
-            much slower than the same inserts in a single transaction
+            \item For example, several INSERTs in their own transactions will
+            be slower than the same INSERTs grouped into one transaction.
         \end{itemize}
         \item Simpler code
         \begin{itemize}
@@ -449,14 +473,6 @@ end
     \begin{centering}
         \textbf{Questions?} \par
     \end{centering}
-\end{frame}
-
-\begin{frame}
-\titlepage
-\end{frame}
-
-\begin{frame}
-\titlepage
 \end{frame}
 
 % - You need transactions whether you're ready to admit it or not
