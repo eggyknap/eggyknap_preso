@@ -94,8 +94,8 @@
     Four characteristics of transactions ("\textbf{ACID}"):
     \begin{itemize}
         \item \textbf{Atomicity} -- Transactions succeed or fail entirely, not partially
-        \item \textbf{Consistency} -- After each COMMIT or ROLLBACK, all database constraints are true
-        \item \textbf{Isolation} -- Sessions see only their own uncommitted data
+        \item \textbf{Consistency} -- After each COMMIT or ROLLBACK, all active database constraints are met
+        \item \textbf{Isolation} -- One transaction cannont see uncommited data from any other transaction
         \item \textbf{Durability} -- Once committed, data remain committed despite crashes
     \end{itemize}
 \end{frame}
@@ -221,25 +221,24 @@
 
 \begin{frame}{Savepoint Example}
 \ttfamily {
-BEGIN; \\
-\textit{\textendash\textendash\hspace{2pt} Do something useful} \\
+\textbf{BEGIN}; \\
+\hspace{15pt}\textit{\textendash\textendash\hspace{2pt} Do something useful} \\
 INSERT INTO actions VALUES \\
 \hspace{10pt} ('IM IN YR AKSHUNZ DOIN YOOSFL STUFS'); \\
-SAVEPOINT try\_something; \\
+\textbf{SAVEPOINT} try\_something; \\
 SELECT COUNT(*) FROM some\_other\_table; \\
 UPDATE foo SET bar = baz WHERE qux = 42; \\
-\textit{\textendash\textendash\hspace{2pt} Perhaps a constraint causes a
-failure here} \\
-ROLLBACK TO SAVEPOINT try\_something; \\
-\textit{\textendash\textendash\hspace{2pt} My outer transaction is still
+\hspace{15pt}\textit{\textendash\textendash\hspace{2pt} Pretend there's a constraint error here} \\
+\textbf{ROLLBACK TO SAVEPOINT} try\_something; \\
+\hspace{15pt}\textit{\textendash\textendash\hspace{2pt} My outer transaction is still
 in-flight}
     }
 \end{frame}
 
 \begin{frame}{Implementation note}
-    In PostgreSQL, a statement that generates an error will cause continued
-    errors until a rollback, either to a savepoint or of the transaction
-    entirely. This makes savepoints quite common: \\
+    In PostgreSQL, a statement that generates an error will invalidate
+    everything until the next {\ttfamily ROLLBACK} or {\ttfamily ROLLBACK TO
+    SAVEPOINT}: \\
     \vspace{10pt}
     \small{
     \ttfamily {
@@ -277,7 +276,8 @@ Query OK, 0 rows affected (0.00 sec) \\
     }
     \vspace{10pt}
     \pause
-    Perhaps this behavior irritates you as much as it does me.
+    Perhaps this behavior irritates you as much as it does me, since it
+    ignores the entire purpose of a transaction.
 \end{frame}
 
 \begin{frame}{Implementation note}
@@ -291,10 +291,10 @@ Query OK, 0 rows affected (0.00 sec) \\
         \item \textbf{Dirty read}: A transaction reads data from a
         concurrent uncommitted transaction
         \item \textbf{Nonrepeatable read}: A transaction re-reads data and
-        finds another transaction has changed them
+        finds another transaction has committed changes to them
         \item \textbf{Phantom read}: A transaction re-executes a query, and
         the set of rows satisfying that query has changed due to some other
-        transaction.
+        committed transaction.
     \end{itemize}
 \end{frame}
 
@@ -344,25 +344,27 @@ Query OK, 0 rows affected (0.00 sec) \\
         \item Perform whatever operations are necessary
         \item PREPARE each transaction for commit
         \begin{itemize}
-            \item Each service guarantees at this point that it can commit the
-            transaction, even if something crashes, before returning
+            \item Until this step, the transaction looks like any other. Here
+            each service guarantees that the transaction will commit in the
+            future, even if something crashes between now and then.
         \end{itemize}
-        \item If any service reports it can't commit, ROLLBACK each transaction
-        \item If we haven't rolled back, COMMIT each transaction on each service
+        \item If any service reports it can't commit, we ROLLBACK each transaction
+        \item When all services PREPARE successfully, we COMMIT the transaction on each service
     \end{enumerate}
-    This is called \textbf{two-phase commit} (2PC) because commit happens in two steps
+    This is called \textbf{two-phase commit} (2PC) because commit happens in two steps: PREPARE, and COMMIT.
 \end{frame}
 
 \begin{frame}
     \frametitle{Two\textendash phase commit}
     2PC is slower than single-phase commit
     \begin{itemize}
-        \item Communicating with \textit{N} services is slower than
-        communicating with 1 service, where \textit{N} > 1.
-        \item On PREPARE, each transaction must store transaction state on disk, to ensure durability
-        \item The application must also store its own state on disk, in case it crashes between PREPARE and COMMIT
+        \item On PREPARE, each transaction must store transaction state on
+        disk, to ensure durability
+        \item The application must also store its own state on disk, in case it
+        crashes between PREPARE and COMMIT
         \begin{itemize}
-            \item Applications generally use \textit{transaction managers} rather than handle these details on their own
+            \item Applications generally use \textit{transaction managers}
+            rather than handle these details on their own
         \end{itemize}
     \end{itemize}
 \end{frame}
@@ -374,19 +376,19 @@ Query OK, 0 rows affected (0.00 sec) \\
 \#!/bin/jruby \\
 require 'java' \\
 \vspace{10pt}
-BTM = Java::BitronixTm::bitronixTransactionManager \\
-TxnSvc = Java::BitronixTm::TransactionManagerServices \\
-PDS = Java::BitronixTmResourceJdbc::PoolingDataSource \\
+{\color{DodgerBlue} BTM} = {\color{DodgerBlue} Java::BitronixTm::bitronixTransactionManager} \\
+{\color{DodgerBlue} TxnSvc} = {\color{DodgerBlue} Java::BitronixTm::TransactionManagerServices} \\
+{\color{DodgerBlue} PDS} = {\color{DodgerBlue} Java::BitronixTmResourceJdbc::PoolingDataSource} \\
 \vspace{10pt}
-\# Do the stuff below for each data source \\
-ds1 = PDS.new \\
-ds1.set\_class\_name 'org.postgresql.xa.PGXADataSource' \\
+{\color{gray} \# Do the stuff below for each data source} \\
+ds1 = {\color{DodgerBlue}PDS}.new \\
+ds1.set\_class\_name {\color{BlueViolet}'org.postgresql.xa.PGXADataSource'} \\
 \textellipsis \\
 ds1.init \\
-\# Get datasource connections, and start a transaction \\
+{\color{gray} \# Get datasource connections, and start a transaction} \\
 c1 = ds1.get\_connection \\
 c2 = ds2.get\_connection \\
-btm = TxnSvc.get\_transaction\_manager \\
+btm = {\color{DodgerBlue}TxnSvc}.get\_transaction\_manager \\
 btm.begin \\
 }
 }
@@ -396,19 +398,19 @@ btm.begin \\
     \frametitle{Bitronix transaction manager example}
 \footnotesize {
 \ttfamily {
-begin \\
+{\color{DodgerBlue}\textbf{begin}} \\
 \hspace{40pt} \# Do something on each connection \\
 \hspace{40pt} s2 = c2.prepare\_statement \\
-\hspace{80pt} "INSERT INTO ledger VALUES ('Bob', 100)" \\
+\hspace{80pt} {\color{BlueViolet}"INSERT INTO ledger VALUES ('Bob', 100)"} \\
 \hspace{40pt} s2.execute\_update \\
 \hspace{40pt} s2.close \\
 \hspace{40pt}  \textellipsis \\
 \hspace{40pt}  btm.commit \\
-\hspace{40pt}  puts "Successfully committed" \\
-rescue \\
-\hspace{40pt}  puts "Something bad happened: " + \$! \\
+\hspace{40pt}  puts {\color{BlueViolet}"Successfully committed"} \\
+{\color{DodgerBlue}\textbf{rescue }}\\
+\hspace{40pt}  puts {\color{BlueViolet}"Something bad happened: "} + \$! \\
 \hspace{40pt}  btm.rollback \\
-end
+{\color{DodgerBlue}\textbf{end }}\\
 }}
 \end{frame}
 
@@ -451,7 +453,7 @@ end
 \end{frame}
 
 \begin{frame}
-    \frametitle{Miscellaneous. transaction benefits}
+    \frametitle{Miscellaneous transaction benefits}
     \begin{itemize}
         \item Performance
         \begin{itemize}
