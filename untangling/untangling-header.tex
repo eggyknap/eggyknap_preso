@@ -2,7 +2,7 @@
 \usetheme{Madrid}
 %\usetheme{Goettingen}
 %\usefonttheme{serif}
-%\usefonttheme{structuresmallcapsserif}
+\usefonttheme{structuresmallcapsserif}
 % \usepackage[font=small,labelfont=bf]{caption}
 \usefonttheme{professionalfonts}
 \usepackage{xcolor}
@@ -49,7 +49,7 @@
     \begin{frame}[t]%{#1}
         \centering
         %\begin{textblock}{100}[0.2,0](50,11)
-            \includegraphics[height=\textheight,width=\textwidth,keepaspectratio]{#2} \\
+            \includegraphics[height=\textheight,width=\textwidth,keepaspectratio]{#2} %\\
         %\end{textblock}
         \begin{textblock}{70}[0,1](5,96)
             \begin{varblock}[0.9\paperwidth]{}%[shadow=false,rounded=true]{box2}
@@ -59,7 +59,7 @@
                     \begin{centering}
                     #3
                     % XXX Make this work correctly
-                    \ifthenelse{\empty {#3} {}}{ \\ is there something here }{}
+                    %\ifthenelse{\empty {#3} {}}{ \\ is there something here }{}
                     \end{centering}
                     \vspace{3pt}
                     \begin{minipage}[b]{\textwidth}
