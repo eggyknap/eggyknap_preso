@@ -1,0 +1,50 @@
+.cover.active h2 {
+    //color:#52a2df;
+    color:#FFF;
+    text-align:center;
+    font-size:60px;
+    font-family: 'Open Sans Light'; sans-serif;
+    font-weight: normal;
+    //text-shadow: 2px 2px #222;
+    background-color: rgb(82, 162, 223);
+    //background-color: #261270;
+    width: 90%;
+    bottom: 0;
+    position: fixed;
+    left: 5%;
+    right: 95%;
+    padding: 15px;
+    -webkit-border-radius: 5px;
+    border: 2px solid #000;
+    //border: 2px solid #261270
+}
+
+.underlay {
+    z-index: 1;
+    position: absolute;
+    width: 70%;
+}
+
+.overlay {
+    z-index: 2;
+    position: absolute;
+    left: 15%;
+    height: 40%;
+    width: 70%;
+    -webkit-border-radius: 10px;
+    -webkit-transform: rotate(-30deg);
+    border: 10px solid #CC3333;
+    padding: 20px;
+    text-align: center;
+    vertical-align: center;
+    font-size: 40px;
+}
+
+.overlay.active {
+    background-color: rgba(180, 151, 151, 0.8);
+}
+
+div.opaque {
+    border: 2px solid #AAA;
+    background-color: #FFF;
+}

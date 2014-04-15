@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>Data Warehousing for Fairly Intelligent Beginners</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=792, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="stylesheet" href="shower/themes/bright/styles/screen.css">
+	<link rel="stylesheet" href="dw-beginners.css">
+</head>
+<body class="list">
+	<header class="caption">
+		<h1>Data warehousing basics</h1>
+		<p>Joshua Tolley</p>
+		<p>End Point Corporation</p>
+	</header>
+	<section class="slide cover" id="dummies"><div>
+        <h2>Data Warehousing for Dummies</h2>
+		<img src="img/rockwell-dummies.jpg" alt="">
+	</div></section>
+	<section class="slide cover" id="beginners"><div>
+		<h2>Data Warehousing for Fairly Intelligent Beginners</h2>
+		<img src="img/rockwell-beginners.jpg" alt="">
+	</div></section>
+    <section class="slide"><div>
+        <h2>Remember the rules you learned in your first class on databases?</h2>
+        <div class="underlay">
+        <ul>
+            <li>Tables represent objects in your system</li>
+            <ul>
+                <li>Customers, Orders, Products...</li>
+            </ul>
+            <li>Normalize everything, using "normal forms" (1NF, 2NF, etc.)</li>
+            <li>Always define proper constraints to keep your data clean</li>
+            <ul>
+                <li>Unique and not null constraints, foreign and primary keys, natural vs. surrogate keys</li>
+            </ul>
+        </ul>
+        </div>
+<!--        <div class="next overlay">
+            These apply to what's called an OLTP database, for &quot;On-line Transaction Processing&quot;</li>
+        </div> -->
+    </div></section>
+    <section class="slide shout"><div>
+        <h2>These rules work great for some kinds of databases...</h2>
+    </div></section>
+    <section class="slide shout"><div>
+        <h2>...but they're lousy for other kinds.</h2>
+    </div></section>
+	<section class="slide cover"><div>
+        <h2>There are different kinds of databases?</h2>
+		<img src="img/rect3081.png" alt="">
+	</div></section>
+    <section class="slide"><div>
+        <h2>Database types</h2>
+        In general, databases can be categorized by:
+        <ul>
+          <li class="next">the type of data they hold,</li>
+          <li class="next">how those data relate to each other,</li>
+          <li class="next">and how the data are queried.</li>
+        </ul>
+    </div></section>
+    <section class="slide shout"><div>
+        <h2>These types are not necessarily mutually exclusive.</h2>
+    </div></section>
+    <section class="slide"><div>
+        <h2>Database types</h2>
+        OLTP: On-line transaction processing.
+    </div></section>
+    <section class="slide"><div>
+        <h2>Database types</h2>
+        Document database: Generally unstructured data
+    </div></section>
+    <section class="slide"><div>
+        <h2>Database types</h2>
+        BLAST database, for genome data and analysis
+    </div></section>
+    <section class="slide"><div>
+        <h2>Database types</h2>
+        Key / Value database: memcached, MUMPS
+    </div></section>
+    <section class="slide"><div>
+        <h2>Database types</h2>
+        OLAP, or On-Line Analytical Processing. This type of database is commonly associated with "data warehouses".
+    </div></section>
+	<!--
+		To hide progress bar from entire presentation
+		just remove “progress” element.
+		-->
+<!--	<div class="progress"><div></div></div> -->
+	<script src="shower/shower.min.js"></script>
+</body>
+</html>
