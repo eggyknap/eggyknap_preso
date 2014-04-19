@@ -49,14 +49,16 @@
     </div></section>
 	<section class="slide cover"><div>
         <h2>There are different kinds of databases?</h2>
-		<img src="img/rect3081.png" alt="">
+		<img src="img/rockwell-confused.png" alt="">
 	</div></section>
     <section class="slide"><div>
         <h2>Database types</h2>
         In general, databases can be categorized by:
         <ul>
-          <li class="next">the type of data they hold,</li>
-          <li class="next">how those data relate to each other,</li>
+          <li class="next">the type of data they hold;</li>
+          <li class="next">how those data relate to each other;</li>
+          <li class="next">whether transactions are useful;</li>
+          <li class="next">if the data are modified, or constant;</li>
           <li class="next">and how the data are queried.</li>
         </ul>
     </div></section>
@@ -64,24 +66,53 @@
         <h2>These types are not necessarily mutually exclusive.</h2>
     </div></section>
     <section class="slide"><div>
-        <h2>Database types</h2>
-        OLTP: On-line transaction processing.
+        <h2>Database types: OLTP</h2>
+        <ul>
+            <li>On-line transaction processing</li>
+            <li>Lots of simple, fast queries involving few records</li>
+            <li>Transactions can be very important</li>
+            <li>Data are frequently added, modified, and deleted</li>
+            <li>Typical for backing an application</li>
+        </ul>
     </div></section>
     <section class="slide"><div>
-        <h2>Database types</h2>
-        Document database: Generally unstructured data
+        <h2>Database types: Document store</h2>
+        <ul>
+            <li>Often unstructured data</li>
+            <li>Entries consist of JSON, YAML, XML, etc.</li>
+            <li>Documents don't necessarily have a defined relationship with other documents</li>
+        </ul>
     </div></section>
     <section class="slide"><div>
-        <h2>Database types</h2>
-        BLAST database, for genome data and analysis
+        <h2>Database types: BLAST</h2>
+        <ul>
+            <li>Basic Local Alignment Search Tool</li>
+            <li>Used for genome and protein research</li>
+            <li>Data elements consist of protein or genetic sequences</li>
+            <li>Searches are fuzzy, based on sequence similarity</li>
+        </ul>
     </div></section>
     <section class="slide"><div>
-        <h2>Database types</h2>
-        Key / Value database: memcached, MUMPS
+        <h2>Database types: Key/Value</h2>
+        <ul>
+            <li>Memcached, MUMPS</li>
+            <li>Similar to a hash or dictionary object</li>
+            <li>Extremely common, but rarely considered a database</li>
+            <li>Each object has a unique key; lookups are based on that key</li>
+        </ul>
     </div></section>
     <section class="slide"><div>
-        <h2>Database types</h2>
-        OLAP, or On-Line Analytical Processing. This type of database is commonly associated with "data warehouses".
+        <h2>Database types: OLAP</h2>
+        <ul>
+            <li>On-Line Analytical Processing</li>
+            <li>Commonly used to identify data warehouses</li>
+            <li>Queries are read-only, and involve large chunks of data taken from a long period of time</li>
+            <li>Special schema design to allow good performance with large data sets, and query tools</li>
+        </ul>
+    </div></section>
+    <section class="slide cover"><div>
+        <img src="img/rockwell-design.png" />
+        <h2>OLAP Schema Design</h2>
     </div></section>
 	<!--
 		To hide progress bar from entire presentation
