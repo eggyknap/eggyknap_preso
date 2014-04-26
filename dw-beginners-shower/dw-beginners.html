@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!-- http://www.wikipaintings.org/en/norman-rockwell/mode/all-paintings/2 -->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=1024, user-scalable=no">
+
+  <title>Data Warehousing for Dumm^WFairly Intelligent Beginners</title>
+
+  <!-- Required stylesheet -->
+  <link rel="stylesheet" media="screen" href="deck/core/deck.core.css">
+
+  <!-- Extension CSS files go here. Remove or add as needed. -->
+  <link rel="stylesheet" media="screen" href="deck/extensions/goto/deck.goto.css">
+  <link rel="stylesheet" media="screen" href="deck/extensions/menu/deck.menu.css">
+  <link rel="stylesheet" media="screen" href="deck/extensions/navigation/deck.navigation.css">
+  <link rel="stylesheet" media="screen" href="deck/extensions/status/deck.status.css">
+  <link rel="stylesheet" media="screen" href="deck/extensions/scale/deck.scale.css">
+
+  <!-- Style theme. More available in /themes/style/ or create your own. -->
+  <link rel="stylesheet" media="screen" href="deck/themes/style/web-2.0.css">
+
+  <!-- Transition theme. More available in /themes/transition/ or create your own. -->
+  <link rel="stylesheet" media="screen" href="deck/themes/transition/horizontal-slide.css">
+
+  <!-- Basic black and white print styles -->
+  <link rel="stylesheet" media="print" href="deck/core/print.css">
+
+  <!-- Required Modernizr file -->
+  <script src="deck/modernizr.custom.js"></script>
+
+<!-- XXX Sometime, figure out how to do this transition stuff -->
+  <link rel="stylesheet" href="dw-beginners.css">
+</head>
+<body>
+  <div class="deck-container">
+
+<!--
+    <section class="slide move-up">
+        <h1>Data Warehousing for
+            <span id="dummies">Dummies</span>
+            <span class="slide" id="fib">Fairly Intelligent Beginners</span>
+    </section>
+    -->
+
+    <section class="slide bgimg">
+        <img src="img/rockwell-dummies.jpg" />
+        <h1>Something here</h1>
+    </section>
+
+    <section class="slide">
+        <h2>Data Warehousing for...</h2>
+        <div class="slide" id="first">
+            <img class="fillspace" src="img/rockwell-dummies.jpg" />
+            <div><h2 class="caption">Dummies</h2></div>
+        </div>
+        <div class="slide">
+            <p><img class="fillspace" src="img/rockwell-beginners.jpg" /></p>
+            <p><h2 class="caption">Fairly Intelligent Beginners</h2></p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Remember your first class on databases...</h2>
+        <div class="filldiv"><img class="fillspace" src="img/rockwell-teacher.jpg" /></div>
+        <div class="slide imagelist">Normal Forms (1NF, 2NF, etc.)</div>
+        <div class="slide imagelist">Relational Algebra</div>
+        <div class="slide imagelist">Primary, foreign, natural, and surrogate keys</div>
+        <div class="slide imagelist">Inner joins, outer joins, natural joins</div>
+    </section>
+
+    <!-- deck.navigation snippet -->
+    <!--
+    <div aria-role="navigation">
+      <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+      <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+    </div> -->
+
+    <!-- deck.status snippet -->
+    <!--
+    <p class="deck-status" aria-role="status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p> -->
+
+    <!-- deck.goto snippet -->
+    <form action="." method="get" class="goto-form">
+      <label for="goto-slide">Go to slide:</label>
+      <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+      <datalist id="goto-datalist"></datalist>
+      <input type="submit" value="Go">
+    </form>
+
+    <!-- End extension snippets. -->
+  </div>
+
+<!-- Required JS files. -->
+<script src="deck/jquery.min.js"></script>
+<script src="deck/core/deck.core.js"></script>
+
+<!-- Extension JS files. Add or remove as needed. -->
+<script src="deck/extensions/menu/deck.menu.js"></script>
+<script src="deck/extensions/goto/deck.goto.js"></script>
+<script src="deck/extensions/status/deck.status.js"></script>
+<script src="deck/extensions/navigation/deck.navigation.js"></script>
+<script src="deck/extensions/scale/deck.scale.js"></script>
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+  $(function() {
+    $.deck('.slide');
+  });
+</script>
+</body>
+</html>

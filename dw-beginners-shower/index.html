@@ -6,7 +6,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=792, user-scalable=no">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen.css">
+	<link rel="stylesheet" href="shower/themes/bright/styles/screen.css">
 	<link rel="stylesheet" href="dw-beginners.css">
 </head>
 <body class="list">
@@ -119,6 +119,111 @@
     <section class="slide cover"><div>
         <img src="img/rockwell-design.png" />
         <h2>OLAP Schema Design</h2>
+    </div></section>
+    <section class="slide"><div>
+        <h2>OLAP Schema Design: Dimensions and Measures</h2>
+        The database consists of <b>dimensions</b> and <b>measures</b>).
+        <span class="next"><b>Dimensions</b> generally include discreet values, and are used to
+        group or filter data items. For instance, <b>Age Group</b>,
+        <b>Country</b>, or <b>Gender</b>.  </span>
+        <span class="next"><b>Measures</b> are typically continuous numeric values, and are
+        viewed in aggregate form. On a report, we're usually interested in the
+        measures' calculated values. Examples include <b>Sale price</b> and
+        <b>Inventory</b>.</span>
+    </div></section>
+    <section class="slide"><div>
+        <h2>OLAP Schema Design: Dimensions and Measures</h2>
+        <div>
+            <table>
+                <tr>
+                    <th scope="col">Region</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Price</th>
+                </tr>
+                <tr>
+                    <td>Eastern</td>
+                    <td>2 Feb 2014</td>
+                    <td>$100</td>
+                </tr>
+                <tr>
+                    <td>Northern</td>
+                    <td>14 Jan 2014</td>
+                    <td>$250</td>
+                </tr>
+                <tr>
+                    <td>Western</td>
+                    <td>10 Jan 2014</td>
+                    <td>$195</td>
+                </tr>
+                <tr>
+                    <td>Eastern</td>
+                    <td>19 Feb 2014</td>
+                    <td>$210</td>
+                </tr>
+            </table>
+        </div>
+        <span class="next"><b>Region</b> and <b>Date</b> are dimensions; <b>Price</b> is a measure.</span>
+    </div></section>
+    <section class="slide"><div>
+        <h2>OLAP Schema Design: Star Schema</h2>
+        Actual database structure involves two table types: <b>Fact tables</b> and <b>Dimension tables</b>. <b>Dimension tables</b> are small, and contain discreet dimension values. <b>Fact tables</b> contain measures' values, and foreign keys pointing to the dimension tables. This makes a star-like design.
+    </div></section>
+    <section class="slide"><div>
+        <h2>OLAP Schema Design: Star Schema</h2>
+        <img src="img/star-schema.png" height="65%" style="position: absolute; left: 25%; top: 30%" />
+    </div></section>
+    <section class="slide cover"><div>
+        <h2>Designing Stars</h2>
+        <img src="img/rockwell-moon.png" />
+    </div></section>
+    <section class="slide"><div>
+        <h2>Designing Stars: Grain</h2>
+        <ul>
+            <li>Describes categorially <i>exactly</i> what the fact table represents, at its finest detail</li>
+            <li><b>Must</b> be clearly defined, as the first step of design</li>
+            <li>Allows designers to determine which measures and dimensions are possible for a fact table</li>
+            <li>To answer questions for measures and dimensions that aren't possible for a given fact table, you'll need to find another fact table to use</li>
+        </ul>
+    </div></section>
+    <section class="slide"><div>
+        <h2>Designing Stars: Grain</h2>
+        It's common to have multiple stars, with different grains, to answer different kinds of questions
+        <span class="next">, <b>but build them one at a time!</b></span>
+    </div></section>
+    <section class="slide cover"><div>
+        <h2>Examples</h2>
+        <img src="img/rockwell-facts-of-life-cover.png" />
+    </div></section>
+    <section class="slide"><div>
+        <h2>Examples: Retail Sales</h2>
+        Grain: A single customer purchase
+        <ul>
+            <li>Dimensions include <b>Date</b>, <b>Customer</b>, <b>Location</b></li>
+            <li>Measures include <b>Purchase Price</b> and perhaps others based on the business</li>
+            <li class="next">Individual order line items are <i>not</i> part of this grain</li>
+        </ul>
+    </div></section>
+    <section class="slide"><div>
+        <h2>Examples: Retail Sales</h2>
+        Grain: Monthly inventory
+        <ul>
+            <li>Dimensions include <b>Month</b>, <b>Location</b>, and <b>SKU</b></li>
+            <li>Measures include <b>Total Inventory</b> and possibly <b>Current Unit Price</b></li>
+            <li class="next">No mention of customers in this star</li>
+        </ul>
+    </div></section>
+    <section class="slide"><div>
+        <h2>Examples: Hospital Care</h2>
+        Possible grains include
+        <ul>
+            <li>Treatment outcomes</li>
+            <li>Length of stay</li>
+            <li>Monthly rooms available</li>
+            <li>Provider scheduling</li>
+        </ul>
+    </div></section>
+    <section class="slide shout"><div>
+        <h2>Figure out what question you want to answer, then come up with a grain that will answer it.</h2>
     </div></section>
 	<!--
 		To hide progress bar from entire presentation

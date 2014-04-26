@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg3823"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   width="429"
+   height="839"
+   sodipodi:docname="olaf.jpg">
+  <metadata
+     id="metadata3829">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs3827">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3880">
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="M 138.64831,447.05191 C 69.324153,309.29237 94.209746,322.62394 69.324153,309.29237 44.438559,295.9608 -0.88877119,326.17902 -0.88877119,326.17902 L 12.442797,367.95127 52.4375,379.5053 l 75.54555,109.31885 -14.22034,67.54661 8.88771,19.55297 -26.663132,24.88559 -16.886652,52.4375 16.886652,79.98941 34.662072,23.99682 -3.55508,40.88348 47.10487,19.55296 33.77331,-7.99894 31.99576,13.33157 47.10487,-5.33263 17.77543,-21.33051 -2.66632,-36.43962 32.88454,-24.88559 17.77542,-64.8803 -8.88771,-55.10381 -31.10699,-45.32733 -30.21822,-15.99788 -8.88771,-51.54873 -19.55297,-15.99788 66.65784,-97.76483 23.99682,-14.22034 4.44386,-30.21822 -0.88877,-31.10699 -28.44068,-31.10699 -4.44386,-24.8856 5.33263,-23.99682 -31.99576,-39.10593 -15.99789,-7.99894 29.32945,-62.21399 14.22034,-14.22033 16.88666,-5.33263 10.66525,10.66525 8.88771,-6.2214 -6.2214,-14.220335 -29.32945,-2.666314 -3.55508,3.555085 -16.88665,-1.777542 -24.8856,52.437496 0.88877,-61.325208 -9.77648,-43.549788 -25.77436,-27.551907 -7.99894,8.887712 18.66419,30.21822 9.77648,41.772246 0,18.664195 -13.33156,-19.552966 -7.11017,6.221398 3.55508,13.331568 -23.10805,2.66631 -17.77542,9.77649 1.77754,15.99788 14.22034,-5.33263 1.77754,-7.11017 13.33157,-1.77754 10.66525,5.33263 7.11017,13.33156 -3.55508,30.21822 -27.55191,3.55509 -27.55191,15.99788 -41.77224,59.54767 -21.33051,25.77436 -7.99894,54.21505 8.88771,71.99046 z"
+         id="path3882"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="966"
+     inkscape:window-height="1154"
+     id="namedview3825"
+     showgrid="false"
+     inkscape:zoom="1.125149"
+     inkscape:cx="216.34336"
+     inkscape:cy="429.20729"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg3823" />
+  <image
+     width="429"
+     height="839"
+     xlink:href="file:///home/josh/devel/eggyknap_preso/dw-beginners-shower/img/olaf.jpg"
+     id="image3831"
+     x="0"
+     y="0"
+     clip-path="url(#clipPath3880)"
+     inkscape:export-filename="/home/josh/devel/eggyknap_preso/dw-beginners-shower/img/olaf-clipped.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90" />
+</svg>

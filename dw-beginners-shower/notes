@@ -1,0 +1,8 @@
+Data Warehousing for Dumm^WFairly Intelligent Beginners
+
+Everyone's beginner database class talks about foreign keys, primary keys, natural keys, surrogate keys, normal forms, etc.
+"Normal forms are good!!1 Natural keys are good!!1 Surrogate keys are mostly bad!!1"
+All these Articles of Faith assume one underlying truth, namely that you're making what's called an OLTP database
+There are, of course, other kinds of databases (document dbs, time series DBs, streaming dbs, etc.). Each differs in purpose and design; each one has different rules of thumb.
+
+In addition to dwbasics talk, querying tools should be listed as a difference between OLTP and OLAP
