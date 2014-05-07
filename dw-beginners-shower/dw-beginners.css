@@ -6,6 +6,10 @@
     color: #33A;
 }
 
+.slide.shout h2 b {
+    color: #4F4FF8;
+}
+
 .cover.active h2 {
     /* color:#52a2df; */
     color:#FFF;

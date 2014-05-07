@@ -15,6 +15,9 @@
 		<p>Joshua Tolley</p>
 		<p>End Point Corporation</p>
 	</header>
+	<section class="slide"><div>
+        This is not the first slide. I promise.
+	</div></section>
 	<section class="slide cover" id="dummies"><div>
         <h2>Data Warehousing for Dummies</h2>
 		<img src="img/rockwell-dummies.jpg" alt="">
@@ -166,11 +169,32 @@
     </div></section>
     <section class="slide"><div>
         <h2>OLAP Schema Design: Star Schema</h2>
-        Actual database structure involves two table types: <b>Fact tables</b> and <b>Dimension tables</b>. <b>Dimension tables</b> are small, and contain discreet dimension values. <b>Fact tables</b> contain measures' values, and foreign keys pointing to the dimension tables. This makes a star-like design.
+        Actual database structure involves two table types: <b>Fact tables</b>
+        and <b>Dimension tables</b>. <b>Dimension tables</b> are small, and
+        contain discreet dimension values. <b>Fact tables</b> contain measures'
+        values, and foreign keys pointing to the dimension tables. This makes a
+        star-like design.
     </div></section>
     <section class="slide"><div>
         <h2>OLAP Schema Design: Star Schema</h2>
         <img src="img/star-schema.png" height="65%" style="position: absolute; left: 25%; top: 30%" />
+    </div></section>
+    <section class="slide"><div>
+        <h2>OLAP Schema Design: Star Schema</h2>
+        Tables in a star schema commonly use synthetic primary keys, include
+        few integrity constraints, and break all the usual normalization rules.
+    </div></section>
+    <section class="slide"><div>
+        <h2>OLAP Schema Design: ETL</h2>
+        You'll probably need to build an <b>ETL</b> (Extraction,
+        Transformation, and Loading) process to move data from OLTP databases
+        into the warehouse. This may involve:
+        <ul>
+            <li>Talking to several data sources with different interfaces</li>
+            <li>Tracking changes so only changed data gets processed</li>
+            <li>Determining how often to update the warehouse</li>
+            <li>Preserving old data in the face of changing dimensions ("This customer's address just changed")</li>
+        </ul>
     </div></section>
     <section class="slide cover"><div>
         <h2>Designing Stars</h2>
@@ -224,6 +248,43 @@
     </div></section>
     <section class="slide shout"><div>
         <h2>Figure out what question you want to answer, then come up with a grain that will answer it.</h2>
+    </div></section>
+    <!-- Now talk about Pentaho -->
+    <section class="slide cover"><div>
+        <h2>Looking at your Data</h2>
+        <img src="img/rockwell-divingboard.png" />
+    </div></section>
+    <section class="slide shout"><div>
+        <h2>There's lots of software for this stuff. We'll just talk about one, called <b>Pentaho</b>.</h2>
+    </div></section>
+    <section class="slide"><div>
+        <h2>Pentaho</h2>
+        <ul>
+            <li>http://www.pentaho.com</li>
+            <li>Exists as Community and Commercial versions</li>
+            <li>Allows several different styles of reporting</li>
+            <li>Includes tools for ETL and data mining</li>
+        </ul>
+        <img style="position: absolute; left: 30%; top: 3%; z-index: 0; width: 40%" src="img/pentaho-logo.svg" />
+    </div></section>
+    <section class="slide cover"><div>
+        <img src="img/waqr1-resize.png" />
+    </div></section>
+    <section class="slide cover"><div>
+        <img src="img/waqr2-resize.png" />
+    </div></section>
+    <section class="slide cover"><div>
+        <img src="img/waqr3-resize.png" />
+    </div></section>
+    <section class="slide cover"><div>
+        <img src="img/waqr4-resize.png" />
+    </div></section>
+    <section class="slide cover"><div>
+        <img src="img/analysis-resize.png" />
+    </div></section>
+    <section class="slide shout"><div>
+        <h2>Any questions?</h2>
+        <small style="position: absolute; top: 90%; left: 60%"><i>Josh Tolley, https://blog.endpoint.com</i></small>
     </div></section>
 	<!--
 		To hide progress bar from entire presentation
