@@ -61,7 +61,7 @@ div.opaque {
     background-color: #FFF;
 }
 
-.cover.active h2 {
+.topcover.active h2 {
     top: 15%;
     bottom: auto;
 }
