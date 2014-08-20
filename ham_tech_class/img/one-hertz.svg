@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docname="New document 20"
+   inkscape:version="0.48.4 r9939"
+   version="1.1"
+   id="svg6047"
+   height="1052.3622047"
+   width="744.09448819">
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="501.58541"
+     inkscape:cy="653.77619"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="955"
+     inkscape:window-height="1154"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0" />
+  <defs
+     id="defs6049">
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect6719"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect6715"
+       is_visible="true" />
+  </defs>
+  <metadata
+     id="metadata6052">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       id="path6707"
+       title="sin(x)"
+       d="M 68.690376 494.75799 l 636.39612 0 M 68.690376 763.45858 l 0 -537.40118 M 68.690376 494.75799 C 98.9949531429 360.766353078 129.299530286 246.756222017 159.604107429 276.454910999 C 189.908684571 306.153599981 220.213261714 471.137523147 250.517838857 591.91200005 C 280.822416 712.686476952 311.126993143 753.271854672 341.431570286 669.823466893 C 371.736147429 586.375079114 402.040724571 403.328963638 432.345301714 319.692513107 C 462.649878857 236.056062576 492.954456 276.933870002 523.259033143 397.60397995 C 553.563610286 518.274089899 583.868187429 683.127869603 614.172764571 713.061069001 C 644.477341714 742.994268399 674.781918857 628.749626922 705.086496 494.75799"
+       style="fill:#ffff00;fill-opacity:1;stroke:#000000;stroke-width:13;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:13;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:26,26;stroke-dashoffset:0"
+       d="m 147.48227,209.89496 c 319.20821,0 321.22851,0 321.22851,0 l 0,0"
+       id="path6721"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/josh/path6707.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot6723"
+       style="font-size:64px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Garuda;-inkscape-font-specification:Garuda"
+       transform="translate(35.355339,69.700526)"
+       inkscape:export-filename="/home/josh/path6707.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><flowRegion
+         id="flowRegion6725"><rect
+           id="rect6727"
+           width="499.01535"
+           height="144.45181"
+           x="126.26907"
+           y="51.30101"
+           style="font-size:64px" /></flowRegion><flowPara
+         id="flowPara6729">One cycle</flowPara></flowRoot>    <path
+       style="fill:none;stroke:#000000;stroke-width:13;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 466.69048,191.71221 c 0,42.42641 0,42.42641 0,42.42641"
+       id="path6733"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/josh/path6707.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path6735"
+       d="m 147.48228,188.68175 c 0,42.42641 0,42.42641 0,42.42641"
+       style="fill:none;stroke:#000000;stroke-width:13;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:export-filename="/home/josh/path6707.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+  </g>
+</svg>

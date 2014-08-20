@@ -1,0 +1,3 @@
+wget http://www.webtravelnews.com/wp-storage/uploads/2013/10/niagara-falls.jpg
+wget http://www.popularmechanics.com/cm/popularmechanics/images/X3/leaky-faucet-0513-mdn.jpg > leaky.jpg
+wget -O seesaw.jpg http://www.sharecg.com/images/medium/64411.jpg
