@@ -1,3 +1,7 @@
 span.red {
     color: #C00;
 }
+
+.hide.active.visited {
+    display: none;
+}

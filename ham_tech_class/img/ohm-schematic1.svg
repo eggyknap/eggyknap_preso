@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg3059"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="ohm-schematic2.svg">
+  <defs
+     id="defs3061" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.979899"
+     inkscape:cx="129.68172"
+     inkscape:cy="896.33419"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="955"
+     inkscape:window-height="1154"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata3064">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 47.043161,62.209084 11.458923,0 11.458918,0 11.458918,0 12.173205,-10.71429 11.458925,20 11.45892,-20 11.45891,20 11.45892,-20 11.45891,20 11.45892,-20 11.45892,20 10.74463,-9.28571 11.45892,0 11.45891,0 11.45892,0 0.0303,54.642856"
+       id="path2985"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccccccccc"
+       inkscape:export-filename="/home/josh/devel/eggyknap_preso/ham_tech_class/img/ohm-schematic.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:13;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="path2987"
+       sodipodi:cx="19.642857"
+       sodipodi:cy="344.32648"
+       sodipodi:rx="1.4285715"
+       sodipodi:ry="1.25"
+       d="m 21.071428,344.32648 a 1.4285715,1.25 0 1 1 -2.857143,0 1.4285715,1.25 0 1 1 2.857143,0 z"
+       transform="matrix(0.66216216,0,0,0.66216216,32.314681,-165.78149)"
+       inkscape:export-filename="/home/josh/devel/eggyknap_preso/ham_tech_class/img/ohm-schematic.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <g
+       transform="translate(-6.9999986,-291.63262)"
+       id="g3009"
+       inkscape:export-filename="/home/josh/devel/eggyknap_preso/ham_tech_class/img/ohm-schematic.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <path
+         inkscape:connector-curvature="0"
+         id="path2989"
+         d="m 216.7857,408.43361 c 18.21429,0 18.21429,0 18.21429,0 l 0,0.35714"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.91338128px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 219.7781,413.3903 c 12.22948,0 12.22948,0 12.22948,0 l 0,0.44376"
+         id="path2991"
+         inkscape:connector-curvature="0" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path2993"
+         d="m 222.21943,418.68877 c 7.34682,0 7.34682,0 7.34682,0 l 0,0.5611"
+         style="fill:none;stroke:#000000;stroke-width:0.79605001px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:22px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Garuda;-inkscape-font-specification:Garuda"
+       x="13.131983"
+       y="41.199482"
+       id="text3201"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3203"
+         x="13.131983"
+         y="41.199482">90 V</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       id="text3230"
+       y="116.45585"
+       x="44.446712"
+       style="font-size:22px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Garuda;-inkscape-font-specification:Garuda"
+       xml:space="preserve"><tspan
+         y="116.45585"
+         x="44.446712"
+         id="tspan3232"
+         sodipodi:role="line">Current: 3 A</tspan></text>
+  </g>
+</svg>
