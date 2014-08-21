@@ -1,3 +1,5 @@
 wget http://www.webtravelnews.com/wp-storage/uploads/2013/10/niagara-falls.jpg
 wget http://www.popularmechanics.com/cm/popularmechanics/images/X3/leaky-faucet-0513-mdn.jpg > leaky.jpg
 wget -O seesaw.jpg http://www.sharecg.com/images/medium/64411.jpg
+http://commons.wikimedia.org/wiki/File:Electrical_symbols_library.svg
+wget -O diode-sample.jpg http://d1gsvnjtkwr6dd.cloudfront.net/large/SC-DI-1N5391_LRG.jpg

@@ -10,3 +10,15 @@ span.red {
     display: none;
     text-color: #FFF;
 }
+
+table.padding td {
+    padding-right: 15px;
+    line-height: 40px;
+    vertical-align: text-top;
+}
+
+table.padding img {
+    padding-right: 15px;
+    line-height: 40px;
+    vertical-align: text-top;
+}
