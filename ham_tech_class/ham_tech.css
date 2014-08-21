@@ -5,3 +5,8 @@ span.red {
 .hide.active.visited {
     display: none;
 }
+
+.slide::after {
+    display: none;
+    text-color: #FFF;
+}
