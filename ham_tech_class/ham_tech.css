@@ -22,3 +22,8 @@ table.padding img {
     line-height: 40px;
     vertical-align: text-top;
 }
+
+.slide ol>li[value]:before {
+    counter-increment: none;
+    content:attr(value)'.\00A0';
+}

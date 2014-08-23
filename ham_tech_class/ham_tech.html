@@ -52,7 +52,7 @@
         <img src="img/seesaw.jpg" style="height: 60%; left: 25%; position: absolute;"/>
     </div></section>
     <section class="slide"><div>
-        <h2><span class="red">Frequency</span> describes how often AC current changes direction. It is measured in <span class="red">hertz (Hz)</span>. One hertz is one cycle per second.</h2>
+        <h2><span class="red">Frequency</span> describes how often AC current "cycles," or changes direction. It is measured in <span class="red">hertz (Hz)</span>. One hertz is one cycle per second.</h2>
         <img src="img/one-hertz.png" style="height: 45%; position: absolute; left: 35%"/>
     </div></section>
     <section class="slide"><div>
@@ -162,7 +162,7 @@
         </td></tr><tr><td align="center">
         1 &#956;F = 1,000,000 pF
         </td></tr><tr><td align="center">
-        28.4 MHz = 28,400 Hz
+        28.4 MHz = 28,400 kHz
         </td></tr><tr><td align="center">
         2425 MHz = 2.425 GHz
         </td></tr></table>
@@ -189,7 +189,7 @@
             <tr><td><span class="red">Resistor</span></td><td>Opposes current flow</td><td><img src="img/resistor.svg" /></td></tr>
             <tr><td><span class="red">Potentiometer</span></td><td>Adjustable resistor, often used for volume controls</td><td><img src="img/potentiometer.svg" /></td></tr>
             <tr><td><span class="red">Capacitor</span></td><td>Two conducting surfaces separated by an insulator. Stores energy in an electric field. <span class="red">Capacitance</span> is measured in <span class="red">farads (F)</span>.</td><td><img src="img/capacitor.svg" /></td></tr>
-            <tr><td><span class="red">Inductor</span></td><td>Stores energy in a magnetic field. <span class="red">Inductance</span> is measured in <span class="red">henries (H)</span>. Inductors are usually coils of wire.</td><td><img src="img/potentiometer.svg" /></td></tr>
+            <tr><td><span class="red">Inductor</span></td><td>Stores energy in a magnetic field. <span class="red">Inductance</span> is measured in <span class="red">henries (H)</span>. Inductors are usually coils of wire.</td><td><img src="img/inductor.svg" /></td></tr>
         </table>
     </div></section>
     <section class="slide"><div>
@@ -200,7 +200,15 @@
             <tr><td><span class="red">Battery</span></td><td>Supplies power. <span class="red">Carbon-zinc</span> batteries are not rechargeable, but these types are:
                     <span class="red">Nickel-metal hydride, Lithium-ion, and Lead-acid gel cell</span>
             </td><td><img src="img/battery.svg" /></td></tr>
-            <tr><td><span class="red">Diode</span></td><td>Allows current to flow only in one direction. Diodes have two electrodes, <span class="red">the anode and the cathode</span>. Often the cathode is identified <span class="red">with a stripe</span>.<img style="position: absolute; left: 75%; top: 68%" SRC="img/diode-sample.jpg" width="10%"/></td><td><img src="img/diode.svg" /></td></tr>
+            <tr><td><span class="red">Diode</span></td><td>Allows current to flow only in one direction. Diodes have two electrodes, <span class="red">the anode and the cathode</span>. Often the cathode is identified <span class="red">with a stripe</span>.
+            </td><td>
+<!--                <table width="30%"><tr><td> -->
+                <img src="img/diode.svg" />
+               <!-- </td></tr><tr><td>
+                <img src="img/diode-sample.jpg" width="30%"/>
+                </td></tr></table>
+            </td></tr> -->
+            <img style="position: absolute; left: 75%; top: 68%" SRC="img/diode-sample.jpg" width="10%"/>
             <tr><td><span class="red">LED</span></td><td>Light-emitting diode. Often used as an indicator.</td><td><img src="img/LED.svg" /></td></tr>
         </table>
     </div></section>
@@ -214,6 +222,96 @@
                        <tr><td>FET, <span class="red">Field Effect Transistor</span></td><td>Source, gate, and drain</td></tr></table>
             </td><td><img src="img/transistor.svg" /></td></tr>
         </table>
+    </div></section>
+    <section class="slide"><div>
+        <h2>Schematic Diagrams</h2>
+        <img src="img/schematic1.svg" style="float:right; height: 50%"/>
+        <ol>
+            <li>Resistor</li>
+            <li>Transistor. Controls the flow of current.</li>
+            <li>Lamp</li>
+            <li>Battery</li>
+         </ol>
+    </div></section>
+    <section class="slide"><div>
+        <h2>Schematic Diagrams</h2>
+        <table><tr><td colspan="2" align="center">
+            <img src="img/schematic2.svg" width="80%"/>
+        </td></tr><tr><td width="55%" style="padding-right: 30px">
+        <ol class="customcounter">
+            <li value="3">Single-pole, single-throw switch</li>
+            <li value="4">Transformer. Commonly used to change 120V AC house current to a lower voltage</li>
+        </ol>
+        </td><td>
+        <ol>
+            <li value="6">Capacitor</li>
+            <li value="8">Light-emitting diode (LED)</li>
+            <li value="9">Variable resistor, or potentiometer</li>
+        </ol>
+        </td></tr></table>
+    </div></section>
+    <section class="slide"><div>
+        <h2>Schematic Diagrams</h2>
+        <img src="img/schematic3.svg" style="float:right; height: 60%"/>
+        <ol>
+            <li value="2">Variable capacitor</li>
+            <li value="3">Variable inductor</li>
+            <li value="4">Antenna</li>
+        </ol>
+        A capacitor and inductor together either in series or in parallel form a tuned circuit, or a filter.
+    </div></section>
+    <section class="slide"><div>
+        <h2>Other important components</h2>
+        <table>
+            <tr>
+                <td width="20"><span class="red">Relay</span></td>
+                <td width="65%">A switch controlled by an electromagnet</td>
+                <td style="vertical-align: middle" width="15%"><img style="width: 65%" src="img/Relay_Parts.jpg" /></td></tr>
+            <tr>
+                <td width="20"><span class="red">Meter</span></td>
+                <td width="65%">Used to display measurements, like signal strength</td>
+                <td style="vertical-align: middle" width="15%"><img style="width: 65%" src="img/voltmeter.gif" /></td></tr>
+            <tr>
+                <td width="20"><span class="red">Integrated circuit</span></td>
+                <td width="65%">Several microscopic components combined into one package</td>
+                <td style="vertical-align: middle" width="15%"><img style="width: 65%" src="img/IC.jpg" /></td></tr>
+            <tr>
+                <td width="20"><span class="red">Regulator</span></td>
+                <td width="65%">Controls voltage in a power supply</td>
+                <td style="vertical-align: middle" width="15%"><img style="width: 65%" src="img/7812_voltage_regulator.jpg" /></td>
+            </tr>
+        </table>
+    </div></section>
+    <section class="slide"><div>
+        <h2>Properties of radio waves</h2>
+        <p>Radio waves are electromagnetic waves -- that is, they are made up of two components: <span class="red">electric and magnetic fields</span>. They carry signals through space at the speed of light: 300,000,000 meters per second.</p>
+    </div></section>
+    <section class="slide"><div>
+        <h2>Properties of radio waves</h2>
+        <p>The <span class="red">wavelength</span> of a wave is how far it
+        travels in the time it takes it to cycle once. Higher frequency waves have a shorter wavelength than longer frequency ones.</p>
+        <img src="img/wavelength.svg" style="position: absolute; top: 50%; width: 80%;" /?
+    </div></section>
+    <section class="slide"><div>
+        <h2>Wavelength</h2>
+        <p>We often identify groups of frequencies, or <span
+        class="red">bands</span>, by their wavelength. For instance, frequencies
+        between 144 MHz and 148 MHz form the very popular 2 meter band. Their
+        wavelength is about 2 meters.</p>
+        <p>Calculate wavelength by dividing 300 by the frequency in MHz. For 144 MHz, the wavelength is:</p>
+        <p align="center"><img src="img/wavelength-calc.svg" width="50%"/></p>
+    </div></section>
+    <section class="slide"><div>
+        <h2>Bands</h2>
+        Frequency groups are called <span class="red">bands</span>. For amateur radio, there are three major groups:
+        <table>
+            <tr><td><span class="red">High Frequency, or HF</span></td><td>3 MHz to 30 MHz</td></tr>
+            <tr><td><span class="red">Very High Frequency, or VHF</span></td><td>30 MHz to 300 MHz</td></tr>
+            <tr><td><span class="red">Ultra-High Frequency, or UHF</span></td><td>300 MHz to 3000 MHz</td></tr>
+        </table>
+        There are more bands above and below these, but these are the most
+        commonly used ones. The HF band in particular is divded into several
+        smaller bands, like 80 meters, 40 meters, and others.
     </div></section>
     <!--
     <section class="slide"><div>
