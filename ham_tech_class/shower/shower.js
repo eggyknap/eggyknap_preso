@@ -159,6 +159,16 @@ window.shower = (function(window, document, undefined) {
 			var nextSteps, seenSteps, i,
 				slide = this;
 
+            if (window.shower.callback !== undefined) {
+                var result = window.shower.callback(slide);
+                if (! result) {
+                    return false;
+                } else if ( result != 'next') {
+                    shower.go(result);
+                    return false;
+                }
+            }
+
 			if ( ! slide.hasInnerNavigation || slide.isFinished()) {
 				shower.next();
 				return false;

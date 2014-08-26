@@ -1,0 +1,37 @@
+/*
+div {
+    margin-bottom: 0px;
+    line-height: 35px;
+}
+
+.answers {
+    padding-left: 20px;
+}
+
+.answers td {
+    padding-left: 10px;
+}
+*/
+
+.slide p {
+    margin: 10px 0px 10px 0px;
+}
+
+.answers {
+    line-height: 1;
+}
+
+.showanswer .right {
+    color: #33F;
+    background-color: #DDD;
+}
+
+.showanswer .wrong {
+    color: #AAA;
+}
+
+.slide::after {
+    display: none;
+    text-color: #FFF;
+}
+
