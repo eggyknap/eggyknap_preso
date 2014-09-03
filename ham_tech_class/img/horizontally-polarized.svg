@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="0.48.4 r9939"
+   version="1.1"
+   id="svg5275"
+   height="236.36"
+   width="346.09"
+   sodipodi:docname="New document 23">
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="458.896"
+     inkscape:cy="268.87389"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="947"
+     inkscape:window-height="1174"
+     inkscape:window-x="967"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0" />
+  <defs
+     id="defs5277">
+    <inkscape:path-effect
+       is_visible="true"
+       id="path-effect5285"
+       effect="spiro" />
+  </defs>
+  <metadata
+     id="metadata5280">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1"
+     transform="translate(0,-816.00218)">
+    <g
+       id="g6612"
+       transform="matrix(0.53404598,0,0,0.83973867,69.848553,618.26513)">
+      <rect
+         style="fill:#c87137;stroke:#000000;stroke-width:2.53133941;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+         id="rect6037"
+         width="13.003674"
+         height="200.43025"
+         x="76.601593"
+         y="239.69199" />
+      <path
+         inkscape:connector-curvature="0"
+         style="fill:none;stroke:#0000ff;stroke-width:1.22591293;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+         d="m -57.159603,364.88221 c 38.024011,-5.94025 74.945696,-11.56296 93.204368,-11.80988 18.258689,-0.24691 17.173115,5.07822 3.450839,14.0433 -13.722273,8.9651 -38.2976237,21.05637 -52.019897,30.02146 -13.722258,8.96509 -14.807846,14.29022 3.4508458,14.0433 18.2586865,-0.24691 55.1803562,-5.86964 93.2043652,-11.80988 38.024002,-5.94025 74.945682,-11.56297 93.204362,-11.8099 18.25869,-0.24691 17.17312,5.07823 3.45084,14.04332 -13.72227,8.96508 -38.29762,21.05636 -52.0199,30.02145 -13.72226,8.96509 -14.80783,14.29022 3.45085,14.0433 18.25869,-0.24691 55.18036,-5.86964 93.20437,-11.80989 38.024,-5.94024 74.94569,-11.56296 93.20436,-11.80988 18.25869,-0.24691 17.17312,5.07822 3.45084,14.04331 -13.72226,8.96508 -38.29762,21.05636 -52.01989,30.02145 -13.72227,8.96508 -14.80785,14.29022 3.45084,14.0433 18.25868,-0.24692 55.18037,-5.86964 93.20437,-11.80989 38.02401,-5.94024 74.94568,-11.56298 93.20436,-11.80988 18.25869,-0.24692 17.17312,5.07821 3.45085,14.0433 -13.72228,8.96509 -38.29763,21.05637 -52.0199,30.02145 -13.72226,8.96509 -14.80785,14.29023 3.45083,14.04332 18.25869,-0.24693 55.18036,-5.86964 93.20438,-11.8099"
+         title="sin(x)"
+         id="path6026" />
+      <rect
+         y="287.01581"
+         x="-115.56381"
+         height="200.43025"
+         width="13.003674"
+         id="rect6035"
+         style="fill:#c87137;stroke:#000000;stroke-width:2.53133941;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path6039"
+         d="M -102.56013,364.9609 C 72.267038,320.42084 73.711891,320.42084 73.711891,320.42084"
+         style="fill:#000000;fill-opacity:1;stroke:#2b0000;stroke-width:2.33280301;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    </g>
+  </g>
+</svg>
