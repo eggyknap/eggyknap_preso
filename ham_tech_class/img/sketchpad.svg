@@ -7,6 +7,7 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="696.09003"
@@ -22,19 +23,30 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.70000002"
-     inkscape:cx="592.24718"
-     inkscape:cy="-398.09272"
+     inkscape:zoom="0.49497476"
+     inkscape:cx="1670.2327"
+     inkscape:cy="-1250.7572"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="954"
+     inkscape:window-width="961"
      inkscape:window-height="1154"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="0" />
   <defs
      id="defs4">
+    <linearGradient
+       id="linearGradient4420">
+      <stop
+         style="stop-color:#ff0000;stop-opacity:1;"
+         offset="0"
+         id="stop4422" />
+      <stop
+         style="stop-color:#00f320;stop-opacity:1;"
+         offset="1"
+         id="stop4424" />
+    </linearGradient>
     <filter
        inkscape:collect="always"
        id="filter3803"
@@ -244,6 +256,16 @@
          x="255.71428"
          y="1242.3622" />
     </clipPath>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4420"
+       id="linearGradient4426"
+       x1="332.59198"
+       y1="1480.4167"
+       x2="325.14172"
+       y2="1970.7588"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.27117291,0,0,0.32578702,1081.5684,1344.1619)" />
   </defs>
   <metadata
      id="metadata7">
@@ -908,5 +930,22 @@
          clip-path="url(#clipPath6977)"
          transform="matrix(-0.03602653,-0.17987056,0.25802215,-0.03759439,-530.57367,1585.9968)" />
     </g>
-  </g>
+    <path
+       style="fill:url(#linearGradient4426);fill-opacity:1;stroke:#1a1a1a;stroke-width:1.54558671000000003;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m 1533.7154,1717.2289 c -0.3958,0 -0.7203,0.3898 -0.7203,0.8653 l 0,375.8361 c -11.5696,5.7053 -19.7193,19.3718 -19.7193,35.3276 0,21.0834 14.2289,38.1781 31.778,38.1781 17.5491,0 31.7695,-17.0947 31.7695,-38.1781 0,-16.9491 -9.1911,-31.3212 -21.9141,-36.305 l 0,-374.8587 c 0,-0.4755 -0.3159,-0.8653 -0.7118,-0.8653 l -20.482,0 z"
+       id="rect4415"
+       inkscape:connector-curvature="0" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4428"
+       style="font-size:22px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Garuda;-inkscape-font-specification:Garuda"
+       transform="translate(0,780.0022)"><flowRegion
+         id="flowRegion4430"><rect
+           id="rect4432"
+           width="412.14224"
+           height="242.43658"
+           x="1478.8633"
+           y="870.3703" /></flowRegion><flowPara
+         id="flowPara4434"
+         style="font-size:56px">SWR</flowPara></flowRoot>  </g>
 </svg>

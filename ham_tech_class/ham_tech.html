@@ -300,12 +300,16 @@
     </div></section>
     <section class="slide"><div>
         <h2>Properties of radio waves</h2>
-        <p>Radio waves are electromagnetic waves -- that is, they are made up of two components: <span class="red">electric and magnetic fields</span>. They carry signals through space at the speed of light: 300,000,000 meters per second.</p>
+        <p>Radio waves are electromagnetic waves -- that is, they are made up
+        of two components: <span class="red">electric and magnetic
+        fields</span>. They carry signals through space at the speed of light:
+        300,000,000 meters per second.</p>
     </div></section>
     <section class="slide"><div>
         <h2>Properties of radio waves</h2>
         <p>The <span class="red">wavelength</span> of a wave is how far it
-        travels in the time it takes it to cycle once. Higher frequency waves have a shorter wavelength than longer frequency ones.</p>
+        travels in the time it takes it to cycle once. Higher frequency waves
+        have a shorter wavelength than longer frequency ones.</p>
         <img src="img/wavelength.svg" style="position: absolute; top: 50%; width: 80%;" /?
     </div></section>
     <section class="slide"><div>
@@ -314,7 +318,8 @@
         class="red">bands</span>, by their wavelength. For instance, frequencies
         between 144 MHz and 148 MHz form the very popular 2 meter band. Their
         wavelength is about 2 meters.</p>
-        <p>Calculate wavelength by dividing 300 by the frequency in MHz. For 144 MHz, the wavelength is:</p>
+        <p>Calculate wavelength by dividing 300 by the frequency in MHz. For
+        144 MHz, the wavelength is:</p>
         <p align="center"><img src="img/wavelength-calc.svg" width="50%"/></p>
     </div></section>
     <section class="slide"><div>
@@ -411,9 +416,9 @@
     <section class="slide"><div>
         <h2>HF Propagation</h2>
         HF signals bounce off of the ionosphere, so they travel much farther
-        than VHF and UHF signals. Solar activity affects propagation
-        dramatically. During the day, higher frequencies travel furthest, but
-        at night, lower frequencies are best.
+        than VHF and UHF signals, which the atmosphere absorbs. Solar activity
+        affects propagation dramatically. During the day, higher frequencies
+        travel furthest, but at night, lower frequencies are best.
         <img width="40%" style="position: absolute; top: 60%; left: 10%" src="img/nighttime.svg" />
         <img width="40%" style="position: absolute; top: 60%; left: 50%" src="img/daytime.svg" />
     </div></section>
@@ -427,13 +432,128 @@
     </div></section>
     <section class="slide"><div>
         <h2>HF Propagation</h2>
-        Sunspots also affect HF waves. Lots of sunspots means better 10 meter propagation.
+        Sunspots also affect HF waves. Lots of sunspots means better 10 meter
+        propagation.
         <img src="img/Sunspots_1302_Sep_2011_by_NASA.jpg" style="float: right"/>
+    </div></section>
+    <section class="slide cover"><div>
+        <h2 style="color: #000;"><span style="border-radius: 20px; padding-right: 10px; padding-left: 10px; background-color: #99C">Antennas and Feedlines</span></h2>
+        <img src="img/radio-antenna.png" />
+    </div></section>
+    <section class="slide"><div>
+        <h2>Antennas</h2>
+        <div align="center"><img src="img/dipole.svg" height="100%" /></div>
+        Antennas come in many forms. One simple antenna is a wire strung
+        between two trees, with the signal fed into the middle. This is called
+        a <span class="red">dipole</span>, and because it is parallel to the
+        Earth's surface, it is horizontally polarized.
+    </div></section>
+    <section class="slide"><div>
+        <h2>Antennas</h2>
+        <div align="center"><img src="img/dipole.svg" height="100%" /></div>
+        Antennas must be designed for the frequency on which they'll be used,
+        especially when used for transmitting. Dipoles are often nearly (but
+        not quite) half a wavelength long. For use in the 6 meter band, a half
+        wavelength dipole would be 112 inches.
+    </div></section>
+    <section class="slide"><div>
+        <h2>Antennas</h2>
+        <img src="img/mobile-transceiver.svg" style="float: riGHT; height: 50%" />
+        Another common antenna is the quarter-wave vertical, which is
+        vertically polarized. A quarter-wave antenna for 146 MHz is 19 inches
+        long.
+    </div></section>
+    <section class="slide"><div>
+        <h2>Antennas</h2>
+        <img style="float: left; padding-right: 10px; width: 60%" src="img/CB_antenna.jpg" />
+        To make an antenna work better on a higher frequency, shorten it. To
+        make it work for a longer frequency, insert an inductor.
+    </div></section>
+    <section class="slide"><div>
+        <h2>Directional Antennas</h2>
+        Some common antennas are <span class="red">directional</span>, meaning
+        the concentrate the signal in one direction. The <span
+        class="red">gain</span> is how concentrated the signal is in a that
+        direction.
+        <table><tr>
+            <td width="30%"><img style="padding-left: 5px; padding-right: 5px" src="img/quad-antenna-resized.jpg" width="98%"/></td>
+            <td width="30%"><img style="padding-left: 5px; padding-right: 5px" src="img/yagi-antenna.jpg" width="98%"/></td>
+            <td width="30%"><img style="padding-left: 5px; padding-right: 5px" src="img/log-periodic.jpg" width="98%"/></td>
+        </tr><tr><td align="center">Quad</td><td align="center">Yagi</td><td align="center">Log-periodic</td>
+        </tr></table>
+    </div></section>
+    <section class="slide"><div>
+        <h2>Handheld and mobile antennas</h2>
+        "Rubber duck" antennas like found on most handhelds are not as
+        efficient as a full-sized antenna. Cars block VHF signals, so when
+        inside a vehicle their signals can be much weaker than when outside.
+        Roof-mounted antennas provide the most uniform signal. For mobile VHF
+        and UHF use, 5/8 wave antennas often have better gain and improved
+        coverage over 1/4 wave antennas.
+    </div></section>
+    <section class="slide"><div>
+        <h2>Feedlines</h2>
+        <img src="img/Coaxial_cable_cutaway.svg" height="60%" style="float: right; padding-left: 20px" />
+        The feedline carries the signal between the antenna and the radio.
+        There are many types, but coaxial cable is common, because it's easy.
+        Coaxial cable suffers higher loss with higher frequencies.
+    </div></section>
+    <section class="slide"><div>
+        <h2>Coaxial Cable</h2>
+        Amateur radios often use RG-58 or RG-8 coaxial cable. RG-8 is larger,
+        and has less loss. Air-insulated hard line has the least loss for VHF
+        and UHF, but it requires special handling, particularly to prevent
+        water absorption. All coaxial cable can suffer from moisture damage,
+        especially when sunlight damages its coating. All feed lines and
+        connectors should be protected from water, to prevent increased loss.
+        Loose connections can also cause problems.
+    </div></section>
+    <section class="slide"><div>
+        <h2>Feedline connectors</h2>
+        You'll need to know two types of feedline connectors. PL-259 is common,
+        but Type N is better for higher frequencies.
+        <table style="padding-top: 0px; margin-top: 0px"><tr>
+            <td><img style="padding: 5px" width="98%" src="img/pl259.png" /></td>
+            <td><img style="padding: 5px" width="98%" src="img/typeN.png" /></td>
+            </tr><tr><td>PL-259 female</td><td>Type N female</td>
+        </tr></table>
+    </div></section>
+    <section class="slide"><div>
+        <h2>Impedance and Standing Wave Ratio</h2>
+        <img src="img/swr.svg" style="float: right; height: 80%" />
+        Antennas and feedlines have <span class="red">impedance</span>, which
+        measures how much they resist AC current. Like resistance, it's
+        measured in ohms. Most amateur radios expect 50 ohm feedline impedance.
+        <span class="red">Standing wave ratio</span>, or SWR, can tell you how
+        well the impedance of the radio matches the feedline. Low SWR means
+        power is transmitted efficiently. High SWR means some signal is being
+        wasted as heat.
+    </div></section>
+    <section class="slide"><div>
+        <h2>SWR</h2>
+        Measure SWR with an in-line SWR meter, connected in series between the
+        transmitter and antenna, or with a directional wattmeter. An antenna
+        analyzer can determine if an antenna works well at a certain frequency,
+        and an antenna tuner can match an antenna to a transmitter's output
+        impedance.
+    </div></section>
+    <section class="slide"><div>
+        <h2>Different SWR values</h2>
+        <table>
+            <tr><td width="10%"><span class="red">1:1</span></td><td>Perfect impedance match</Td></tr>
+            <tr><td width="10%"><span class="red">2:1</span></td><td>Protection circuits will kick in, in most transmitters</td></tr>
+            <tr><td width="10%"><span class="red">4:1</span></td><td>There's an impedance mismatch</td></tr>
+        </table>
+    </div></section>
+    <section class="slide"><div>
+        <h2>Dummy Load</h2>
+        <img style="float: right; width: 50%" src="img/Dummy_load.jpg" />
+        A dummy load is used to prevent signals from being sent, when making
+        tests. It's just a resistor and a heat sink.
     </div></section>
     <!--
     <section class="slide"><div>
-        <h2>
-        </h2>
+        <h2></h2>
     </div></section>
     -->
     <!-- XXX still talk about:
