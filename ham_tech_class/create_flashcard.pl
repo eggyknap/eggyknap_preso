@@ -15,12 +15,23 @@ print <<HEADER
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen.css">
 	<link rel="stylesheet" href="flashcard.css">
+    <script type="text/javascript">
+        function clickMe(evt) {
+            var t = evt.currentTarget;
+            var c = t.parentElement.querySelector(".clicked");
+            if (c !== null) {
+                c.className = c.className.replace(/\\bclicked\\b/, '');
+            }
+            t.className = t.className + " clicked";
+        }
+    </script>
 </head>
 <body class="full">
 HEADER
 ;
 
 while (<>) {
+    chomp;
     my ($text, $answer, $a, $b, $c, $d, $section) = split /\t/;
     my %answers;
     @answers{qw/A B C D/} = ($a, $b, $c, $d);
@@ -34,15 +45,15 @@ while (<>) {
                 <table class="answers">
         };
         map {
-            print "<tr class=\"" .
+            print "<tr answerltr=\"$_\" id=\"$section-$answer_class-$_\" onclick=\"clickMe(event)\" class=\"" .
                 ($answer eq $_ ? 'right' : 'wrong') .
-                "\"><td><p>$answers{$_}<p></td></tr>\n";
+                "\"><td class=\"answer\"><p>$answers{$_}<p></td></tr>\n";
         } sort keys %answers;
         print q{
                 </table>
             </div></section>
         };
-    } ('hideanswer', 'nextrandom showanswer');
+    } ('hideanswer', 'showanswer');
 }
 
 print <<FOOTER
@@ -52,13 +63,33 @@ print <<FOOTER
         numSlides = document.querySelectorAll('.hideanswer').length;
 
         window.shower.callback = function(slide) {
-            if ((' ' + document.getElementById(slide.id).className + ' ').indexOf(' hideanswer ') >= 0) {
+                // Current slide's ID is one greater than its slide number
+            var curSlide = document.getElementById(1 + shower.getCurrentSlideNumber());
+
+            if ((' ' + curSlide.className + ' ').indexOf(' hideanswer ') >= 0) {
+                var ltr = curSlide.querySelector('.clicked');
+                if (ltr !== null) {
+                        // get the slide following this one
+                    var nextSlide = document.getElementById(shower.getCurrentSlideNumber() + 2);
+                    var ans = nextSlide.querySelector("[answerltr='" + ltr.attributes.answerltr.firstChild.data + "']");
+                    ans.className = ans.className + " clicked";
+                }
+            }
+
+            var c = curSlide.querySelector(".clicked");
+            if (c !== null) {
+                c.className = c.className.replace(/\\bclicked\\b/, '');
+            }
+
+            if ((' ' + curSlide.className + ' ').indexOf(' hideanswer ') >= 0) {
                 return 'next';
             }
-                // Mulitply by 2 here because we've only counted every
-                // other slide. We only want to switch to a hideanswer
-                // slide, not the showanswer slide
-            return (2 * Math.floor(Math.random() * numSlides));
+            else {
+                    // Mulitply by 2 here because we've only counted every
+                    // other slide. We only want to switch to a hideanswer
+                    // slide, not the showanswer slide
+                return (2 * Math.floor(Math.random() * numSlides));
+            }
         }
     </script>
 </body>

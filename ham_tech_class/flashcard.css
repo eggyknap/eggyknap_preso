@@ -35,3 +35,19 @@ div {
     text-color: #FFF;
 }
 
+
+.hideanswer .answer:hover {
+    background-color: #AAA;
+}
+
+.hideanswer .clicked {
+    border: medium solid #00F;
+}
+
+.showanswer .right.clicked {
+    border: medium solid #00F;
+}
+
+.showanswer .wrong.clicked {
+    border: medium solid #F00;
+}
