@@ -23,10 +23,7 @@
         questions; you must answer 26 correctly to pass. It generally costs
         about $15 to take the test.
     </div></section>
-    <section class="slide cover"><div>
-        <h2>Electrical Principles</h2>
-        <img src="img/default.jpg" />
-    </div></section>
+    <!-- XXX Might be nice to separate sections with cover slides -->
     <section class="slide"><div>
         <h2><span class="red">Voltage:</span> the force that moves electricity, or <i>electromotive force</i>. Measured in <span class="red">volts (V or E)</span>.</h2>
         <img src="img/push-voltage.png" style="width: 80%"/>
@@ -550,7 +547,109 @@
         <h2>Dummy Load</h2>
         <img style="float: right; width: 50%" src="img/Dummy_load.jpg" />
         A dummy load is used to prevent signals from being sent, when making
-        tests. It's just a resistor and a heat sink.
+        tests. It's often just a resistor and a heat sink.
+    </div></section>
+    <section class="slide"><div>
+        <h2>Modulation</h2>
+        <p>A radio signal is just a wave, known as a <span class="red">carrier
+        wave</span>. You add information like voice or data to the signal by
+        <span class="red">modulation</span>; in other words, you change the
+        wave in certain ways to encode the information.</p>
+    </div></section>
+    <section class="slide"><div>
+        <h2>Modulation &mdash; CW</h2>
+        <p align="center"><img src="img/CW-example.svg" /></p>
+        <p>Turning the carrier wave on and off is called carrier wave
+        modulation, or <span class="red">CW</span>. You use this to transmit
+        International Morse code. This takes very little <span
+        class="red">bandwidth</span> &mdash; about 150 Hz &mdash; meaning lots
+        of CW conversations can occur in a small frequency range without
+        interfering with each other. You can transmit Morse code using a
+        straight key, an electronic keyer, or even a computer keyboard.</p>
+    </div></section>
+    <section class="slide"><div>
+        <h2>Modulation &mdash; FM</h2>
+        <p align="center"><img src="img/FM-example.svg" /></p>
+        <p>If you vary the carrier wave's frequency slightly, it's called <span
+        class="red">frequency modulation</span>, or <span
+        class="red">FM</span>. You'll use this for VHF and UHF signals. FM
+        "phone" (that is, voice) signals have between 10 and 15 kHz bandwidth.
+    </div></section>
+    <section class="slide"><div>
+        <h2>Modulation &mdash; AM and SSB</h2>
+        <p align="center"><img src="img/AM-example.svg" style="width: 45%" /></p>
+        <p>If you change the amplitude of the carrier wave, that is, its
+        strength or height, it's <span class="red">amplitude modulation</span>,
+        or <span class="red">AM</span>. Often you'll use <span
+        class="red">single sideband</span> modulation, which is a form of AM
+        that takes less bandwidth &mdash; approximately 3 kHz for voice
+        signals.
+    </div></section>
+    <section class="slide"><div>
+        <h2>Modulation &mdash; AM and SSB</h2>
+        <p align="center"><img src="img/AM-example.svg" style="width: 45%" /></p>
+        <span class="red">Upper sideband</span> is normally used for
+        10 meter, VHF, and UHF; <span class="red">lower sideband</span> is used
+        for lower frequencies.
+    </div></section>
+    <section class="slide"><div>
+        <h2>Modulation &mdash; other methods</h2>
+        There are many other kinds of modulation. Signals requiring more
+        bandwidth are used on higher frequency bands, where bandwidth is more
+        plentiful. Some amateurs transmit <span class="red">NTSC</span> signals
+        on the 70 cm band. This is a type of analog, fast-scan color TV signal
+        requiring about 6 MHz of bandwidth.
+    </div></section>
+    <section class="slide"><div>
+        <h2>Digital Modes</h2>
+        Some hams use digital transmission modes, like Packet radio, PSK31, and
+        MFSK. Digital transmissions may include a mathematical checksum to
+        detect transmission errors, header data including the station's call
+        sign, and automatic repeat requests (<span class="red">ARQ</span>'s) to
+        handle errors.
+    </div></section>
+    <section class="slide"><div>
+        <h2>Digital modes &mdash; APRS</h2>
+        <p>
+        <img style="float: left"  src="img/gps.svg" />
+        <span class="red">Automatic Packet Reporting System</span>, or <span
+        class="red">APRS</span>, allows senders to include location data, such
+        as from a GPS receiver. You can use this to make a map of your radio
+        communications.</p>
+    </div></section>
+    <section class="slide"><div>
+        <h2>Digital modes &mdash; PSK</h2>
+        PSK stands for <span class="red">phase-shift keying</span>, and is a
+        modulation method for digital signals. In PKS31, the "31" means "31
+        baud". You don't need to know what that means exactly, just that it's a
+        very slow way to send data.
+    </div></section>
+    <section class="slide"><div>
+        <h2>Electrical Safety</h2>
+        <img style="height: 70%; float: right" src="img/electrocution.svg" />
+        Electricity can be dangerous. Cells in your body use electricty to
+        function, so if you touch a wire and current goes through you, it can
+        disturb them. It can also cook body parts, and make muscles contract
+        involuntarily.
+    </div></section>
+    <section class="slide"><div>
+        <h2>Electrical Safety</h2>
+        <img style="float: left; height: 70%; padding-right: 40px" src="img/outlet.png" />
+        The third wire in a three-wire plug, highlighted here, is a <span
+        class="red">safety ground</span>. Ground wires inside equipment will
+        often be green. Your AC equipment should always:
+        <ul><li>Use three-wire cords and plugs</li>
+        <li>Be connected to a common ground</li>
+        <li>Use a ground-fault interrupter</li></ul>
+    </div></section>
+    <section class="slide"><div>
+        <h2>Fuses</h2>
+        <p>Fuses protect equipment from too much current, by interrupting power
+        if there's an overload. Always replace blown fuses with fuses of the
+        same type. Replacing a 5 amp fuse with a 20 amp fuse could result in a
+        fire.  Always include a fuse in series with the "hot" AC wire when
+        building your own equipment.</p>
+        <p align="center"><img src="img/fuse.png" style="width: 45%"/></p>
     </div></section>
     <!--
     <section class="slide"><div>
